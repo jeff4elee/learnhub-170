@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Navbar from './navbar';
+import Footer from './footer';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
+import Subject from "./subject";
+import styled from 'styled-components';
+
+const SubjectsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 class Master extends Component {
     constructor(props){
@@ -29,9 +37,14 @@ class Master extends Component {
 
         return (
             <div>
-                <Navbar/>
                 <button onClick={() => this.dispatchExampleAction()}>CLICK</button>
                 {exampleList}
+                <SubjectsContainer>
+                    <Subject/>
+                    <Subject/>
+                    <Subject/>
+                </SubjectsContainer>
+                <Footer/>
             </div>
         )
     }
