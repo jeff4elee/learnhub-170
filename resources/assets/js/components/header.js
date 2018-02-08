@@ -7,30 +7,31 @@ import FaSearch from 'react-icons/lib/fa/search';
 import FaList from 'react-icons/lib/fa/list';
 import { NavLink } from 'react-router-dom'
 
-const StyledFooter = styled.footer`
+const StyledHeader = styled.header`
     position: fixed;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 60px;
     position: fixed;
-    background-color: #F5F5F5;
+    background-color: blue; //#ccd3e0;
 `;
 
 const FooterList = styled.ul`
-    margin-left: -40px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
 `;
 
 const StyledLink = styled(NavLink)`
-    color: black;
+    color: white;
 `;
 
 const FooterItem = styled.li`
     align-self: center;
-    color: black;
+    color: white;
     border-left: thin solid #b2b5ba;
     border-right: thin solid #b2b5ba;
     display: block;
@@ -39,7 +40,12 @@ const FooterItem = styled.li`
     margin: 0;
 `;
 
-export default class Footer extends React.Component {
+const HeaderItem = styled.h1`
+    font-family: Helvetica;
+    font-size: 100px;    
+`;
+
+export default class Header extends React.Component {
     constructor(props) {
         super(props);
 
@@ -55,26 +61,11 @@ export default class Footer extends React.Component {
     }
     render() {
         return (
-            <StyledFooter>
-                <FooterList>
-                    <FooterItem>
-                        <StyledLink exact activeStyle={{ color: "#239B88" }} to='/'>
-                            <FaHome size={40}/>
-                        </StyledLink>
-                    </FooterItem>
-
-                    <FooterItem><FaStar size={40}/></FooterItem>
-
-                    <FooterItem>
-                        <StyledLink activeStyle={{ color: "#239B88" }} to='/resource-form'>
-                            <PlusCircle size={40}/>
-                        </StyledLink>
-                    </FooterItem>
-
-                    <FooterItem><FaSearch size={40}/></FooterItem>
-                    <FooterItem><FaList size={40}/></FooterItem>
-                </FooterList>
-            </StyledFooter>
+            <StyledHeader>
+                <HeaderItem>
+                    BigBub
+                </HeaderItem>
+            </StyledHeader>
         );
     }
 }
