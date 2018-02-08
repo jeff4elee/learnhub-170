@@ -56409,7 +56409,7 @@ PersistGate.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_styled_components__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    margin: 0;\n    padding: 0;\n'], ['\n    margin: 0;\n    padding: 0;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62451,11 +62451,9 @@ function reducer() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_router_dom__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    position: fixed;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    position: fixed;\n    background-color: blue; //#ccd3e0;\n'], ['\n    position: fixed;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    position: fixed;\n    background-color: blue; //#ccd3e0;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    text-align: center;\n    align-content: center;\n'], ['\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    text-align: center;\n    align-content: center;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    color: white;\n'], ['\n    color: white;\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: white;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0px 40px 0px 40px;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: white;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0px 40px 0px 40px;\n    line-height: 60px;\n    margin: 0;\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    font-family: Helvetica;\n    font-size: 100px;    \n'], ['\n    font-family: Helvetica;\n    font-size: 100px;    \n']);
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    position: fixed;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    position: fixed;\n    background-color: #ccd3e0;\n'], ['\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    position: fixed;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    position: fixed;\n    background-color: #ccd3e0;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    color: white;\n'], ['\n    color: white;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    font-family: Helvetica;\n    font-size: 50px;    \n    color: #239b88;\n    margin-top: 0;\n    letter-spacing: -3px;\n    font-weight: 600;\n'], ['\n    font-family: Helvetica;\n    font-size: 50px;    \n    color: #239b88;\n    margin-top: 0;\n    letter-spacing: -3px;\n    font-weight: 600;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62474,15 +62472,11 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var StyledHeader = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].header(_templateObject);
+var StyledHeader = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div(_templateObject);
 
-var FooterList = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].ul(_templateObject2);
+var StyledLink = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["b" /* NavLink */])(_templateObject2);
 
-var StyledLink = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["b" /* NavLink */])(_templateObject3);
-
-var FooterItem = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].li(_templateObject4);
-
-var HeaderItem = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject5);
+var HeaderItem = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject3);
 
 var Header = function (_React$Component) {
     _inherits(Header, _React$Component);
