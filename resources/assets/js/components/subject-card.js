@@ -41,17 +41,17 @@ class SubjectCard extends Component {
     render() {
         return (
             <SubjectContainer>
-                    <HCard>
+                <Link to={`/subject/2`} style={{ textDecoration: 'none' }}>
+                   <HCard>
                         <HCardBody>
-                            <Link to={`/subject/2`} style={{ textDecoration: 'none' }}>
                                 <div>Title</div>
-                            </Link>
                             <div>Description</div>
                         </HCardBody>
                         <HCardFooter>
                             <img src="http://via.placeholder.com/300x200"/>
                         </HCardFooter>
                     </HCard>
+                </Link>
             </SubjectContainer>
         )
     }
