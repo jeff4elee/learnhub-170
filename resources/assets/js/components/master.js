@@ -7,6 +7,12 @@ import ResourceForm from "./resource-form";
 import {Switch, Route} from 'react-router-dom';
 import SubjectBoard from "./subject-board";
 import Resource from "./resource";
+import styled from 'styled-components';
+
+const Container = styled.div`
+    margin: 0;
+    padding: 0;
+`;
 
 class Master extends Component {
     constructor(props){
@@ -16,7 +22,7 @@ class Master extends Component {
     render(){
 
         return (
-            <div>
+            <Container>
                 <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
@@ -28,7 +34,7 @@ class Master extends Component {
                     {/*<Route path='/schedule' component={Schedule}/>*/}
                 </Switch>
                 <Footer/>
-            </div>
+            </Container>
         )
     }
 }

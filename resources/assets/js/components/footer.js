@@ -18,12 +18,10 @@ const StyledFooter = styled.footer`
 `;
 
 const FooterList = styled.ul`
+    margin-left: -40px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    align-content: center;
 `;
 
 const StyledLink = styled(NavLink)`
