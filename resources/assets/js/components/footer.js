@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
     width: 100%;
     height: 60px;
     position: fixed;
-    background-color: #ccd3e0;
+    background-color: #F5F5F5;
 `;
 
 const FooterList = styled.ul`
@@ -25,12 +25,12 @@ const FooterList = styled.ul`
 `;
 
 const StyledLink = styled(NavLink)`
-    color: white;
+    color: black;
 `;
 
 const FooterItem = styled.li`
     align-self: center;
-    color: white;
+    color: black;
     border-left: thin solid #b2b5ba;
     border-right: thin solid #b2b5ba;
     display: block;
@@ -58,7 +58,7 @@ export default class Footer extends React.Component {
             <StyledFooter>
                 <FooterList>
                     <FooterItem>
-                        <StyledLink exact activeStyle={{ color: "#424b72" }} to='/'>
+                        <StyledLink exact activeStyle={{ color: "#239B88" }} to='/'>
                             <FaHome size={40}/>
                         </StyledLink>
                     </FooterItem>
@@ -66,7 +66,7 @@ export default class Footer extends React.Component {
                     <FooterItem><FaStar size={40}/></FooterItem>
 
                     <FooterItem>
-                        <StyledLink activeStyle={{ color: "#424b72" }} to='/resource-form'>
+                        <StyledLink activeStyle={{ color: "#239B88" }} to='/resource-form'>
                             <PlusCircle size={40}/>
                         </StyledLink>
                     </FooterItem>
