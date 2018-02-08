@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/example', function(Request $request){
     return "Success!";
 });
+
+Route::post('/subject', function(Request $request){
+    return "Success!";
+});

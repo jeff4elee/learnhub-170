@@ -4,6 +4,9 @@ import Footer from './footer';
 import Header from './header';
 import Home from "./home";
 import ResourceForm from "./resource-form";
+import SearchForm from "./search-form";
+import Menu from "./menu";
+import TaskBoard from "./task-board";
 import {Switch, Route} from 'react-router-dom';
 import SubjectBoard from "./subject-board";
 import Resource from "./resource";
@@ -24,7 +27,10 @@ class Master extends Component {
                 <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
+                    <Route exact path='/task-board' component={TaskBoard}/>
                     <Route exact path='/resource-form' component={ResourceForm}/>
+                    <Route exact path='/search-form' component={SearchForm}/>
+                    <Route exact path='/menu' component={Menu}/>
                     <Route path='/subject/:number' component={SubjectBoard}/>
                     <Route path='/resource/:number' component={Resource}/>
                     {/* both /roster and /roster/:number begin with /roster */}

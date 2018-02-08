@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import styled from 'styled-components';
 
-const FormContainer = styled.form`
+const FormContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin: 5%;
     justify-content: center;
 `;
 
-class ResourceForm extends Component {
+class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -31,16 +31,12 @@ class ResourceForm extends Component {
 
     render() {
         return (
-            <FormContainer onSubmit={this.handleSubmit}>
-                Subject:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                Resource Title:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                Link:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                Description:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                <input type="submit" value="Submit"/>
+            <FormContainer>
+                <form onSubmit={this.handleSubmit}>
+                        Menu:
+                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                    <input type="submit" value="Submit"/>
+                </form>
             </FormContainer>
         );
     }
@@ -61,4 +57,4 @@ function mapDispatchToProps(dispatch) {
 
 
 //connect allows you to reference the store
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
