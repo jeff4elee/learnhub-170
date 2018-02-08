@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Footer from './footer';
+import Header from './header';
 import Home from "./home";
 import ResourceForm from "./resource-form";
 import {Switch, Route} from 'react-router-dom';
@@ -16,6 +17,7 @@ class Master extends Component {
 
         return (
             <div>
+                <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route exact path='/resource-form' component={ResourceForm}/>
