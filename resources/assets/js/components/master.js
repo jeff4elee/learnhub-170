@@ -1,68 +1,35 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Footer from './footer';
-import {sendExampleAction, resetStore} from '../actions/exampleActions';
-import Subject from "./subject";
-import styled from 'styled-components';
-
-const SubjectsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
+import Home from "./home";
+import ResourceForm from "./resource-form";
+import {Switch, Route} from 'react-router-dom';
+import SubjectBoard from "./subject-board";
+import Resource from "./resource";
 
 class Master extends Component {
     constructor(props){
         super(props);
-
-        this.dispatchExampleAction = this.dispatchExampleAction.bind(this);
     }
-
-    dispatchExampleAction(){
-        this.props.sendExampleAction();
-    }
-
-    componentWillMount(){
-        this.props.resetStore();
-    }
-
-    componentDidMount() {
-    }
-
 
     render(){
 
-        const example = this.props.example;
-        const exampleList = example.allIds.map(id => <div key={id}> Dispatched: {example.byId[id]} </div>);
-
         return (
             <div>
-                <button onClick={() => this.dispatchExampleAction()}>CLICK</button>
-                {exampleList}
-                <SubjectsContainer>
-                    <Subject/>
-                    <Subject/>
-                    <Subject/>
-                </SubjectsContainer>
+                <Switch>
+                    <Route exact path='/' component={Home}/>
+                    <Route exact path='/resource-form' component={ResourceForm}/>
+                    <Route path='/subject/:number' component={SubjectBoard}/>
+                    <Route path='/resource/:number' component={Resource}/>
+                    {/* both /roster and /roster/:number begin with /roster */}
+                    {/*<Route path='/roster' component={Roster}/>*/}
+                    {/*<Route path='/schedule' component={Schedule}/>*/}
+                </Switch>
                 <Footer/>
             </div>
         )
     }
 }
 
-function mapStateToProps(state){
-    return {
-        example: state.example
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore())
-    }
-}
-
-
 //connect allows you to reference the store
-export default connect(mapStateToProps, mapDispatchToProps)(Master);
+export default Master;
