@@ -8,15 +8,14 @@ import FaList from 'react-icons/lib/fa/list';
 import { NavLink } from 'react-router-dom'
 
 const StyledHeader = styled.div`
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     display: flex;
     flex-direction: row;
     justify-content: center;
-    position: fixed;
     left: 0;
     width: 100%;
     height: 60px;
-    position: fixed;
-    background-color: #ccd3e0;
+    background-color: #F5F5F5;
 `;
 
 const StyledLink = styled(NavLink)`

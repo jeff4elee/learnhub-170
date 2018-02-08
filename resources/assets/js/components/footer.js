@@ -57,13 +57,18 @@ export default class Footer extends React.Component {
         return (
             <StyledFooter>
                 <FooterList>
+
                     <FooterItem>
                         <StyledLink exact activeStyle={{ color: "#239B88" }} to='/'>
                             <FaHome size={40}/>
                         </StyledLink>
                     </FooterItem>
 
-                    <FooterItem><FaStar size={40}/></FooterItem>
+                    <FooterItem>
+                        <StyledLink activeStyle={{ color: "#239B88" }} to='/task-board'>
+                            <FaStar size={40}/>
+                        </StyledLink>
+                    </FooterItem>
 
                     <FooterItem>
                         <StyledLink activeStyle={{ color: "#239B88" }} to='/resource-form'>
@@ -71,8 +76,18 @@ export default class Footer extends React.Component {
                         </StyledLink>
                     </FooterItem>
 
-                    <FooterItem><FaSearch size={40}/></FooterItem>
-                    <FooterItem><FaList size={40}/></FooterItem>
+                    <FooterItem>
+                        <StyledLink activeStyle={{ color: "#239B88" }} to='/search-form'>
+                            <FaSearch size={40}/>
+                        </StyledLink>
+                    </FooterItem>
+
+                    <FooterItem>
+                        <StyledLink activeStyle={{ color: "#239B88" }} to='/menu'>
+                            <FaList size={40}/>
+                        </StyledLink>
+                    </FooterItem>
+
                 </FooterList>
             </StyledFooter>
         );

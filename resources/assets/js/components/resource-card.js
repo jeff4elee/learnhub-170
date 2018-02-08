@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 const ResourceContainer = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 300px;
-    height: 150px;
+    width: 550px;
+    height: 125px;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -24,16 +24,25 @@ const HCard = styled.div`
 `;
 
 const HCardBody = styled.div`
+    color: #239b88;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     width: 80%;
+    font-weight: bold;
+    font-size: 20px;
 `;
 
 const HCardFooter = styled.div`
+    color: black;
     width: 20%;
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-left: thin solid #b2b5ba;
+    font-size: 20px;
+    font-weight: bold;
 `;
 
 class ResourceCard extends Component {
@@ -46,11 +55,11 @@ class ResourceCard extends Component {
             <ResourceContainer>
                 <Link to={`/resource/2`} style={{textDecoration: 'none'}}>
                     <HCard>
-                        <HCardBody/>
+                        <HCardBody>
+                            HTML Best Practices
+                        </HCardBody>
                         <HCardFooter>
-                            <div> 5</div>
-                            <div> -</div>
-                            <div> 5</div>
+                            <div> 5 / 5</div>
                         </HCardFooter>
                     </HCard>
                 </Link>
