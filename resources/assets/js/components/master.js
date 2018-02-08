@@ -10,8 +10,6 @@ import Resource from "./resource";
 import styled from 'styled-components';
 
 const Container = styled.div`
-    margin: 0;
-    padding: 0;
 `;
 
 class Master extends Component {
