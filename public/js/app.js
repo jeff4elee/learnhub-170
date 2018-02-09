@@ -5558,10 +5558,10 @@ function verifyPlainObject(value, displayName, methodName) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    position: fixed;\n    background-color: #F5F5F5;\n'], ['\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    position: fixed;\n    background-color: #F5F5F5;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n    '], ['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n    ']),
     _templateObject2 = _taggedTemplateLiteral(['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n'], ['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n'], ['\n    color: black;\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0px 40px 0px 40px;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0px 40px 0px 40px;\n    line-height: 60px;\n    margin: 0;\n']);
+    _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.8% 0% 4.8%;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.8% 0% 4.8%;\n    line-height: 60px;\n    margin: 0;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5602,7 +5602,7 @@ var Footer = function (_React$Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 StyledFooter,
-                { width: this.props.width, height: this.props.height },
+                null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     FooterList,
                     null,
@@ -61498,7 +61498,7 @@ function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 550px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 550px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n'], ['\n    display: flex;\n    flex-direction: row;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n'], ['\n    color: black;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    border-left: thin solid #b2b5ba;\n'], ['\n    border-left: thin solid #b2b5ba;\n']);
@@ -61562,7 +61562,7 @@ var SubjectCard = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             HCardFooter,
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'http://via.placeholder.com/300x200' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'http://via.placeholder.com/200x150' })
                         )
                     )
                 )
@@ -62024,7 +62024,7 @@ var SubjectBoard = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 550px;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 550px;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n    height: 100%;\n'], ['\n    display: flex;\n    flex-direction: row;\n    height: 100%;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: #239b88;\n    padding: 20px;\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n    font-weight: bold;\n    font-size: 20px;\n'], ['\n    color: #239b88;\n    padding: 20px;\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n    font-weight: bold;\n    font-size: 20px;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    color: black;\n    width: 20%;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border-left: thin solid #b2b5ba;\n    font-size: 20px;\n    font-weight: bold;\n'], ['\n    color: black;\n    width: 20%;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border-left: thin solid #b2b5ba;\n    font-size: 20px;\n    font-weight: bold;\n']);
@@ -62108,7 +62108,7 @@ var ResourceCard = function (_Component) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n\n'], ['\n\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    width: 33%;\n    margin: auto;\n'], ['\n    width: 33%;\n    margin: auto;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    width: 90%;\n    margin: auto;\n'], ['\n    width: 90%;\n    margin: auto;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    flex-direction: column;\n    display: flex;\n    padding-left: 20px;\n    padding-right: 20px;\n'], ['\n    flex-direction: column;\n    display: flex;\n    padding-left: 20px;\n    padding-right: 20px;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    padding: 12px;\n    margin-top: 12px;\n    margin-left: 12px;\n    margin-right: 12px;\n    font-weight: bold;\n    font-size: 20px;\n'], ['\n    background-color: #239b88;\n    color: white;\n    padding: 12px;\n    margin-top: 12px;\n    margin-left: 12px;\n    margin-right: 12px;\n    font-weight: bold;\n    font-size: 20px;\n']);
 

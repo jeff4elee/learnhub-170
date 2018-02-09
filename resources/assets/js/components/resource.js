@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const ResourceContainer = styled.div`
-    width: 33%;
+    width: 90%;
     margin: auto;
 `;
 

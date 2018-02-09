@@ -8,14 +8,13 @@ import FaList from 'react-icons/lib/fa/list';
 import { NavLink } from 'react-router-dom'
 
 const StyledFooter = styled.footer`
-    position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
     height: 60px;
-    position: fixed;
+    width: 100%;
     background-color: #F5F5F5;
-`;
+    position: fixed;
+    `;
 
 const FooterList = styled.ul`
     margin-left: -40px;
@@ -34,7 +33,7 @@ const FooterItem = styled.li`
     border-left: thin solid #b2b5ba;
     border-right: thin solid #b2b5ba;
     display: block;
-    padding: 0px 40px 0px 40px;
+    padding: 0% 4.8% 0% 4.8%;
     line-height: 60px;
     margin: 0;
 `;
@@ -46,7 +45,7 @@ export default class Footer extends React.Component {
 
     render() {
         return (
-            <StyledFooter width={this.props.width} height={this.props.height}>
+            <StyledFooter>
                 <FooterList>
 
                     <FooterItem>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const SubjectContainer = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 550px;
+    width: 80%;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -48,7 +48,7 @@ class SubjectCard extends Component {
                             <div style={{ fontSize: "15px" }}>Description</div>
                         </HCardBody>
                         <HCardFooter>
-                            <img src="http://via.placeholder.com/300x200"/>
+                            <img src="http://via.placeholder.com/200x150"/>
                         </HCardFooter>
                     </HCard>
                 </Link>
