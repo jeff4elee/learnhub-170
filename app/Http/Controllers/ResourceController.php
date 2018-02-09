@@ -10,6 +10,10 @@ class ResourceController extends Controller
 {
     public function create(Request $request){
         $request['url_domain'] = parse_url($request['url'])['host'];
+        $subject = $request['subject'];
+
+        unset($request['subject']);
+
         $resource = Resource::create($request->all());
         return Response::make([
             'data' => $resource,

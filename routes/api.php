@@ -21,6 +21,5 @@ Route::get('/example', function(Request $request){
     return "Success!";
 });
 
-Route::post('/subject', function(Request $request){
-    return "Success!";
-});
+Route::post('/subject', 'SubjectController@create');
+Route::post('/resource', 'ResourceController@create');

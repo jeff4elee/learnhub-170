@@ -11,19 +11,37 @@ import {Switch, Route} from 'react-router-dom';
 import SubjectBoard from "./subject-board";
 import Resource from "./resource";
 import styled from 'styled-components';
+import MetaTags from 'react-meta-tags';
 
 const Container = styled.div`
 `;
 
+
 class Master extends Component {
     constructor(props){
         super(props);
+        this.state = { width: 0, height: 0 };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        // console.log(this.state);
     }
 
     render(){
 
         return (
-            <Container>
+            <div width={this.state.width} height={this.state.height}>
                 <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
@@ -37,8 +55,8 @@ class Master extends Component {
                     {/*<Route path='/roster' component={Roster}/>*/}
                     {/*<Route path='/schedule' component={Schedule}/>*/}
                 </Switch>
-                <Footer/>
-            </Container>
+                <Footer width={this.state.width} height={this.state.height}/>
+            </div>
         )
     }
 }
