@@ -26,11 +26,19 @@ const HCardBody = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 60%;
 `;
 
 const HCardFooter = styled.div`
+    width: 40%;
     border-left: thin solid #b2b5ba;
+`;
+
+const RightImage = styled.img`
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 `;
 
 class SubjectCard extends Component {
@@ -48,7 +56,8 @@ class SubjectCard extends Component {
                             <div style={{ fontSize: "15px" }}>Description</div>
                         </HCardBody>
                         <HCardFooter>
-                            <img src="http://via.placeholder.com/200x150"/>
+                            <RightImage src="http://via.placeholder.com/200x150"/>
+
                         </HCardFooter>
                     </HCard>
                 </Link>

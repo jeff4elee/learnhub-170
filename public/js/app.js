@@ -61500,8 +61500,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n'], ['\n    display: flex;\n    flex-direction: row;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n'], ['\n    color: black;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 80%;\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    border-left: thin solid #b2b5ba;\n'], ['\n    border-left: thin solid #b2b5ba;\n']);
+    _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 60%;\n'], ['\n    color: black;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 60%;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    width: 40%;\n    border-left: thin solid #b2b5ba;\n'], ['\n    width: 40%;\n    border-left: thin solid #b2b5ba;\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    align-self: flex-end;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n'], ['\n    align-self: flex-end;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -61523,6 +61524,8 @@ var HCard = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].d
 var HCardBody = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject3);
 
 var HCardFooter = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject4);
+
+var RightImage = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].img(_templateObject5);
 
 var SubjectCard = function (_Component) {
     _inherits(SubjectCard, _Component);
@@ -61562,7 +61565,7 @@ var SubjectCard = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             HCardFooter,
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: 'http://via.placeholder.com/200x150' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(RightImage, { src: 'http://via.placeholder.com/200x150' })
                         )
                     )
                 )
