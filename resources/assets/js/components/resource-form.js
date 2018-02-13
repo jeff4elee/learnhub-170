@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import styled from 'styled-components';
+import createResource from '../actions/resourceActions'
 
 const FormContainer = styled.form`
     display: flex;
@@ -14,32 +15,64 @@ const FormContainer = styled.form`
 class ResourceForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            subject: '',
+            title: '',
+            link: '',
+            description: ''
+        };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSubjectChange = this.handleSubjectChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleLinkChange = this.handleLinkChange.bind(this);
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    handleSubjectChange(event){
+        this.setState({
+            ...state,
+            subject: event.target.value
+        });
+    }
+
+    handleTitleChange(event) {
+        this.setState({
+            ...state,
+            title: event.target.value
+        });
+    }
+
+    handleLinkChange(event){
+        this.setState({
+            ...state,
+            link: event.target.value
+        });
+    }
+
+    handleDescriptionChange(event){
+        this.setState({
+            ...state,
+            description: event.target.value
+        });
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
+        this.props.createResource({...state});
     }
 
     render() {
         return (
             <FormContainer onSubmit={this.handleSubmit}>
                 Subject:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <input type="text" value={this.state.subject} onChange={this.handleSubjectChange}/>
                 Resource Title:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
                 Link:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <input type="text" value={this.state.link} onChange={this.handleLinkChange}/>
                 Description:
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <input type="text" value={this.state.description} onChange={this.handleDescriptionChange}/>
                 <input type="submit" value="Submit"/>
             </FormContainer>
         );
@@ -48,14 +81,12 @@ class ResourceForm extends Component {
 
 function mapStateToProps(state) {
     return {
-        example: state.example
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore())
+        createResource: () => dispatch(createResource())
     }
 }
 

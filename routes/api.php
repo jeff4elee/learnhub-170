@@ -23,3 +23,4 @@ Route::get('/example', function(Request $request){
 
 Route::post('/subject', 'SubjectController@create');
 Route::post('/resource', 'ResourceController@create');
+Route::get('/resource', 'ResourceController@all');

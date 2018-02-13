@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export function sendExampleAction(){
+export function createResource(resource){
     return {
-        type: 'EXAMPLE_ACTION',
-        payload: axios.get("/api/example")
+        type: 'CREATE_RESOURCE',
+        payload: axios.post("/api/resource", resource)
     }
 }

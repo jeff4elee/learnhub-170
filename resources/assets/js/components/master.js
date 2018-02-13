@@ -11,7 +11,6 @@ import {Switch, Route} from 'react-router-dom';
 import SubjectBoard from "./subject-board";
 import Resource from "./resource";
 import styled from 'styled-components';
-import MetaTags from 'react-meta-tags';
 
 const Container = styled.div`
 `;
@@ -20,28 +19,12 @@ const Container = styled.div`
 class Master extends Component {
     constructor(props){
         super(props);
-        this.state = { width: 0, height: 0 };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    }
-
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-        // console.log(this.state);
     }
 
     render(){
 
         return (
-            <div width={this.state.width} height={this.state.height}>
+            <div>
                 <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
