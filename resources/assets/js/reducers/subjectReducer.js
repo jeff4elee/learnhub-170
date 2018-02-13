@@ -6,12 +6,42 @@ export default function reducer(state={
     error: null
 }, action) {
     switch (action.type) {
-        case "EXAMPLE_ACTION_PENDING": {
+        case "FETCH_ALL_SUBJECTS_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-        case "EXAMPLE_ACTION_FULFILLED": {
+        case "FETCH_ALL_SUBJECTS_FULFILLED": {
 
-            let nextId = 1;
+            const fetchedSubjects = {};
+            const subjectIds = [];
+
+            for (const subject of action.payload.data.data) {
+                fetchedSubjects[subject.id] = subject;
+                subjectIds.push(subject.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedSubjects
+                },
+                allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
+                fetched: true,
+                fetching: false
+            }
+
+        }
+        case "FETCH_ALL_SUBJECTS_REJECTED": {
+            return {...state, fetching: false, fetched: false}
+        }
+        case "FETCH_SUBJECT_PENDING": {
+            return {...state, fetching: true, fetched: false}
+        }
+
+        case "FETCH_SUBJECT_FULFILLED": {
+
+            let resource = action.payload.data.data;
+            let resourceId = resource.id;
 
             if(state.allIds.length !== 0){
                 nextId = state.allIds.reduce(function(a, b) {
@@ -23,13 +53,13 @@ export default function reducer(state={
                 ...state,
                 byId: {
                     ...state.byId,
-                    [nextId]: action.payload.data
+                    [resourceId]: resource
                 },
-                allIds: [...state.allIds, nextId],
+                allIds: [...state.allIds, resourceId],
                 fetching: false,
                 fetched: true}
         }
-        case "EXAMPLE_ACTION_REJECTED": {
+        case "FETCH_SUBJECT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
         case "STORE::RESET": {

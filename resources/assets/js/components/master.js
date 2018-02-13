@@ -32,13 +32,13 @@ class Master extends Component {
                     <Route exact path='/resource-form' component={ResourceForm}/>
                     <Route exact path='/search-form' component={SearchForm}/>
                     <Route exact path='/menu' component={Menu}/>
-                    <Route path='/subject/:number' component={SubjectBoard}/>
-                    <Route path='/resource/:number' component={Resource}/>
+                    <Route path='/subject/:id' component={SubjectBoard}/>
+                    <Route path='/resource/:id' component={Resource}/>
                     {/* both /roster and /roster/:number begin with /roster */}
                     {/*<Route path='/roster' component={Roster}/>*/}
                     {/*<Route path='/schedule' component={Schedule}/>*/}
                 </Switch>
-                <Footer width={this.state.width} height={this.state.height}/>
+                <Footer/>
             </div>
         )
     }

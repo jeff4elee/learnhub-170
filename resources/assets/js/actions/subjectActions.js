@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export function sendExampleAction(){
+export function fetchAllSubjects(){
     return {
-        type: 'EXAMPLE_ACTION',
-        payload: axios.get("/api/example")
+        type: 'FETCH_ALL_SUBJECTS',
+        payload: axios.get("/api/subject/all")
     }
 }

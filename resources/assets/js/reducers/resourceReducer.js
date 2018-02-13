@@ -6,30 +6,54 @@ export default function reducer(state={
     error: null
 }, action) {
     switch (action.type) {
-        case "EXAMPLE_ACTION_PENDING": {
+        case "CREATE_RESOURCE_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-        case "EXAMPLE_ACTION_FULFILLED": {
+        case "CREATE_RESOURCE_FULFILLED": {
 
-            let nextId = 1;
+            let resource = action.payload.data.data;
+            let resourceId = resource.id;
 
-            if(state.allIds.length !== 0){
-                nextId = state.allIds.reduce(function(a, b) {
-                    return Math.max(a, b);
-                }) + 1;
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [resourceId]: resource
+                },
+                allIds: [...state.allIds, resourceId],
+                fetching: false,
+                fetched: true}
+        }
+        case "CREATE_RESOURCE_REJECTED": {
+            return {...state, fetching: false, fetched: false}
+        }
+        case "FETCH_RESOURCES_PENDING": {
+            return {...state, fetching: true, fetched: false}
+        }
+
+        case "FETCH_RESOURCES_FULFILLED": {
+
+            const fetchedResources = {};
+            const resourceIds = [];
+
+            for (const resource of action.payload.data.data) {
+                fetchedResources[resource.id] = resource;
+                resourceIds.push(resource.id);
             }
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    [nextId]: action.payload.data
+                    ...fetchedResources
                 },
-                allIds: [...state.allIds, nextId],
-                fetching: false,
-                fetched: true}
+                allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
+                fetched: true,
+                fetching: false
+            }
+
         }
-        case "EXAMPLE_ACTION_REJECTED": {
+        case "FETCH_RESOURCES_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
         case "STORE::RESET": {

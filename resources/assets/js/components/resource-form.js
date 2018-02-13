@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import styled from 'styled-components';
-import createResource from '../actions/resourceActions'
+import {createResource} from '../actions/resourceActions'
 
 const FormContainer = styled.form`
     display: flex;
@@ -18,48 +18,49 @@ class ResourceForm extends Component {
         this.state = {
             subject: '',
             title: '',
-            link: '',
+            url: '',
             description: ''
         };
 
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleLinkChange = this.handleLinkChange.bind(this);
+        this.handleUrlChange = this.handleUrlChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubjectChange(event){
         this.setState({
-            ...state,
+            ...this.state,
             subject: event.target.value
         });
     }
 
     handleTitleChange(event) {
         this.setState({
-            ...state,
+            ...this.state,
             title: event.target.value
         });
     }
 
-    handleLinkChange(event){
+    handleUrlChange(event){
         this.setState({
-            ...state,
-            link: event.target.value
+            ...this.state,
+            url: event.target.value
         });
     }
 
     handleDescriptionChange(event){
         this.setState({
-            ...state,
+            ...this.state,
             description: event.target.value
         });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.createResource({...state});
+        console.log(this.state);
+        this.props.createResource({...this.state});
     }
 
     render() {
@@ -69,8 +70,8 @@ class ResourceForm extends Component {
                 <input type="text" value={this.state.subject} onChange={this.handleSubjectChange}/>
                 Resource Title:
                 <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
-                Link:
-                <input type="text" value={this.state.link} onChange={this.handleLinkChange}/>
+                Url:
+                <input type="text" value={this.state.url} onChange={this.handleUrlChange}/>
                 Description:
                 <input type="text" value={this.state.description} onChange={this.handleDescriptionChange}/>
                 <input type="submit" value="Submit"/>
@@ -86,7 +87,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        createResource: () => dispatch(createResource())
+        createResource: (resource) => dispatch(createResource(resource))
     }
 }
 

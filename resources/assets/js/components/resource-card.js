@@ -56,7 +56,7 @@ class ResourceCard extends Component {
                 <Link to={`/resource/2`} style={{textDecoration: 'none'}}>
                     <HCard>
                         <HCardBody>
-                            HTML Best Practices
+                            {this.props.resource.title}
                         </HCardBody>
                         <HCardFooter>
                             <div> 5 / 5</div>

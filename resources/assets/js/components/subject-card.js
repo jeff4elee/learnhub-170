@@ -49,11 +49,11 @@ class SubjectCard extends Component {
     render() {
         return (
             <SubjectContainer>
-                <Link to={`/subject/2`} style={{ textDecoration: 'none' }}>
+                <Link to={`/subject/` + this.props.subject.id} style={{ textDecoration: 'none' }}>
                    <HCard>
                         <HCardBody>
-                            <div style={{ fontSize: "20px" }}>Coding</div>
-                            <div style={{ fontSize: "15px" }}>Description</div>
+                            <div style={{ fontSize: "20px" }}>{this.props.subject.title}</div>
+                            <div style={{ fontSize: "15px" }}>{this.props.subject.description}</div>
                         </HCardBody>
                         <HCardFooter>
                             <RightImage src="http://via.placeholder.com/200x150"/>

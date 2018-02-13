@@ -4,6 +4,7 @@ import Footer from './footer';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import SubjectCard from "./subject-card";
 import {Switch, Router, Route} from 'react-router-dom';
+import {fetchAllSubjects} from "../actions/subjectActions";
 import styled from 'styled-components';
 
 const SubjectsContainer = styled.div`
@@ -15,16 +16,10 @@ const SubjectsContainer = styled.div`
 class Home extends Component {
     constructor(props){
         super(props);
-
-        this.dispatchExampleAction = this.dispatchExampleAction.bind(this);
-    }
-
-    dispatchExampleAction(){
-        this.props.sendExampleAction();
     }
 
     componentWillMount(){
-        this.props.resetStore();
+        this.props.fetchAllSubjects();
     }
 
     componentDidMount() {
@@ -33,8 +28,8 @@ class Home extends Component {
 
     render(){
 
-        const example = this.props.example;
-        const exampleList = example.allIds.map(id => <div key={id}> Dispatched: {example.byId[id]} </div>);
+        const subjects = this.props.subjects;
+        const subjectsList = subjects.allIds.map(id => <SubjectCard key={id} subject={subjects.byId[id]}/>);
 
         return (
             <div>
@@ -42,11 +37,12 @@ class Home extends Component {
                 {/*{exampleList}*/}
 
                 <SubjectsContainer>
-                    <SubjectCard/>
-                    <SubjectCard/>
-                    <SubjectCard/>
-                    <SubjectCard/>
-                    <SubjectCard/>
+                    {/*<SubjectCard/>*/}
+                    {/*<SubjectCard/>*/}
+                    {/*<SubjectCard/>*/}
+                    {/*<SubjectCard/>*/}
+                    {/*<SubjectCard/>*/}
+                    {subjectsList}
                 </SubjectsContainer>
             </div>
         )
@@ -55,17 +51,15 @@ class Home extends Component {
 
 function mapStateToProps(state){
     return {
-        example: state.example
+        subjects: state.subjects
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore())
+        fetchAllSubjects: () => dispatch(fetchAllSubjects()),
     }
 }
-
 
 //connect allows you to reference the store
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

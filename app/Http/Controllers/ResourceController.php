@@ -23,7 +23,7 @@ class ResourceController extends Controller
         $subject_name = $request['subject'];
         unset($request['subject']);
 
-        $subject = Subject::where('title', '=', strtolower($subject_name))->first();
+        $subject = Subject::whereRaw('LOWER(title) = ?', [strtolower($subject_name)])->first();
 
         if($subject === null){
             $subject = new Subject;
