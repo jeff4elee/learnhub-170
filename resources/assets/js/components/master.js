@@ -22,7 +22,7 @@ const Container = styled.div`
 const Body = styled.div`
     overflow:scroll;
     height:90%;
-    padding-bottom:60px;
+    padding-bottom:120px;
     position:relative;
 `;
 
