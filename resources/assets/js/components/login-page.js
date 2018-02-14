@@ -14,11 +14,20 @@ const LoginLayout = styled.div`
 const FormContainer = styled.div`
     padding: 1em 1em 0.5em 1em;
     background: #f4f7f8;
-    border: 1px solid black;
     margin: auto;
     margin-top: 10%;
     margin-bottom: 10%;
     width: 85%;
+    flex-direction: row;
+`;
+
+const CenteredContainer = styled.div`
+    padding: 1em 1em 0.5em 1em;
+    background: #f4f7f8;
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Input = styled.input`
@@ -40,6 +49,49 @@ const Error = styled.div`
     font-style: italic;
     font-size: 12px;
 `;
+
+const Button = styled.input`
+    background-color: #239b88;
+    color: white;
+    width: 25%;
+    display: inline-flex;
+    font-weight: bold;
+    padding: 5px 7px;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+
+    letter-spacing: 2px;
+
+
+    &:focus {
+
+    }
+
+    &:hover {
+
+    }
+`;
+
+const BootButton = styled.button`
+ font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 13px 17px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 2px;
+    -moz-background-clip: padding;
+    border-radius: 2px;
+    background-clip: padding-box;
+    -webkit-transition: color 0.2s linear, background-color 0.2s linear;
+    transition: color 0.2s linear, background-color 0.2s linear;
+`;
+
+
 
 class LoginPage extends Component {
     constructor(props) {
@@ -89,7 +141,7 @@ class LoginPage extends Component {
 
         return (
             <LoginLayout>
-                <FormContainer flexDirection="row">
+                <FormContainer>
 
                     <Form onSubmit={this.handleSubmit}>
                         Email
@@ -100,11 +152,13 @@ class LoginPage extends Component {
 
                         <input type="checkbox" onChange={this.handleCheckboxChange}/> Remember Me
 
-                        <Input type="submit" value="Login"/>
+                        {/*<Input type="submit" value="Login"/>*/}
+                        <CenteredContainer>
+                        <Button type="submit" value="Login"/>
+                        </CenteredContainer>
                     </Form>
 
                 </FormContainer>
-
                 <Link to="/register"> Register Here </Link>
             </LoginLayout>
         )
