@@ -20,8 +20,8 @@ class CreateResourcesTable extends Migration
             $table->string('url_domain');
             $table->unsignedInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-//            $table->unsignedInteger('user_id');
-//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('description');
             $table->timestamps();
         });

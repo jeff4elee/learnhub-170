@@ -60,7 +60,7 @@ class ResourceForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state);
-        this.props.createResource({...this.state});
+        this.props.createResource({...this.state}).then;
     }
 
     render() {
