@@ -15,11 +15,12 @@ import Resource from "./resource";
 import styled from 'styled-components';
 
 const Container = styled.div`
+    overflow:hidden;
 `;
 
 const FlexSwitch = styled(Switch)`
     overflow-y:scroll;
-    height: 94%;
+    height: 92%;
 `;
 
 class Master extends Component {
