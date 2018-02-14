@@ -5651,7 +5651,7 @@ function verifyPlainObject(value, displayName, methodName) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n    height:100%;\n    overflow:hidden;\n'], ['\n    height:100%;\n    overflow:hidden;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:120px;\n    position:relative;\n'], ['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:120px;\n    position:relative;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:60px;\n    position:relative;\n'], ['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:60px;\n    position:relative;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
