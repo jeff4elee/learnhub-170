@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom'
 const StyledFooter = styled.footer`
     bottom: 0;
     left: 0;
+    height: 6%;
     width: 100%;
     background-color: #F5F5F5;
     position: fixed;

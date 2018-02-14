@@ -19,11 +19,7 @@ const Container = styled.div`
 
 const FlexSwitch = styled(Switch)`
     overflow-y:scroll;
-    height: 90%;
-`;
-
-const StickyFooter = styled(Footer)`
-    height: 10%;
+    height: 94%;
 `;
 
 class Master extends Component {
@@ -51,7 +47,7 @@ class Master extends Component {
                             {/*<Route path='/roster' component={Roster}/>*/}
                             {/*<Route path='/schedule' component={Schedule}/>*/}
                         </FlexSwitch>
-                        <StickyFooter/>
+                        <Footer/>
                     </div>
                     :
                     <Switch>
