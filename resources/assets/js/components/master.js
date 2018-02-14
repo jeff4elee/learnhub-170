@@ -19,9 +19,8 @@ const Container = styled.div`
 `;
 
 const FlexSwitch = styled(Switch)`
-    overflow-y:scroll;
-    overflow:hidden;
-    height: 90%;
+    overflow:scroll;
+    padding-bottom:60px;
 `;
 
 class Master extends Component {
