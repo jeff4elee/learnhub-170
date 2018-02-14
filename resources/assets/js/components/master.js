@@ -51,7 +51,7 @@ class Master extends Component {
                             {/*<Route path='/roster' component={Roster}/>*/}
                             {/*<Route path='/schedule' component={Schedule}/>*/}
                         </FlexSwitch>
-                        <Footer/>
+                        <StickyFooter/>
                     </div>
                     :
                     <Switch>
