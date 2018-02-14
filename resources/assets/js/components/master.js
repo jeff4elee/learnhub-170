@@ -19,6 +19,11 @@ const Container = styled.div`
 
 const FlexSwitch = styled(Switch)`
     overflow-y:scroll;
+    height: 90%;
+`;
+
+const StickyFooter = styled(Footer)`
+    height: 10%;
 `;
 
 class Master extends Component {

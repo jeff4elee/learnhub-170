@@ -5651,7 +5651,8 @@ function verifyPlainObject(value, displayName, methodName) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    overflow-y:scroll;\n'], ['\n    overflow-y:scroll;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n    overflow-y:scroll;\n    height: 90%;\n'], ['\n    overflow-y:scroll;\n    height: 90%;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    height: 10%;\n'], ['\n    height: 10%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5680,6 +5681,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 var Container = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject);
 
 var FlexSwitch = Object(__WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */])(_templateObject2);
+
+var StickyFooter = Object(__WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_2__footer__["a" /* default */])(_templateObject3);
 
 var Master = function (_Component) {
     _inherits(Master, _Component);
