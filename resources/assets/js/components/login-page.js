@@ -32,6 +32,7 @@ const CenteredContainer = styled.div`
 
 const Input = styled.input`
     width: 100%;
+    border: none;
     border-radius: 3px;
     margin-bottom: 1em;
     padding: 0.25em;
@@ -63,35 +64,28 @@ const Button = styled.input`
     border-radius: 2px;
     outline: none;
 
-    letter-spacing: 2px;
-
-
-    &:focus {
-
-    }
-
-    &:hover {
-
-    }
+    letter-spacing: 1px;
 `;
 
 const BootButton = styled.button`
- font-weight: bold;
-    font-size: 12px;
-    letter-spacing: 2px;
-    padding: 13px 17px;
+    background-color: #239b88;
+    color: white;
+    width: 25%;
+    display: inline-flex;
+    font-weight: bold;
+    padding: 5px 7px;
+
+    justify-content: center;
     border: none;
-    -webkit-border-radius: 2px;
-    -webkit-background-clip: padding-box;
-    -moz-border-radius: 2px;
-    -moz-background-clip: padding;
     border-radius: 2px;
-    background-clip: padding-box;
-    -webkit-transition: color 0.2s linear, background-color 0.2s linear;
-    transition: color 0.2s linear, background-color 0.2s linear;
+    outline: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: black;
+    }
+
 `;
-
-
 
 class LoginPage extends Component {
     constructor(props) {
@@ -154,7 +148,8 @@ class LoginPage extends Component {
 
                         {/*<Input type="submit" value="Login"/>*/}
                         <CenteredContainer>
-                        <Button type="submit" value="Login"/>
+                            <Button type="submit" value="Login"/>
+                            <BootButton>Login</BootButton>
                         </CenteredContainer>
                     </Form>
 
