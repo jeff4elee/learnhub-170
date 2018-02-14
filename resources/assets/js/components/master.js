@@ -20,7 +20,9 @@ const Container = styled.div`
 
 const FlexSwitch = styled(Switch)`
     overflow:scroll;
+    height:90%;
     padding-bottom:60px;
+    position:relative;
 `;
 
 class Master extends Component {

@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom'
 
 const StyledFooter = styled.footer`
     bottom: 0;
-    height: 60px;
+    height: 10%;
     width: 100%;
     background-color: #F5F5F5;
     position: fixed;
@@ -33,7 +33,7 @@ const FooterItem = styled.li`
     border-right: thin solid #b2b5ba;
     display: block;
     padding: 0% 4.78% 0% 4.78%;
-    line-height: 60px;
+    line-height: 100%;
     margin: 0;
 `;
 
