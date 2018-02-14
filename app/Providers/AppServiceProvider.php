@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Passport\Passport;
-use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-//        URL::forceScheme('https');
+        URL::forceScheme('https');
+        Schema::defaultStringLength(191);
     }
 
     /**
