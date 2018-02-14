@@ -13,8 +13,8 @@ const StyledFooter = styled.footer`
     height: 60px;
     width: 100%;
     background-color: #F5F5F5;
-    position: static;
-    `;
+    position: fixed;
+`;
 
 const FooterList = styled.ul`
     margin-left: -40px;

@@ -3495,7 +3495,7 @@ function isPlainObject(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: static;\n    '], ['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: static;\n    ']),
+var _templateObject = _taggedTemplateLiteral(['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n'], ['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n'], ['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n'], ['\n    color: black;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n']);
@@ -5651,8 +5651,7 @@ function verifyPlainObject(value, displayName, methodName) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n'], ['\n    display: flex;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    margin-top:auto;\n'], ['\n    margin-top:auto;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n    overflow-y:scroll;\n'], ['\n    overflow-y:scroll;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5680,9 +5679,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Container = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject);
 
-var Body = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject2);
-
-var StickyFooter = Object(__WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_2__footer__["a" /* default */])(_templateObject3);
+var FlexSwitch = Object(__WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */])(_templateObject2);
 
 var Master = function (_Component) {
     _inherits(Master, _Component);
@@ -5702,10 +5699,10 @@ var Master = function (_Component) {
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], null),
                 this.props.user !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    Body,
+                    'div',
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */],
+                        FlexSwitch,
                         null,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_4__home__["a" /* default */] }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/task-board', component: __WEBPACK_IMPORTED_MODULE_8__task_board__["a" /* default */] }),
@@ -5715,7 +5712,7 @@ var Master = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/subject/:id', component: __WEBPACK_IMPORTED_MODULE_12__subject_board__["a" /* default */] }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/resource/:id', component: __WEBPACK_IMPORTED_MODULE_13__resource__["a" /* default */] })
                     ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(StickyFooter, null)
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__footer__["a" /* default */], null)
                 ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */],
                     null,

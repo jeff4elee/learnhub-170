@@ -17,12 +17,8 @@ import styled from 'styled-components';
 const Container = styled.div`
 `;
 
-const Body = styled.div`
-    display: flex;
-`;
-
-const StickyFooter = styled(Footer)`
-    margin-top:auto;
+const FlexSwitch = styled(Switch)`
+    overflow-y:scroll;
 `;
 
 class Master extends Component {
@@ -36,8 +32,8 @@ class Master extends Component {
             <div>
                 <Header/>
                 {this.props.user !== null ?
-                    <Body>
-                        <Switch>
+                    <div>
+                        <FlexSwitch>
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/task-board' component={TaskBoard}/>
                             <Route exact path='/resource-form' component={ResourceForm}/>
@@ -49,9 +45,9 @@ class Master extends Component {
                             {/* both /roster and /roster/:number begin with /roster */}
                             {/*<Route path='/roster' component={Roster}/>*/}
                             {/*<Route path='/schedule' component={Schedule}/>*/}
-                        </Switch>
-                        <StickyFooter/>
-                    </Body>
+                        </FlexSwitch>
+                        <Footer/>
+                    </div>
                     :
                     <Switch>
                         <Route exact path='/' component={LoginPage}/>
