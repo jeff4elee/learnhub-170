@@ -15,8 +15,16 @@ import Resource from "./resource";
 import styled from 'styled-components';
 
 const Container = styled.div`
+    height:100%;
+    overflow:hidden;
 `;
 
+const Body = styled.div`
+    overflow:scroll;
+    height:90%;
+    padding-bottom:60px;
+    position:relative;
+`;
 
 class Master extends Component {
     constructor(props) {
@@ -29,22 +37,24 @@ class Master extends Component {
             <div>
                 <Header/>
                 {this.props.user !== null ?
-                    <div>
-                        <Switch>
-                            <Route exact path='/' component={Home}/>
-                            <Route exact path='/task-board' component={TaskBoard}/>
-                            <Route exact path='/resource-form' component={ResourceForm}/>
-                            <Route exact path='/search-form' component={SearchForm}/>
-                            <Route exact path='/menu' component={Menu}/>
-                            <Route path='/subject/:id' component={SubjectBoard}/>
-                            <Route path='/resource/:id' component={Resource}/>
+                    <Container>
+                        <Body>
+                            <Switch>
+                                <Route exact path='/' component={Home}/>
+                                <Route exact path='/task-board' component={TaskBoard}/>
+                                <Route exact path='/resource-form' component={ResourceForm}/>
+                                <Route exact path='/search-form' component={SearchForm}/>
+                                <Route exact path='/menu' component={Menu}/>
+                                <Route path='/subject/:id' component={SubjectBoard}/>
+                                <Route path='/resource/:id' component={Resource}/>
 
-                            {/* both /roster and /roster/:number begin with /roster */}
-                            {/*<Route path='/roster' component={Roster}/>*/}
-                            {/*<Route path='/schedule' component={Schedule}/>*/}
-                        </Switch>
+                                {/* both /roster and /roster/:number begin with /roster */}
+                                {/*<Route path='/roster' component={Roster}/>*/}
+                                {/*<Route path='/schedule' component={Schedule}/>*/}
+                            </Switch>
+                        </Body>
                         <Footer/>
-                    </div>
+                    </Container>
                     :
                     <Switch>
                         <Route exact path='/' component={LoginPage}/>

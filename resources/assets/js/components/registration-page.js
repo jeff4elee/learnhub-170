@@ -16,7 +16,6 @@ const RegistrationLayout = styled.div`
 const FormContainer = styled.div`
     padding: 1em 1em 0.5em 1em;
     background: #f4f7f8;
-    border: 1px solid black;
     margin: auto;
     margin-top: 10%;
     margin-bottom: 10%;
@@ -25,6 +24,7 @@ const FormContainer = styled.div`
 
 const Input = styled.input`
     width: 100%;
+    border: none;
     border-radius: 3px;
     margin-bottom: 1em;
     padding: 0.25em;
