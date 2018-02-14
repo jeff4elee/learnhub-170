@@ -35,13 +35,16 @@ class Resource extends Component {
     }
 
     render() {
+
+        const resource = this.props.resources.byId[this.props.match.params.id];
+
         return (
             <Container>
                 <ResourceContainer>
-                    <h1><b>HTML Best Practices</b></h1>
+                    <h1><b>{resource.title}</b></h1>
                     <div>
                         <b>Links To: </b>
-                        <a href="https://github.com/hail2u/html-best-practices" target="_blank"> https://github.com/hail2u/html-best-practices </a>
+                        <a href={resource.url} target="_blank"> {resource.url_domain} </a>
                     </div>
                     <ResourceBody>
                         <img src="http://via.placeholder.com/300x250"/>
@@ -57,4 +60,16 @@ class Resource extends Component {
     }
 }
 
-export default Resource;
+function mapStateToProps(state){
+    return {
+        resources: state.resources
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchResources: (subjectId) => dispatch(fetchResources(subjectId)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Resource);

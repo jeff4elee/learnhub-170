@@ -53,7 +53,7 @@ class ResourceCard extends Component {
     render() {
         return (
             <ResourceContainer>
-                <Link to={`/resource/2`} style={{textDecoration: 'none'}}>
+                <Link to={'/resource/' + this.props.resource.id} style={{textDecoration: 'none'}}>
                     <HCard>
                         <HCardBody>
                             {this.props.resource.title}

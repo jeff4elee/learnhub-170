@@ -26,3 +26,6 @@ Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources')
 Route::get('/subject/all', 'SubjectController@all');
 Route::post('/resource', 'ResourceController@create');
 Route::get('/resource', 'ResourceController@all');
+
+Route::group(['middleware' => ['usersession']], function () {
+});

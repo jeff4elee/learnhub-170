@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\ValidationException;
 use JWTAuth;
 use Illuminate\Support\Facades\Auth;
@@ -108,7 +109,11 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return response()->generic(['user' => $user], true, 'You have successfuly logged in!', 200);
+        return Response::make([
+            'data' => $user,
+            'success' => true,
+            'message' => 'You have successfuly logged in!'
+        ], 200);
     }
     /**
      * Get the failed login response instance.
@@ -142,7 +147,11 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
-        return response()->generic(["user" => null], true, "User logged out", 200);
+        return Response::make([
+            'data' => null,
+            'success' => true,
+            'message' => 'You have successfuly logged out!'
+        ], 200);
     }
     /**
      * Get the guard to be used during authentication.
@@ -168,10 +177,18 @@ class LoginController extends Controller
         $user = Auth::user();
 
         if($user) {
-            return response()->generic(['user' => $user], true, 'You have successfully logged in!', 200);
+            return Response::make([
+                'data' => $user,
+                'success' => true,
+                'message' => 'You have successfuly logged in!'
+            ], 200);
         }
 
-        return response()->generic(['user' => null], false, "No session", 401);
+        return Response::make([
+            'data' => null,
+            'success' => false,
+            'message' => 'No session'
+        ], 401);
 
     }
 

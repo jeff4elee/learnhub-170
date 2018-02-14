@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +61,11 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        return response()->generic(null, true, "User successfully registered!", 200);
+        return Response::make([
+            'data' => null,
+            'success' => true,
+            'message' => "User successfully registered!"
+        ], 200);
     }
 
     /**

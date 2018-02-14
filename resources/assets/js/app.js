@@ -26,4 +26,5 @@ render(
         </PersistGate>
     </Provider>),
     document.getElementById('example')
+
 );
