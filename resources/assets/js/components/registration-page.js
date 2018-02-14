@@ -22,6 +22,15 @@ const FormContainer = styled.div`
     width: 85%;
 `;
 
+const CenteredContainer = styled.div`
+    padding: 1em 1em 0.5em 1em;
+    background: #f4f7f8;
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+`;
+
 const Input = styled.input`
     width: 100%;
     border: none;
@@ -43,6 +52,26 @@ const Error = styled.div`
     color: red;
     font-style: italic;
     font-size: 12px;
+`;
+
+const Button = styled.input`
+    background-color: #239b88;
+    color: white;
+    width: 25%;
+    display: inline-flex;
+    font-weight: bold;
+    padding: 5px 7px;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: black;
+    }
+
 `;
 
 class RegistrationPage extends Component {
@@ -146,7 +175,9 @@ class RegistrationPage extends Component {
                         <Input type="password" value={this.state.password_confirmation}
                                onChange={this.handlePassConfChange}/>
 
-                        <Input type="submit" value="Submit Registration"/>
+                        <CenteredContainer>
+                            <Button type="submit" value="Submit Registration"/>
+                        </CenteredContainer>
                     </Form>
 
                 </FormContainer>

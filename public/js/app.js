@@ -5524,7 +5524,7 @@ function verifyPlainObject(value, displayName, methodName) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n    '], ['\n    bottom: 0;\n    left: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n    ']),
+var _templateObject = _taggedTemplateLiteral(['\n    bottom: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n'], ['\n    bottom: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n'], ['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n'], ['\n    color: black;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n']);
@@ -56669,7 +56669,8 @@ PersistGate.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_styled_components__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    height:100%;\n    overflow:hidden;\n'], ['\n    height:100%;\n    overflow:hidden;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:60px;\n    position:relative;\n'], ['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:60px;\n    position:relative;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -56697,6 +56698,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Container = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject);
 
+var Body = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject2);
+
 var Master = function (_Component) {
     _inherits(Master, _Component);
 
@@ -56715,18 +56718,22 @@ var Master = function (_Component) {
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], null),
                 this.props.user !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
+                    Container,
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */],
+                        Body,
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_4__home__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/task-board', component: __WEBPACK_IMPORTED_MODULE_8__task_board__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/resource-form', component: __WEBPACK_IMPORTED_MODULE_5__resource_form__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/search-form', component: __WEBPACK_IMPORTED_MODULE_6__search_form__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/menu', component: __WEBPACK_IMPORTED_MODULE_7__menu__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/subject/:id', component: __WEBPACK_IMPORTED_MODULE_12__subject_board__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/resource/:id', component: __WEBPACK_IMPORTED_MODULE_13__resource__["a" /* default */] })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */],
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_4__home__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/task-board', component: __WEBPACK_IMPORTED_MODULE_8__task_board__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/resource-form', component: __WEBPACK_IMPORTED_MODULE_5__resource_form__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/search-form', component: __WEBPACK_IMPORTED_MODULE_6__search_form__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/menu', component: __WEBPACK_IMPORTED_MODULE_7__menu__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/subject/:id', component: __WEBPACK_IMPORTED_MODULE_12__subject_board__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/resource/:id', component: __WEBPACK_IMPORTED_MODULE_13__resource__["a" /* default */] })
+                        )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__footer__["a" /* default */], null)
                 ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -61929,11 +61936,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n'], ['\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    margin: auto;\n    margin-top: 10%;\n    margin-bottom: 10%;\n    width: 85%;\n    flex-direction: row;\n'], ['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    margin: auto;\n    margin-top: 10%;\n    margin-bottom: 10%;\n    width: 85%;\n    flex-direction: row;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    display: flex;\n    height: auto;\n    align-items: center;\n    justify-content: center;\n'], ['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    display: flex;\n    height: auto;\n    align-items: center;\n    justify-content: center;\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    width: 100%;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    width: 100%;\n    margin: auto;\n    flex-direction: column;\n'], ['\n    width: 100%;\n    margin: auto;\n    flex-direction: column;\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n\n    letter-spacing: 2px;\n\n\n    &:focus {\n\n    }\n\n    &:hover {\n\n    }\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n\n    letter-spacing: 2px;\n\n\n    &:focus {\n\n    }\n\n    &:hover {\n\n    }\n']),
-    _templateObject8 = _taggedTemplateLiteral(['\n font-weight: bold;\n    font-size: 12px;\n    letter-spacing: 2px;\n    padding: 13px 17px;\n    border: none;\n    -webkit-border-radius: 2px;\n    -webkit-background-clip: padding-box;\n    -moz-border-radius: 2px;\n    -moz-background-clip: padding;\n    border-radius: 2px;\n    background-clip: padding-box;\n    -webkit-transition: color 0.2s linear, background-color 0.2s linear;\n    transition: color 0.2s linear, background-color 0.2s linear;\n'], ['\n font-weight: bold;\n    font-size: 12px;\n    letter-spacing: 2px;\n    padding: 13px 17px;\n    border: none;\n    -webkit-border-radius: 2px;\n    -webkit-background-clip: padding-box;\n    -moz-border-radius: 2px;\n    -moz-background-clip: padding;\n    border-radius: 2px;\n    background-clip: padding-box;\n    -webkit-transition: color 0.2s linear, background-color 0.2s linear;\n    transition: color 0.2s linear, background-color 0.2s linear;\n']);
+    _templateObject7 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n\n    letter-spacing: 1px;\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n\n    letter-spacing: 1px;\n']),
+    _templateObject8 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: black;\n    }\n\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: black;\n    }\n\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62041,7 +62048,12 @@ var LoginPage = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             CenteredContainer,
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Button, { type: 'submit', value: 'Login' })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Button, { type: 'submit', value: 'Login' }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                BootButton,
+                                null,
+                                'Login'
+                            )
                         )
                     )
                 ),
@@ -62087,10 +62099,12 @@ function mapDispatchToProps(dispatch) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n'], ['\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    border: 1px solid black;\n    margin: auto;\n    margin-top: 10%;\n    margin-bottom: 10%;\n    width: 85%;\n'], ['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    border: 1px solid black;\n    margin: auto;\n    margin-top: 10%;\n    margin-bottom: 10%;\n    width: 85%;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    width: 100%;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    width: 100%;\n    margin: auto;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n'], ['\n    width: 100%;\n    margin: auto;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    margin: auto;\n    margin-top: 10%;\n    margin-bottom: 10%;\n    width: 85%;\n'], ['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    margin: auto;\n    margin-top: 10%;\n    margin-bottom: 10%;\n    width: 85%;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    display: flex;\n    height: auto;\n    align-items: center;\n    justify-content: center;\n'], ['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    display: flex;\n    height: auto;\n    align-items: center;\n    justify-content: center;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    width: 100%;\n    margin: auto;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n'], ['\n    width: 100%;\n    margin: auto;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: black;\n    }\n\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 25%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: black;\n    }\n\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62111,11 +62125,15 @@ var RegistrationLayout = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* 
 
 var FormContainer = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].div(_templateObject2);
 
-var Input = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].input(_templateObject3);
+var CenteredContainer = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].div(_templateObject3);
 
-var Form = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].form(_templateObject4);
+var Input = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].input(_templateObject4);
 
-var Error = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].div(_templateObject5);
+var Form = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].form(_templateObject5);
+
+var Error = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].div(_templateObject6);
+
+var Button = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].input(_templateObject7);
 
 var RegistrationPage = function (_Component) {
     _inherits(RegistrationPage, _Component);
@@ -62243,7 +62261,11 @@ var RegistrationPage = function (_Component) {
                         'Password Confirmation',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'password', value: this.state.password_confirmation,
                             onChange: this.handlePassConfChange }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'submit', value: 'Submit Registration' })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            CenteredContainer,
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Button, { type: 'submit', value: 'Submit Registration' })
+                        )
                     )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
