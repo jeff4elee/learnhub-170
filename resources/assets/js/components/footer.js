@@ -33,7 +33,7 @@ const FooterItem = styled.li`
     border-right: thin solid #b2b5ba;
     display: block;
     padding: 0% 4.78% 0% 4.78%;
-    line-height: 60px;
+    line-height: 8%;
     margin: 0;
 `;
 

@@ -16,6 +16,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     overflow:hidden;
+    height:100%;
 `;
 
 const FlexSwitch = styled(Switch)`
@@ -31,7 +32,7 @@ class Master extends Component {
     render() {
 
         return (
-            <div>
+            <Container>
                 <Header/>
                 {this.props.user !== null ?
                     <div>
@@ -56,7 +57,7 @@ class Master extends Component {
                         <Route exact path='/register' component={RegistrationPage}/>
                     </Switch>
                 }
-            </div>
+            </Container>
         )
     }
 }
