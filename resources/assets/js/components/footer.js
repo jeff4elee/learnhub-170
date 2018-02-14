@@ -13,7 +13,7 @@ const StyledFooter = styled.footer`
     height: 60px;
     width: 100%;
     background-color: #F5F5F5;
-    position: fixed;
+    position: static;
     `;
 
 const FooterList = styled.ul`

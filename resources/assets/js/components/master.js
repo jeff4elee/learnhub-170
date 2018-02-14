@@ -17,6 +17,13 @@ import styled from 'styled-components';
 const Container = styled.div`
 `;
 
+const Body = styled.div`
+    display: flex;
+`;
+
+const StickyFooter = styled(Footer)`
+    margin-top:auto;
+`;
 
 class Master extends Component {
     constructor(props) {
@@ -29,7 +36,7 @@ class Master extends Component {
             <div>
                 <Header/>
                 {this.props.user !== null ?
-                    <div>
+                    <Body>
                         <Switch>
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/task-board' component={TaskBoard}/>
@@ -43,8 +50,8 @@ class Master extends Component {
                             {/*<Route path='/roster' component={Roster}/>*/}
                             {/*<Route path='/schedule' component={Schedule}/>*/}
                         </Switch>
-                        <Footer/>
-                    </div>
+                        <StickyFooter/>
+                    </Body>
                     :
                     <Switch>
                         <Route exact path='/' component={LoginPage}/>
