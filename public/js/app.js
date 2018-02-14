@@ -5650,7 +5650,7 @@ function verifyPlainObject(value, displayName, methodName) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_styled_components__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    height:100%;\n'], ['\n    height:100%;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    height:100%;\n    overflow:hidden;\n'], ['\n    height:100%;\n    overflow:hidden;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:60px;\n    position:relative;\n'], ['\n    overflow:scroll;\n    height:90%;\n    padding-bottom:60px;\n    position:relative;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5679,7 +5679,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Container = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject);
 
-var FlexSwitch = Object(__WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */])(_templateObject2);
+var Body = __WEBPACK_IMPORTED_MODULE_14_styled_components__["a" /* default */].div(_templateObject2);
 
 var Master = function (_Component) {
     _inherits(Master, _Component);
@@ -5695,22 +5695,26 @@ var Master = function (_Component) {
         value: function render() {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                Container,
+                'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], null),
                 this.props.user !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
+                    Container,
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        FlexSwitch,
+                        Body,
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_4__home__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/task-board', component: __WEBPACK_IMPORTED_MODULE_8__task_board__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/resource-form', component: __WEBPACK_IMPORTED_MODULE_5__resource_form__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/search-form', component: __WEBPACK_IMPORTED_MODULE_6__search_form__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/menu', component: __WEBPACK_IMPORTED_MODULE_7__menu__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/subject/:id', component: __WEBPACK_IMPORTED_MODULE_12__subject_board__["a" /* default */] }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/resource/:id', component: __WEBPACK_IMPORTED_MODULE_13__resource__["a" /* default */] })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_11_react_router_dom__["e" /* Switch */],
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_4__home__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/task-board', component: __WEBPACK_IMPORTED_MODULE_8__task_board__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/resource-form', component: __WEBPACK_IMPORTED_MODULE_5__resource_form__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/search-form', component: __WEBPACK_IMPORTED_MODULE_6__search_form__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { exact: true, path: '/menu', component: __WEBPACK_IMPORTED_MODULE_7__menu__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/subject/:id', component: __WEBPACK_IMPORTED_MODULE_12__subject_board__["a" /* default */] }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/resource/:id', component: __WEBPACK_IMPORTED_MODULE_13__resource__["a" /* default */] })
+                        )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__footer__["a" /* default */], null)
                 ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
