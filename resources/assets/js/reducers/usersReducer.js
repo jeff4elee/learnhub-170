@@ -6,32 +6,33 @@ export default function reducer(state={
     error: null
 }, action) {
     switch (action.type) {
-        case "FETCH_ALL_SUBJECTS_PENDING": {
+        case "FETCH_SUBJECT_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-        case "FETCH_ALL_SUBJECTS_FULFILLED": {
 
-            const fetchedSubjects = {};
-            const subjectIds = [];
+        case "FETCH_SUBJECT_FULFILLED": {
 
-            for (const subject of action.payload.data.data) {
-                fetchedSubjects[subject.id] = subject;
-                subjectIds.push(subject.id);
+            const fetchedUsers = {};
+            const userIds = [];
+
+            for (const user of action.payload.data.data.users) {
+                fetchedUsers[user.id] = user;
+                userIds.push(user.id);
             }
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    ...fetchedSubjects
+                    ...fetchedUsers
                 },
-                allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
+                allIds: [...state.allIds].concat(userIds.filter(id => !state.allIds.includes(id))),
                 fetched: true,
                 fetching: false
             }
 
         }
-        case "FETCH_ALL_SUBJECTS_REJECTED": {
+        case "FETCH_SUBJECT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
         case "STORE::RESET": {

@@ -3,7 +3,8 @@ import { persistCombineReducers } from 'redux-persist'
 import example from './exampleReducer'
 import subjects from './subjectReducer'
 import resources from './resourceReducer'
-import user from './userReducer'
+import auth from './authReducer'
+import users from './usersReducer'
 
 const config = {
     key: 'root',
@@ -15,5 +16,6 @@ export default persistCombineReducers(config, {
     example,
     subjects,
     resources,
-    user
+    auth,
+    users
 })

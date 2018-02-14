@@ -22,8 +22,11 @@ Route::get('/example', function(Request $request){
 });
 
 Route::post('/subject', 'SubjectController@create');
-Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');
 Route::get('/subject/all', 'SubjectController@all');
+
+Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');
+Route::get('/subject/{subject_id}', 'SubjectController@get');
+
 Route::post('/resource', 'ResourceController@create');
 Route::get('/resource', 'ResourceController@all');
 

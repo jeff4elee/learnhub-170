@@ -186,7 +186,7 @@ class LoginController extends Controller
 
         return Response::make([
             'data' => null,
-            'success' => false,
+            'success' => true,
             'message' => 'No session'
         ], 401);
 

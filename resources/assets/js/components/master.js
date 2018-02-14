@@ -13,6 +13,8 @@ import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import SubjectBoard from "./subject-board";
 import Resource from "./resource";
 import styled from 'styled-components';
+import { resumeSession } from "../actions/userActions";
+import { resetStore } from "../actions/exampleActions";
 
 const Container = styled.div`
     height:100%;
@@ -29,6 +31,14 @@ const Body = styled.div`
 class Master extends Component {
     constructor(props) {
         super(props);
+    }
+
+    componentWillMount(){
+        this.props.resumeSession().then(() => {
+
+        }).catch((err) => {
+            this.props.resetStore();
+        });
     }
 
     render() {
@@ -68,9 +78,16 @@ class Master extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user.user
+        user: state.auth.user
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        resumeSession: () => dispatch(resumeSession()),
+        resetStore: () => dispatch(resetStore())
+    }
+}
+
 //connect allows you to reference the store
-export default withRouter(connect(mapStateToProps, null)(Master));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Master));

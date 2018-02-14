@@ -6,3 +6,10 @@ export function fetchAllSubjects(){
         payload: axios.get("/api/subject/all")
     }
 }
+
+export function fetchSubject(subjectId){
+    return {
+        type: 'FETCH_SUBJECT',
+        payload: axios.get("/api/subject/" + subjectId)
+    }
+}
