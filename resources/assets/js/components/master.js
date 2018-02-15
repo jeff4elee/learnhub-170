@@ -43,7 +43,6 @@ class Master extends Component {
                 <Header/>
                 {this.props.user !== null ?
                     <Container>
-                        <Body>
                             <Switch>
                                 <Route exact path='/' component={Home}/>
                                 <Route exact path='/task-board' component={TaskBoard}/>
@@ -57,7 +56,6 @@ class Master extends Component {
                                 {/*<Route path='/roster' component={Roster}/>*/}
                                 {/*<Route path='/schedule' component={Schedule}/>*/}
                             </Switch>
-                        </Body>
                         <Footer/>
                     </Container>
                     :
