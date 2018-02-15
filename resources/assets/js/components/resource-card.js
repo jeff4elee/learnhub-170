@@ -51,12 +51,23 @@ class ResourceCard extends Component {
     }
 
     render() {
+
+        const user_id = this.props.resource.user_id;
+        const user = this.props.users.byId[user_id];
+
+        let username = '';
+
+        if(user !== null){
+            username = user.name;
+        }
+
         return (
             <ResourceContainer>
                 <Link to={'/resource/' + this.props.resource.id} style={{textDecoration: 'none'}}>
                     <HCard>
                         <HCardBody>
-                            {this.props.resource.title}
+                            <div>{this.props.resource.title}</div>
+                            <div>{username}</div>
                         </HCardBody>
                         <HCardFooter>
                             <div> 5 / 5</div>
@@ -68,4 +79,16 @@ class ResourceCard extends Component {
     }
 }
 
-export default ResourceCard;
+
+function mapStateToProps(state){
+    return {
+        users: state.users
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceCard);

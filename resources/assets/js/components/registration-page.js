@@ -211,7 +211,7 @@ class RegistrationPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        error: state.user.registrationError
+        error: state.auth.registrationError
     }
 }
 

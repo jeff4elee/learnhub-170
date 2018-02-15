@@ -23,7 +23,7 @@ export function logoutUser() {
 
 export function resumeSession() {
     return {
-        type: 'USER_LOGIN',
+        type: 'RESUME_SESSION',
         payload: axios.post('/resumeSession')
     }
 }

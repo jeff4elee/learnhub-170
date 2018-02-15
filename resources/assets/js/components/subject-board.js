@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import ResourceCard from "./resource-card";
-import {fetchResources} from "../actions/resourceActions"
+import {fetchSubject} from "../actions/subjectActions"
 
 const ResourcesContainer = styled.div`
     display: flex;
@@ -16,7 +16,7 @@ class SubjectBoard extends Component {
     }
 
     componentWillMount(){
-        this.props.fetchResources(this.props.match.params.id);
+        this.props.fetchSubject(this.props.match.params.id);
     }
 
     render(){
@@ -40,7 +40,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchResources: (subjectId) => dispatch(fetchResources(subjectId)),
+        fetchSubject: (subjectId) => dispatch(fetchSubject(subjectId)),
     }
 }
 

@@ -50,6 +50,18 @@ export default function reducer(state={
                 loginError: null
             }
         }
+        case "RESUME_SESSION_FULFILLED": {
+            return {
+                ...state,
+                user: action.payload.data.data
+            }
+        }
+        case "RESUME_SESSION_REJECTED": {
+            return {
+                ...state,
+                user: action.payload.response.data.data
+            }
+        }
         default:
     }
     return state;

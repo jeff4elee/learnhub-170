@@ -6,10 +6,3 @@ export function createResource(resource){
         payload: axios.post("/api/resource", resource)
     }
 }
-
-export function fetchResources(subjectId){
-    return {
-        type: 'FETCH_RESOURCES',
-        payload: axios.get("/api/subject/" + subjectId + "/resources")
-    }
-}

@@ -27,16 +27,15 @@ export default function reducer(state={
         case "CREATE_RESOURCE_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
-        case "FETCH_RESOURCES_PENDING": {
+        case "FETCH_SUBJECT_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-
-        case "FETCH_RESOURCES_FULFILLED": {
+        case "FETCH_SUBJECT_FULFILLED": {
 
             const fetchedResources = {};
             const resourceIds = [];
 
-            for (const resource of action.payload.data.data) {
+            for (const resource of action.payload.data.data.resources) {
                 fetchedResources[resource.id] = resource;
                 resourceIds.push(resource.id);
             }
@@ -53,7 +52,7 @@ export default function reducer(state={
             }
 
         }
-        case "FETCH_RESOURCES_REJECTED": {
+        case "FETCH_SUBJECT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
         case "STORE::RESET": {
