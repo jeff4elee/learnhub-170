@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Resource;
-use App\Subject;
+use App\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 
-class ResourceController extends Controller
+class TaskController extends Controller
 {
-    public function all(){
-        $resources = Resource::all();
+    public function get_user_tasks($user_id){
+        $tasks = Task::where('user_id', '=', $user_id)->get();
         return Response::make([
-            'data' => $resources,
+            'data' => $tasks,
             'success' => true,
             'message' => null
         ], 200);
     }
 
     public function create(Request $request){
-        $request['user_id'] = Auth::id();
         $request['url_domain'] = parse_url($request['url'])['host'];
         $subject_name = $request['subject'];
         unset($request['subject']);

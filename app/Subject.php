@@ -18,7 +18,6 @@ class Subject extends Model
     public function toArray()
     {
         $array = parent::toArray();
-        $array["resources"] = $this->resources;
         return $array;
     }
 }
