@@ -29,7 +29,24 @@ class Home extends Component {
     render(){
 
         const subjects = this.props.subjects;
-        const subjectsList = subjects.allIds.map(id => <SubjectCard key={id} subject={subjects.byId[id]}/>);
+
+        let subjectIds = subjects.allIds;
+
+        if(subjectIds.length > 0) {
+            
+            //display subscribed subjects first
+            subjectIds.sort(function (a, b) {
+                if (subjects.byId[a].subscribed) {
+                    return -1;
+                } else if (subjects.byId[b].subscribed) {
+                    return 1;
+                }
+                return 0;
+
+            });
+        }
+        
+        const subjectsList = subjectIds.map(id => <SubjectCard key={id} subject={subjects.byId[id]}/>);
 
         return (
             <div>

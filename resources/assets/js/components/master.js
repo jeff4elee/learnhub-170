@@ -15,6 +15,7 @@ import Resource from "./resource";
 import styled from 'styled-components';
 import { resumeSession } from "../actions/userActions";
 import { resetStore } from "../actions/exampleActions";
+import history from '../history';
 
 const Container = styled.div`
     height:100%;
@@ -35,9 +36,9 @@ class Master extends Component {
 
     componentWillMount(){
         this.props.resumeSession().then(() => {
-
         }).catch((err) => {
             this.props.resetStore();
+            history.push('/');
         });
     }
 

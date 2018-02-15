@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import styled from 'styled-components';
-import {createResource} from '../actions/resourceActions'
+import {createResource} from '../actions/resourceActions';
+import history from '../history';
 
 const FormContainer = styled.form`
     display: flex;
@@ -60,7 +60,9 @@ class ResourceForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state);
-        this.props.createResource({...this.state}).then;
+        this.props.createResource({...this.state, user_id: this.props.user.id}).then(() =>{
+            history.push('/')
+        });
     }
 
     render() {
@@ -82,6 +84,7 @@ class ResourceForm extends Component {
 
 function mapStateToProps(state) {
     return {
+        user: state.auth.user
     }
 }
 

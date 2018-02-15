@@ -57,7 +57,7 @@ class ResourceCard extends Component {
 
         let username = '';
 
-        if(user !== null){
+        if(user !== undefined){
             username = user.name;
         }
 

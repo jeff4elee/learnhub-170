@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\ValidationException;
-use JWTAuth;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller

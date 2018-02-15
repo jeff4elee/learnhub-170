@@ -55,6 +55,54 @@ export default function reducer(state={
         case "FETCH_SUBJECT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
+        case "FETCH_RESOURCE_PENDING": {
+            return {...state, fetching: true, fetched: false}
+        }
+        case "FETCH_RESOURCE_FULFILLED": {
+
+            const resource = action.payload.data.data;
+            const newIds = [...state.allIds];
+
+            if(!state.allIds.includes(resource.id)){
+                newIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [resource.id]: resource
+                },
+                allIds: newIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
+        case "FETCH_RESOURCE_REJECTED": {
+            return {...state, fetching: false, fetched: false}
+        }
+        case "RATE_RESOURCE_FULFILLED": {
+
+            const resource = action.payload.data.data;
+            const newIds = [...state.allIds];
+
+            if(!state.allIds.includes(resource.id)){
+                newIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [resource.id]: resource
+                },
+                allIds: newIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
         case "STORE::RESET": {
 
             return {

@@ -13,3 +13,10 @@ export function fetchSubject(subjectId){
         payload: axios.get("/api/subject/" + subjectId)
     }
 }
+
+export function toggleSubscription(subjectId){
+    return {
+        type: 'TOGGLE_SUBSCRIPTION',
+        payload: axios.get("/api/subject/" + subjectId + "/toggle_subscription")
+    }
+}

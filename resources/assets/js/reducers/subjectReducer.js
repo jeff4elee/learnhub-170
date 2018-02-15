@@ -34,6 +34,50 @@ export default function reducer(state={
         case "FETCH_ALL_SUBJECTS_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
+        case "FETCH_SUBJECT_FULFILLED": {
+
+            const resourceIds = [];
+
+            const resources = action.payload.data.data.resources;
+            const subjectId = action.payload.data.data.subject_id;
+
+            for (const resource of resources) {
+                resourceIds.push(resource.id);
+            }
+
+            const subject = {...state.byId[subjectId], "resources": resourceIds};
+
+            const newIds = [...state.allIds];
+            if (!state.allIds.includes(subjectId)) {
+                newIds.push(subjectId);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [subjectId]: subject
+                },
+                allIds: newIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
+        case "TOGGLE_SUBSCRIPTION_FULFILLED": {
+
+            const subject = action.payload.data.data;
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [subject.id]: subject
+                },
+                fetched: true,
+                fetching: false
+            }
+        }
         case "STORE::RESET": {
 
             return {

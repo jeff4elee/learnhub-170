@@ -20,9 +20,14 @@ class SubjectBoard extends Component {
     }
 
     render(){
-
+        const subject = this.props.subjects.byId[this.props.match.params.id];
         const resources = this.props.resources;
-        const resourcesList = resources.allIds.map(id => <ResourceCard key={id} resource={resources.byId[id]}/>);
+
+        let resourcesList = [];
+
+        if(subject.resources) {
+            resourcesList = subject.resources.map(id => <ResourceCard key={id} resource={resources.byId[id]}/>);
+        }
 
         return (
             <ResourcesContainer>
@@ -34,7 +39,8 @@ class SubjectBoard extends Component {
 
 function mapStateToProps(state){
     return {
-        resources: state.resources
+        resources: state.resources,
+        subjects: state.subjects
     }
 }
 

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Resource extends Model
 {
@@ -18,4 +19,9 @@ class Resource extends Model
         return $this->belongsTo('App\Subject');
     }
 
+    public function toArray()
+    {
+        $array = parent::toArray();
+        return $array;
+    }
 }
