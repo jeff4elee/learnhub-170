@@ -21,19 +21,17 @@ Route::get('/example', function (Request $request) {
     return "Success!";
 });
 
-Route::group(['middleware' => ['usersession']], function () {
 
-    Route::post('/subject', 'SubjectController@create');
-    Route::get('/subject/all', 'SubjectController@all');
+Route::post('/subject', 'SubjectController@create');
+Route::get('/subject/all', 'SubjectController@all');
 
 //routes match above route, must be declared later
-    Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');
-    Route::get('/subject/{subject_id}/toggle_subscription', 'SubjectController@toggle_subscription');
-    Route::get('/subject/{subject_id}', 'SubjectController@get');
+Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');
+Route::get('/subject/{subject_id}/toggle_subscription', 'SubjectController@toggle_subscription');
+Route::get('/subject/{subject_id}', 'SubjectController@get');
 
-    Route::post('/resource', 'ResourceController@create');
-    Route::get('/resource/all', 'ResourceController@all');
-    Route::get('/resource/{resource_id}', 'ResourceController@get');
-    Route::post('/resource/{resource_id}/rate', 'ResourceController@rate');
+Route::post('/resource', 'ResourceController@create');
+Route::get('/resource/all', 'ResourceController@all');
+Route::get('/resource/{resource_id}', 'ResourceController@get');
+Route::post('/resource/{resource_id}/rate', 'ResourceController@rate');
 
-});

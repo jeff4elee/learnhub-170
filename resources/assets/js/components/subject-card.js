@@ -24,7 +24,7 @@ const HCard = styled.div`
 
 const HCardBody = styled.div`
     color: black;
-    padding: 10px;
+    padding: 2.5%;
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -63,8 +63,8 @@ class SubjectCard extends Component {
                 <HCard>
                     <HCardBody>
                         <HCardDescription to={`/subject/` + this.props.subject.id} style={{textDecoration: 'none'}}>
-                                <div style={{fontSize: "20px"}}>{this.props.subject.title}</div>
-                                <div style={{fontSize: "15px"}}>{this.props.subject.description}</div>
+                                <div style={{fontSize: "2em"}}>{this.props.subject.title}</div>
+                                <div style={{fontSize: "1em"}}>{this.props.subject.description}</div>
                         </HCardDescription>
                         {this.props.subject.subscribed ?
                             <button onClick={() => this.toggleSubscription(this.props.subject.id)}>Unsubscribe</button>

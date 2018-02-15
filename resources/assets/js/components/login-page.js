@@ -51,26 +51,10 @@ const Error = styled.div`
     font-size: 12px;
 `;
 
-const Button = styled.input`
-    background-color: #239b88;
-    color: white;
-    width: 25%;
-    display: inline-flex;
-    font-weight: bold;
-    padding: 5px 7px;
-
-    justify-content: center;
-    border: none;
-    border-radius: 2px;
-    outline: none;
-
-    letter-spacing: 1px;
-`;
-
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
-    width: 25%;
+    width: 40%;
     display: inline-flex;
     font-weight: bold;
     padding: 5px 7px;
@@ -108,9 +92,7 @@ class LoginPage extends Component {
     }
 
     handleCheckboxChange(event) {
-        console.log(this.state);
         this.setState({...this.state, remember: !this.state.remember});
-        console.log(this.state);
     }
 
     handleSubmit(event) {

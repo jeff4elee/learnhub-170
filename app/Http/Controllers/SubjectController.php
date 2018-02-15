@@ -79,7 +79,6 @@ class SubjectController extends Controller
             ->where('user_id', $user_id)
             ->first();
 
-
         if($subscription){
             $subscription->delete();
         } else {
