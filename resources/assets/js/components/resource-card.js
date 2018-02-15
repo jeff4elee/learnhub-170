@@ -90,7 +90,7 @@ class ResourceCard extends Component {
                             <HCardBodyAuthor>By {username}</HCardBodyAuthor>
                         </HCardBody>
                         <HCardFooter>
-                            <div> {this.props.resource.rating}</div>
+                            <div> {ratingDisplay} </div>
                             <div> {this.props.resource.rating_count}
                                 {this.props.resource.rating_count === 1 ? ' rating' : ' ratings'} </div>
                         </HCardFooter>
