@@ -71,8 +71,27 @@ const Button = styled.input`
     &:hover {
         background-color: black;
     }
-
 `;
+
+const BootButton = styled.button`
+    background-color: #239b88;
+    color: white;
+    width: 25%;
+    display: inline-flex;
+    font-weight: bold;
+    padding: 5px 7px;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: #166357;
+    }
+`;
+
 
 class RegistrationPage extends Component {
 
@@ -176,7 +195,7 @@ class RegistrationPage extends Component {
                                onChange={this.handlePassConfChange}/>
 
                         <CenteredContainer>
-                            <Button type="submit" value="Submit Registration"/>
+                            <BootButton>Submit Registration</BootButton>
                         </CenteredContainer>
                     </Form>
 

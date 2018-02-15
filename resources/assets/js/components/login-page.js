@@ -82,7 +82,7 @@ const BootButton = styled.button`
     letter-spacing: 1px;
 
     &:hover {
-        background-color: black;
+        background-color: #166357;
     }
 
 `;
@@ -148,7 +148,6 @@ class LoginPage extends Component {
 
                         {/*<Input type="submit" value="Login"/>*/}
                         <CenteredContainer>
-                            <Button type="submit" value="Login"/>
                             <BootButton>Login</BootButton>
                         </CenteredContainer>
                     </Form>

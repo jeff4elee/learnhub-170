@@ -20,12 +20,6 @@ import history from '../history';
 const Container = styled.div`
     height:100%;
     overflow:hidden;
-`;
-
-const Body = styled.div`
-    overflow:scroll;
-    height:90%;
-    padding-bottom:60px;
     position:relative;
 `;
 
@@ -45,7 +39,7 @@ class Master extends Component {
     render() {
 
         return (
-            <div>
+            <div style={{ fontFamily: 'Helvetica' }}>
                 <Header/>
                 {this.props.user !== null ?
                     <Container>
