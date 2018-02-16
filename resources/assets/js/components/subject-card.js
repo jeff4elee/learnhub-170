@@ -4,6 +4,30 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 import {toggleSubscription} from "../actions/subjectActions";
 
+const BootButton = styled.button`
+    color: white;
+    display: inline-flex;
+    font-weight: bold;
+    padding: 5px 7px;
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+`;
+
+const SubscribeButton = styled(BootButton)`
+    background-color: #239b88;
+    
+    &:hover {
+        background-color: #166357;
+    }
+`;
+
+const UnsubscribeButton = styled(BootButton)`
+    background-color: #166357;
+`;
+
 const SubjectContainer = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -67,9 +91,9 @@ class SubjectCard extends Component {
                                 <div style={{fontSize: "1em"}}>{this.props.subject.description}</div>
                         </HCardDescription>
                         {this.props.subject.subscribed ?
-                            <button onClick={() => this.toggleSubscription(this.props.subject.id)}>Unsubscribe</button>
+                            <UnsubscribeButton onClick={() => this.toggleSubscription(this.props.subject.id)}>Unsubscribe</UnsubscribeButton>
                             :
-                            <button onClick={() => this.toggleSubscription(this.props.subject.id)}>Subscribe</button>
+                            <SubscribeButton onClick={() => this.toggleSubscription(this.props.subject.id)}>Subscribe</SubscribeButton>
                         }
                     </HCardBody>
                     <HCardFooter>

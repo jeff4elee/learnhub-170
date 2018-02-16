@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rating;
 use App\Resource;
 use App\Subject;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -48,6 +49,14 @@ class ResourceController extends Controller
 
         return $this->get($request['resource_id']);
     }
+
+//    public function add_to_tasks(Request $request)
+//    {
+//        Task::updateOrCreate(['user_id' => $request['user_id'], 'resource_id' => $request['resource_id']],
+//            ['rating' => $request['rating']]);
+//
+//        return $this->get($request['resource_id']);
+//    }
 
     public function create(Request $request)
     {

@@ -3,6 +3,57 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {createResource} from '../actions/resourceActions';
 import history from '../history';
+import Modal from 'react-modal';
+
+const Input = styled.input`
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 1em;
+    padding: 0.25em;
+    display: inline-flex
+`;
+
+const BootButton = styled.button`
+    background-color: #239b88;
+    color: white;
+    width: 40%;
+    display: inline-flex;
+    font-weight: bold;
+    padding: 5px 7px;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: #166357;
+    }
+
+`;
+
+const NotificationModal = styled(Modal)`
+    background-color: #239b88;
+    color: white;
+    width: 40%;
+    position: absolute;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 20%;
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    outline: none;
+    flex-direction: column;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+`;
 
 const FormContainer = styled.form`
     display: flex;
@@ -19,7 +70,8 @@ class ResourceForm extends Component {
             subject: '',
             title: '',
             url: '',
-            description: ''
+            description: '',
+            modalIsOpen: false,
         };
 
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
@@ -27,9 +79,26 @@ class ResourceForm extends Component {
         this.handleUrlChange = this.handleUrlChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
-    handleSubjectChange(event){
+    openModal() {
+        this.setState({modalIsOpen: true});
+    }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+        history.push('/');
+    }
+
+    handleSubjectChange(event) {
         this.setState({
             ...this.state,
             subject: event.target.value
@@ -43,14 +112,14 @@ class ResourceForm extends Component {
         });
     }
 
-    handleUrlChange(event){
+    handleUrlChange(event) {
         this.setState({
             ...this.state,
             url: event.target.value
         });
     }
 
-    handleDescriptionChange(event){
+    handleDescriptionChange(event) {
         this.setState({
             ...this.state,
             description: event.target.value
@@ -60,24 +129,39 @@ class ResourceForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state);
-        this.props.createResource({...this.state, user_id: this.props.user.id}).then(() =>{
-            history.push('/')
+        this.props.createResource({...this.state, user_id: this.props.user.id}).then(() => {
+            this.openModal();
         });
     }
 
     render() {
         return (
-            <FormContainer onSubmit={this.handleSubmit}>
-                Subject:
-                <input type="text" value={this.state.subject} onChange={this.handleSubjectChange}/>
-                Resource Title:
-                <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
-                Url:
-                <input type="text" value={this.state.url} onChange={this.handleUrlChange}/>
-                Description:
-                <input type="text" value={this.state.description} onChange={this.handleDescriptionChange}/>
-                <input type="submit" value="Submit"/>
-            </FormContainer>
+            <div>
+
+                <FormContainer onSubmit={this.handleSubmit}>
+                    Subject:
+                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange}/>
+                    Resource Title:
+                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
+                    Url:
+                    <Input type="text" value={this.state.url} onChange={this.handleUrlChange}/>
+                    Description:
+                    <Input type="text" value={this.state.description} onChange={this.handleDescriptionChange}/>
+                    <BootButton> Create Resource </BootButton>
+                </FormContainer>
+
+                <NotificationModal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Example Modal"
+                    ariaHideApp={false}>
+
+                    Resource Successfully Created!
+
+                </NotificationModal>
+
+            </div>
         );
     }
 }
