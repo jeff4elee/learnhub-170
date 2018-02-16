@@ -14,6 +14,12 @@ const Input = styled.input`
     display: inline-flex
 `;
 
+const HelperText = styled.div`
+    color: gray;
+    font-style: italic;
+    font-size: 12px;
+`;
+
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
@@ -144,7 +150,9 @@ class ResourceForm extends Component {
                     Resource Title:
                     <Input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
                     Url:
+                    <HelperText> Urls must be in the format: https://www.example.com </HelperText>
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange}/>
+
                     Description:
                     <Input type="text" value={this.state.description} onChange={this.handleDescriptionChange}/>
                     <BootButton> Create Resource </BootButton>
