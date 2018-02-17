@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {registerUser} from '../actions/userActions'
+import {registerUser} from '../../actions/userActions'
 import {connect} from 'react-redux';
-import history from '../history';
+import history from '../../history';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
@@ -118,8 +118,6 @@ class RegistrationPage extends Component {
             password: this.state.password,
             password_confirmation: this.state.password_confirmation
         };
-
-        console.log(user);
 
         this.props.registerUser(user).then(() => {
             history.push("/");

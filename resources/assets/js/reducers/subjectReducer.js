@@ -22,10 +22,9 @@ export default function reducer(state={
             return {
                 ...state,
                 byId: {
-                    ...state.byId,
                     ...fetchedSubjects
                 },
-                allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
+                allIds: subjectIds,
                 fetched: true,
                 fetching: false
             }

@@ -31,6 +31,8 @@ Route::get('/subject/{subject_id}/toggle_subscription', 'SubjectController@toggl
 Route::get('/subject/{subject_id}', 'SubjectController@get');
 
 Route::post('/resource', 'ResourceController@create');
+Route::post('/task', 'TaskController@add_to_tasks');
+Route::get('/task/all', 'TaskController@get_user_tasks');
 Route::get('/resource/all', 'ResourceController@all');
 Route::get('/resource/{resource_id}', 'ResourceController@get');
 Route::post('/resource/{resource_id}/rate', 'ResourceController@rate');

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loginUser, registerUser, logoutUser, resumeSession} from "../actions/userActions";
+import {loginUser, registerUser, logoutUser, resumeSession} from "../../actions/userActions";
 import styled from 'styled-components';
-import history from '../history';
+import history from '../../history';
 import {Link} from 'react-router-dom';
 
 const LoginLayout = styled.div`

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
-import {toggleSubscription} from "../actions/subjectActions";
+import {toggleSubscription} from "../../actions/subjectActions";
 
 const BootButton = styled.button`
     color: white;

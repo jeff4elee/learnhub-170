@@ -44,19 +44,12 @@ class ResourceController extends Controller
 
     public function rate(Request $request)
     {
-        Rating::updateOrCreate(['user_id' => $request['user_id'], 'resource_id' => $request['resource_id']],
+        Rating::updateOrCreate(['user_id' => Auth::id(), 'resource_id' => $request['resource_id']],
             ['rating' => $request['rating']]);
 
         return $this->get($request['resource_id']);
     }
 
-//    public function add_to_tasks(Request $request)
-//    {
-//        Task::updateOrCreate(['user_id' => $request['user_id'], 'resource_id' => $request['resource_id']],
-//            ['rating' => $request['rating']]);
-//
-//        return $this->get($request['resource_id']);
-//    }
 
     public function create(Request $request)
     {

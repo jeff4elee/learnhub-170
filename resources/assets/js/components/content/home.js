@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Footer from './footer';
-import {sendExampleAction, resetStore} from '../actions/exampleActions';
+import Footer from '../layout/footer';
+import {sendExampleAction, resetStore} from '../../actions/exampleActions';
 import SubjectCard from "./subject-card";
 import {Switch, Router, Route} from 'react-router-dom';
-import {fetchAllSubjects} from "../actions/subjectActions";
+import {fetchAllSubjects} from "../../actions/subjectActions";
 import styled from 'styled-components';
 
 const SubjectsContainer = styled.div`

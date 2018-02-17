@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import ReactStars from 'react-stars'
-import {fetchResource, rateResource} from "../actions/resourceActions";
+import {fetchResource, rateResource} from "../../actions/resourceActions";
+import {addResourceAsTask} from "../../actions/taskActions";
 
-const RatingModal = styled(Modal)`
+const NotificationModal = styled(Modal)`
     position: absolute;
     float: left;
     left: 50%;
@@ -17,9 +18,13 @@ const RatingModal = styled(Modal)`
     justify-content:center;
     align-content:center;
     flex-direction:column;
-    background-color: white;
+    background-color: #239b88;
     border: 1px solid #ccc;
     outline: none;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
 `;
 
 const RatingBar = styled.div`
@@ -60,23 +65,27 @@ class Resource extends Component {
 
         this.state = {
             modalIsOpen: false,
+            ratingModal: false,
+            taskAddingModal: false,
         };
 
         this.openModal = this.openModal.bind(this);
-        this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+
         this.changeRating = this.changeRating.bind(this);
+        this.addToTask = this.addToTask.bind(this);
     }
 
-    componentWillMount(){
-        this.props.fetchResource(this.props.match.params.id);
+    addToTask() {
+        this.props.addResourceAsTask(this.props.match.params.id).then(() => {
+            this.openModal("task");
+        });
     }
-    
+
     changeRating(newRating) {
 
         const ratingData = {
             "resource_id": this.props.match.params.id,
-            "user_id": this.props.user.id,
             "rating": newRating
         };
 
@@ -86,12 +95,26 @@ class Resource extends Component {
 
     }
 
-    openModal() {
-        this.setState({modalIsOpen: true});
+    componentWillMount() {
+        this.props.fetchResource(this.props.match.params.id);
     }
 
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
+    openModal(type) {
+
+        let newState = {
+            ...this.state,
+            modalIsOpen: true,
+            ratingModal: false,
+            taskAddingModal: false
+        };
+
+        if (type === "rate") {
+            newState['ratingModal'] = true;
+        } else if (type === "task") {
+            newState['taskAddingModal'] = true;
+        }
+
+        this.setState(newState);
     }
 
     closeModal() {
@@ -113,31 +136,37 @@ class Resource extends Component {
                     </div>
                     <ResourceBody>
                         <img src="http://via.placeholder.com/300x250"/>
-                        <ActionButton> Add to Tasks </ActionButton>
-                        <ActionButton onClick={() => this.openModal()}> Rate </ActionButton>
+                        <ActionButton onClick={() => this.addToTask()}> Add to Tasks </ActionButton>
+                        <ActionButton onClick={() => this.openModal("rate")}> Rate </ActionButton>
                         <ActionButton> Comment </ActionButton>
                         <ActionButton> Report </ActionButton>
                     </ResourceBody>
-
                 </ResourceContainer>
 
-                <RatingModal
+                <NotificationModal
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     contentLabel="Example Modal"
                     ariaHideApp={false}>
 
-                    <RatingBar>
-                        <ReactStars
-                            count={5}
-                            onChange={this.changeRating}
-                            size={40}
-                            value={rating}
-                            color2={'#ffd700'}/>
-                    </RatingBar>
+                    {
+                        this.state.taskAddingModal && "Task added successfully!"
+                    }
 
-                </RatingModal>
+                    {
+                        this.state.ratingModal &&
+                        <RatingBar>
+                            <ReactStars
+                                count={5}
+                                onChange={this.changeRating}
+                                size={40}
+                                value={rating}
+                                color2={'#ffd700'}/>
+                        </RatingBar>
+                    }
+
+                </NotificationModal>
 
             </Container>
         )
@@ -155,6 +184,7 @@ function mapDispatchToProps(dispatch) {
     return {
         fetchResource: (resourceId) => dispatch(fetchResource(resourceId)),
         rateResource: (ratingData) => dispatch(rateResource(ratingData)),
+        addResourceAsTask: (resourceId) => dispatch(addResourceAsTask(resourceId))
     }
 }
 

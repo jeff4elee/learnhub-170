@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {createResource} from '../actions/resourceActions';
-import history from '../history';
+import {createResource} from '../../actions/resourceActions';
+import history from '../../history';
 import Modal from 'react-modal';
 
 const Input = styled.input`
@@ -126,6 +126,7 @@ class ResourceForm extends Component {
     }
 
     handleDescriptionChange(event) {
+
         this.setState({
             ...this.state,
             description: event.target.value
@@ -134,8 +135,16 @@ class ResourceForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
-        this.props.createResource({...this.state, user_id: this.props.user.id}).then(() => {
+
+        let valid_url = this.state.url;
+
+        if (!valid_url.match(/^[a-zA-Z]+:\/\//)) {
+            valid_url = 'https://' + valid_url;
+        }
+
+        this.props.createResource({
+            ...this.state, user_id: this.props.user.id, url: valid_url
+        }).then(() => {
             this.openModal();
         });
     }

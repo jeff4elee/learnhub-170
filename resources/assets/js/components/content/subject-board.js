@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import ResourceCard from "./resource-card";
-import {fetchSubject} from "../actions/subjectActions"
+import {fetchSubject} from "../../actions/subjectActions"
 
 const ResourcesContainer = styled.div`
     display: flex;
