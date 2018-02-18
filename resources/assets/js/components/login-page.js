@@ -54,7 +54,7 @@ const Error = styled.div`
 const Button = styled.input`
     background-color: #239b88;
     color: white;
-    width: 25%;
+    width: 50%;
     display: inline-flex;
     font-weight: bold;
     padding: 5px 7px;
@@ -146,7 +146,6 @@ class LoginPage extends Component {
 
                         <input type="checkbox" onChange={this.handleCheckboxChange}/> Remember Me
 
-                        {/*<Input type="submit" value="Login"/>*/}
                         <CenteredContainer>
                             <BootButton>Login</BootButton>
                         </CenteredContainer>

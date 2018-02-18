@@ -76,7 +76,7 @@ const Button = styled.input`
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
-    width: 25%;
+    width: 50%;
     display: inline-flex;
     font-weight: bold;
     padding: 5px 7px;
