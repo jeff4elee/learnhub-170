@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Subject extends Model
 {
@@ -15,9 +16,15 @@ class Subject extends Model
         return $this->hasMany('App\Resource');
     }
 
+    public function subscribers()
+    {
+        return $this->hasMany('App\Subscription');
+    }
+
     public function toArray()
     {
         $array = parent::toArray();
+        $array["subscribed"] = Subscription::where('subject_id', $this->id)->where('user_id',Auth::id())->exists();
         return $array;
     }
 }

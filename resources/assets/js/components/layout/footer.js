@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import FaHome from 'react-icons/lib/fa/home';
-import FaStar from 'react-icons/lib/fa/star';
 import PlusCircle from 'react-icons/lib/fa/plus-circle';
 import FaSearch from 'react-icons/lib/fa/search';
 import FaList from 'react-icons/lib/fa/list';
+import FaCog from 'react-icons/lib/fa/cog';
 import { NavLink } from 'react-router-dom'
 
 const StyledFooter = styled.footer`
@@ -55,7 +55,7 @@ export default class Footer extends React.Component {
 
                     <FooterItem>
                         <StyledLink activeStyle={{ color: "#239B88" }} to='/task-board'>
-                            <FaStar size={40}/>
+                            <FaList size={40}/>
                         </StyledLink>
                     </FooterItem>
 
@@ -73,7 +73,7 @@ export default class Footer extends React.Component {
 
                     <FooterItem>
                         <StyledLink activeStyle={{ color: "#239B88" }} to='/menu'>
-                            <FaList size={40}/>
+                            <FaCog size={40}/>
                         </StyledLink>
                     </FooterItem>
 

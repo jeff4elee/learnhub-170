@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {sendExampleAction, resetStore} from '../actions/exampleActions';
+import {sendExampleAction, resetStore} from '../../actions/exampleActions';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`

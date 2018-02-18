@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {registerUser} from '../actions/userActions'
+import {registerUser} from '../../actions/userActions'
 import {connect} from 'react-redux';
-import history from '../history';
+import history from '../../history';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
@@ -54,29 +54,10 @@ const Error = styled.div`
     font-size: 12px;
 `;
 
-const Button = styled.input`
-    background-color: #239b88;
-    color: white;
-    width: 25%;
-    display: inline-flex;
-    font-weight: bold;
-    padding: 5px 7px;
-
-    justify-content: center;
-    border: none;
-    border-radius: 2px;
-    outline: none;
-    letter-spacing: 1px;
-
-    &:hover {
-        background-color: black;
-    }
-`;
-
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
-    width: 50%;
+    width: 40%;
     display: inline-flex;
     font-weight: bold;
     padding: 5px 7px;
@@ -137,8 +118,6 @@ class RegistrationPage extends Component {
             password: this.state.password,
             password_confirmation: this.state.password_confirmation
         };
-
-        console.log(user);
 
         this.props.registerUser(user).then(() => {
             history.push("/");

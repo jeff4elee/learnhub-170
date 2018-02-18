@@ -2,23 +2,31 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Footer from './footer';
 import Header from './header';
-import Home from "./home";
-import ResourceForm from "./resource-form";
-import SearchForm from "./search-form";
-import Menu from "./menu";
-import TaskBoard from "./task-board";
-import LoginPage from "./login-page";
-import RegistrationPage from "./registration-page";
+import Home from "../content/home";
+import ResourceForm from "../form/resource-form";
+import SearchForm from "../form/search-form";
+import Menu from "../menu";
+import TaskBoard from "../task/task-board";
+import LoginPage from "../auth/login-page";
+import RegistrationPage from "../auth/registration-page";
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
-import SubjectBoard from "./subject-board";
-import Resource from "./resource";
+import SubjectBoard from "../content/subject-board";
+import Resource from "../content/resource";
 import styled from 'styled-components';
-import { resumeSession } from "../actions/userActions";
-import { resetStore } from "../actions/exampleActions";
+import { resumeSession } from "../../actions/userActions";
+import { resetStore } from "../../actions/exampleActions";
+import history from '../../history';
 
 const Container = styled.div`
     height:100%;
     overflow:hidden;
+    position:relative;
+`;
+
+const Body = styled.div`
+    overflow:scroll;
+    height:90%;
+    padding-bottom:60px;
     position:relative;
 `;
 
@@ -29,9 +37,9 @@ class Master extends Component {
 
     componentWillMount(){
         this.props.resumeSession().then(() => {
-
         }).catch((err) => {
             this.props.resetStore();
+            history.push('/');
         });
     }
 

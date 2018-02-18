@@ -4,7 +4,8 @@ import example from './exampleReducer'
 import subjects from './subjectReducer'
 import resources from './resourceReducer'
 import auth from './authReducer'
-import users from './usersReducer'
+import users from './userReducer'
+import tasks from './taskReducer'
 
 const config = {
     key: 'root',
@@ -17,5 +18,6 @@ export default persistCombineReducers(config, {
     subjects,
     resources,
     auth,
-    users
+    users,
+    tasks
 })

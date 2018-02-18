@@ -6,7 +6,7 @@ import history from './history';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react'
-import Master from './components/master'
+import Master from './components/layout/master'
 import {Router} from 'react-router-dom';
 import configureStore from './store'
 

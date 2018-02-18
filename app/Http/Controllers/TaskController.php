@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class TaskController extends Controller
 {
-    public function get_user_tasks($user_id){
-        $tasks = Task::where('user_id', '=', $user_id)->get();
+    public function get_user_tasks(){
+        $tasks = Task::where('user_id', '=', Auth::id())->get();
         return Response::make([
             'data' => $tasks,
             'success' => true,
@@ -16,27 +18,15 @@ class TaskController extends Controller
         ], 200);
     }
 
-    public function create(Request $request){
-        $request['url_domain'] = parse_url($request['url'])['host'];
-        $subject_name = $request['subject'];
-        unset($request['subject']);
-
-        $subject = Subject::whereRaw('LOWER(title) = ?', [strtolower($subject_name)])->first();
-
-        if($subject === null){
-            $subject = new Subject;
-            $subject->title = $subject_name;
-            $subject->description = "";
-            $subject->save();
-        }
-
-        $request['subject_id'] = $subject->id;
-        $resource = Resource::create($request->all());
+    public function add_to_tasks(Request $request)
+    {
+        $task = Task::firstOrCreate(['user_id' => Auth::id(), 'resource_id' => $request['resource_id']]);
 
         return Response::make([
-            'data' => $resource,
+            'data' => $task,
             'success' => true,
             'message' => null
         ], 200);
     }
+
 }

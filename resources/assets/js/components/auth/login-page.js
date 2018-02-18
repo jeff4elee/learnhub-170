@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loginUser, registerUser, logoutUser, resumeSession} from "../actions/userActions";
+import {loginUser, registerUser, logoutUser, resumeSession} from "../../actions/userActions";
 import styled from 'styled-components';
-import history from '../history';
+import history from '../../history';
 import {Link} from 'react-router-dom';
 
 const LoginLayout = styled.div`
@@ -51,26 +51,10 @@ const Error = styled.div`
     font-size: 12px;
 `;
 
-const Button = styled.input`
-    background-color: #239b88;
-    color: white;
-    width: 50%;
-    display: inline-flex;
-    font-weight: bold;
-    padding: 5px 7px;
-
-    justify-content: center;
-    border: none;
-    border-radius: 2px;
-    outline: none;
-
-    letter-spacing: 1px;
-`;
-
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
-    width: 25%;
+    width: 40%;
     display: inline-flex;
     font-weight: bold;
     padding: 5px 7px;
@@ -108,9 +92,7 @@ class LoginPage extends Component {
     }
 
     handleCheckboxChange(event) {
-        console.log(this.state);
         this.setState({...this.state, remember: !this.state.remember});
-        console.log(this.state);
     }
 
     handleSubmit(event) {
@@ -146,6 +128,7 @@ class LoginPage extends Component {
 
                         <input type="checkbox" onChange={this.handleCheckboxChange}/> Remember Me
 
+                        {/*<Input type="submit" value="Login"/>*/}
                         <CenteredContainer>
                             <BootButton>Login</BootButton>
                         </CenteredContainer>

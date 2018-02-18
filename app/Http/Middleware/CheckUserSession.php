@@ -18,10 +18,10 @@ class CheckUserSession
     public function handle($request, Closure $next)
     {
         if ($user = Auth::user()) {
-            // user value cannot be found in session
             return $next($request);
         }
 
+        // user value cannot be found in session
         return Response::make([
             'data' => null,
             'success' => true,
