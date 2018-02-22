@@ -38,24 +38,24 @@ export default function reducer(state={
             const resourceIds = [];
 
             const resources = action.payload.data.data.resources;
-            const subjectId = action.payload.data.data.subject_id;
+            let subject = action.payload.data.data.subject;
 
             for (const resource of resources) {
                 resourceIds.push(resource.id);
             }
 
-            const subject = {...state.byId[subjectId], "resources": resourceIds};
+            subject = {...subject, "resources": resourceIds};
 
             const newIds = [...state.allIds];
-            if (!state.allIds.includes(subjectId)) {
-                newIds.push(subjectId);
+            if (!state.allIds.includes(subject.id)) {
+                newIds.push(subject.id);
             }
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    [subjectId]: subject
+                    [subject.id]: subject
                 },
                 allIds: newIds,
                 fetched: true,

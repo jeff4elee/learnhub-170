@@ -32,9 +32,11 @@ class SubjectController extends Controller
             array_push($users, $resource->user);
         }
 
+        $subject = Subject::where('id', $subject_id)->first();
+
         return Response::make([
             'data' => [
-                'subject_id' => (int) $subject_id,
+                'subject' => $subject,
                 'resources' => $resources,
                 'users' => $users
             ],

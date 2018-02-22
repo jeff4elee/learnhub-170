@@ -66,7 +66,7 @@ export default class Footer extends React.Component {
                     </FooterItem>
 
                     <FooterItem>
-                        <StyledLink activeStyle={{ color: "#239B88" }} to='/search-form'>
+                        <StyledLink activeStyle={{ color: "#239B88" }} to='/search'>
                             <FaSearch size={40}/>
                         </StyledLink>
                     </FooterItem>

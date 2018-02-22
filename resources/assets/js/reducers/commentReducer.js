@@ -6,52 +6,49 @@ export default function reducer(state={
     error: null
 }, action) {
     switch (action.type) {
-        case "FETCH_SUBJECT_PENDING": {
+        case "CREATE_COMMENT_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
+        case "CREATE_COMMENT_FULFILLED": {
 
-        case "FETCH_SUBJECT_FULFILLED": {
-
-            const fetchedUsers = {};
-            const userIds = [];
-
-            for (const user of action.payload.data.data.users) {
-                fetchedUsers[user.id] = user;
-                userIds.push(user.id);
-            }
+            let comment = action.payload.data.data;
+            let commentId = comment.id;
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    ...fetchedUsers
+                    [commentId]: comment
                 },
-                allIds: [...state.allIds].concat(userIds.filter(id => !state.allIds.includes(id))),
-                fetched: true,
-                fetching: false
+                allIds: [...state.allIds, commentId],
+                fetching: false,
+                fetched: true
             }
 
         }
-        case "FETCH_SUBJECT_REJECTED": {
+        case "CREATE_COMMENT_REJECTED": {
             return {...state, fetching: false, fetched: false}
+        }
+        case "FETCH_RESOURCE_PENDING": {
+            return {...state, fetching: true, fetched: false}
         }
         case "FETCH_RESOURCE_FULFILLED": {
 
-            const fetchedUsers = {};
-            const userIds = [];
+            const fetchedComments = {};
+            const commentIds = [];
 
-            for (const user of action.payload.data.data.users) {
-                fetchedUsers[user.id] = user;
-                userIds.push(user.id);
+            for (const comment of action.payload.data.data.comments) {
+                fetchedComments[comment.id] = comment;
+                commentIds.push(comment.id);
             }
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    ...fetchedUsers
+                    ...fetchedComments
                 },
-                allIds: [...state.allIds].concat(userIds.filter(id => !state.allIds.includes(id))),
+                allIds: [...state.allIds].concat(commentIds.filter(id => !state.allIds.includes(id))),
                 fetched: true,
                 fetching: false
             }

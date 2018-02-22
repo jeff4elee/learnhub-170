@@ -1,6 +1,7 @@
 export default function reducer(state={
     byId: {},
     allIds: [],
+    searchIds: [],
     fetching: false,
     fetched: false,
     error: null
@@ -60,12 +61,21 @@ export default function reducer(state={
         }
         case "FETCH_RESOURCE_FULFILLED": {
 
-            const resource = action.payload.data.data;
+            const commentIds = [];
+            const comments = action.payload.data.data.comments;
+
+            for (const comment of comments) {
+                commentIds.push(comment.id);
+            }
+
+            let resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
             if(!state.allIds.includes(resource.id)){
                 newIds.push(resource.id);
             }
+
+            resource = {...resource, "comments": commentIds};
 
             return {
                 ...state,
@@ -103,11 +113,35 @@ export default function reducer(state={
             }
 
         }
+        case "SEARCH_RESOURCE_FULFILLED": {
+
+            const fetchedResources = {};
+            const resourceIds = [];
+
+            for (const resource of action.payload.data.data) {
+                fetchedResources[resource.id] = resource;
+                resourceIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedResources
+                },
+                allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
+                searchIds: resourceIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
         case "STORE::RESET_FULFILLED": {
 
             return {
                 byId: {},
                 allIds: [],
+                searchIds: [],
                 fetching: false,
                 fetched: false,
                 error: null

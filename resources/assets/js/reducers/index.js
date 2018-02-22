@@ -6,6 +6,7 @@ import resources from './resourceReducer'
 import auth from './authReducer'
 import users from './userReducer'
 import tasks from './taskReducer'
+import comments from './commentReducer'
 
 const config = {
     key: 'root',
@@ -19,5 +20,6 @@ export default persistCombineReducers(config, {
     resources,
     auth,
     users,
+    comments,
     tasks
 })

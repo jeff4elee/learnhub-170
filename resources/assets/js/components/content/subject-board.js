@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import ResourceCard from "./resource-card";
+import ResourceList from "../layout/resource-list";
 import {fetchSubject} from "../../actions/subjectActions"
-
-const ResourcesContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
 
 const TitleContainer = styled.div`
     width = 90%;
@@ -32,27 +26,20 @@ class SubjectBoard extends Component {
     }
 
     render(){
+
         const subject = this.props.subjects.byId[this.props.match.params.id];
-        const resources = this.props.resources;
-
-
-        let resourcesList = [];
-
-        if(subject.resources) {
-            resourcesList = subject.resources.map(id => <ResourceCard key={id} resource={resources.byId[id]}/>);
-        }
 
         return (
             <div>
+
                 <TitleContainer>
                     <Title>
                         {subject.title}
                     </Title>
                 </TitleContainer>
 
-                <ResourcesContainer>
-                    {resourcesList}
-                </ResourcesContainer>
+                <ResourceList resourceIds={subject.resources}/>
+
             </div>
         )
     }
