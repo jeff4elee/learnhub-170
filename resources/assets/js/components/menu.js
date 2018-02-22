@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import styled from 'styled-components';
+import {logoutUser} from "../actions/userActions";
+import history from '../history';
 
 const FormContainer = styled.div`
     display: flex;
@@ -18,6 +20,13 @@ class Menu extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout(){
+        this.props.logoutUser().then(() => {
+            history.push("/");
+        })
     }
 
     handleChange(event) {
@@ -37,6 +46,8 @@ class Menu extends Component {
                         <input type="text" value={this.state.value} onChange={this.handleChange}/>
                     <input type="submit" value="Submit"/>
                 </form>
+
+                <button onClick={() => {this.handleLogout()}}> Logout </button>
             </FormContainer>
         );
     }
@@ -51,7 +62,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore())
+        resetStore: () => dispatch(resetStore()),
+        logoutUser: () => dispatch(logoutUser())
     }
 }
 

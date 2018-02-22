@@ -21,6 +21,7 @@ Route::get('/example', function (Request $request) {
     return "Success!";
 });
 
+Route::post('/facebook/login', 'Auth\LoginController@facebookLogin');
 
 Route::post('/subject', 'SubjectController@create');
 Route::get('/subject/all', 'SubjectController@all');
