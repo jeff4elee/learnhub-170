@@ -62,6 +62,17 @@ export default function reducer(state={
                 user: action.payload.response.data.data
             }
         }
+        case "STORE::RESET_FULFILLED": {
+
+            return {
+                user: null,
+                fetching: false,
+                fetched: false,
+                registrationError: null,
+                loginError: null
+            }
+
+        }
         default:
     }
     return state;

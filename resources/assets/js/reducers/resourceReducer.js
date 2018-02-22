@@ -103,7 +103,7 @@ export default function reducer(state={
             }
 
         }
-        case "STORE::RESET": {
+        case "STORE::RESET_FULFILLED": {
 
             return {
                 byId: {},

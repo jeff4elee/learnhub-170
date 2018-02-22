@@ -9,6 +9,6 @@ export function sendExampleAction(){
 
 export function resetStore(){
     return {
-        type: 'STORE::RESET'
+        type: 'STORE::RESET_FULFILLED'
     }
 }

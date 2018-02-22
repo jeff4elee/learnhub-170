@@ -60,7 +60,7 @@ export default function reducer(state = {
         case "FETCH_ALL_TASKS_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
-        case "STORE::RESET": {
+        case "STORE::RESET_FULFILLED": {
 
             return {
                 byId: {},
