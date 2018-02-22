@@ -29,9 +29,9 @@ const UnsubscribeButton = styled(BootButton)`
 `;
 
 const SubjectContainer = styled.div`
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 80%;
+    width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -57,6 +57,12 @@ const HCardBody = styled.div`
 const HCardDescription = styled(Link)`
     display: flex;
     flex-grow: 1;
+    flex-direction: column;
+    // justify-content: center;
+`;
+
+const HCardTitle = styled.h3`
+    font-size: 200%;
 `;
 
 const HCardFooter = styled.div`
@@ -87,7 +93,8 @@ class SubjectCard extends Component {
                 <HCard>
                     <HCardBody>
                         <HCardDescription to={`/subject/` + this.props.subject.id} style={{textDecoration: 'none'}}>
-                                <div style={{fontSize: "2em"}}>{this.props.subject.title}</div>
+                                <div style={{fontSize: "1.75em"}}>{this.props.subject.title}</div>
+                                {/*<HCardTitle>{this.props.subject.title}</HCardTitle>*/}
                                 <div style={{fontSize: "1em"}}>{this.props.subject.description}</div>
                         </HCardDescription>
                         {this.props.subject.subscribed ?

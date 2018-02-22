@@ -13,13 +13,28 @@ const ResourcesContainer = styled.div`
 const TitleContainer = styled.div`
     width = 90%;
     text-align = left;
-    padding-left: 20px;
+    padding-left: 5%;
 `;
 
 const Title = styled.h2`
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     color: #474747;
+`;
+
+const SubHeader = styled.div`
+    display: flex;
+
+    width = 90%;
+    text-align = left;
+
+    padding-left: 5%;
+    padding-right: 5%;
+
+    padding-bottom: 0;
+
+    justify-content: space-between;
+    font-weight: bold;
 `;
 
 class SubjectBoard extends Component {
@@ -49,6 +64,16 @@ class SubjectBoard extends Component {
                         {subject.title}
                     </Title>
                 </TitleContainer>
+
+                <SubHeader>
+                    <div>
+                        Resource
+                    </div>
+
+                    <div>
+                        Rating
+                    </div>
+                </SubHeader>
 
                 <ResourcesContainer>
                     {resourcesList}
