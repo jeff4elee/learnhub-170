@@ -36,7 +36,9 @@ Route::post('/resource/comment', 'ResourceController@comment');
 Route::post('/resource/search', 'ResourceController@search');
 Route::post('/task', 'TaskController@add_to_tasks');
 Route::get('/task/all', 'TaskController@get_user_tasks');
+Route::get('/task/{task_id}/toggle', 'TaskController@toggle_task');
 Route::get('/resource/all', 'ResourceController@all');
 Route::get('/resource/{resource_id}', 'ResourceController@get');
+Route::get('/resource/{resource_id}/comments', 'ResourceController@get_comments');
 Route::post('/resource/{resource_id}/rate', 'ResourceController@rate');
 

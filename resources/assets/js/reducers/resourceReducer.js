@@ -31,6 +31,7 @@ export default function reducer(state={
         case "FETCH_SUBJECT_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
+        case "FETCH_ALL_TASKS_FULFILLED":
         case "FETCH_SUBJECT_FULFILLED": {
 
             const fetchedResources = {};
@@ -61,21 +62,12 @@ export default function reducer(state={
         }
         case "FETCH_RESOURCE_FULFILLED": {
 
-            const commentIds = [];
-            const comments = action.payload.data.data.comments;
-
-            for (const comment of comments) {
-                commentIds.push(comment.id);
-            }
-
             let resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
             if(!state.allIds.includes(resource.id)){
                 newIds.push(resource.id);
             }
-
-            resource = {...resource, "comments": commentIds};
 
             return {
                 ...state,
@@ -91,6 +83,52 @@ export default function reducer(state={
         }
         case "FETCH_RESOURCE_REJECTED": {
             return {...state, fetching: false, fetched: false}
+        }
+        case "FETCH_COMMENTS_FULFILLED": {
+
+
+            const commentIds = [];
+            const comments = action.payload.data.data.comments;
+            const resource = action.payload.data.data.resource;
+
+            for (const comment of comments) {
+                commentIds.push(comment.id);
+            }
+
+            const newIds = [...state.allIds];
+
+            if(!state.allIds.includes(resource.id)){
+                newIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [resource.id] : {...resource, "comments": commentIds}
+                },
+                allIds: newIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
+        case "CREATE_COMMENT_FULFILLED": {
+
+            let comment = action.payload.data.data.comment;
+            let resource = action.payload.data.data.resource;
+            let commentId = comment.id;
+            
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [resource.id]: {...resource, comments: [...state.byId[resource.id].comments, commentId]}
+                },
+                fetching: false,
+                fetched: true
+            }
+
         }
         case "RATE_RESOURCE_FULFILLED": {
 

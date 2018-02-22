@@ -16,6 +16,7 @@ import styled from 'styled-components';
 import { resumeSession } from "../../actions/userActions";
 import { resetStore } from "../../actions/exampleActions";
 import history from '../../history';
+import CommentPage from '../layout/comment-page';
 
 const Container = styled.div`
     height:100%;
@@ -57,8 +58,9 @@ class Master extends Component {
                                 <Route exact path='/resource-form' component={ResourceForm}/>
                                 <Route exact path='/search' component={SearchPage}/>
                                 <Route exact path='/menu' component={Menu}/>
-                                <Route path='/subject/:id' component={SubjectBoard}/>
-                                <Route path='/resource/:id' component={Resource}/>
+                                <Route exact path='/subject/:id' component={SubjectBoard}/>
+                                <Route exact path='/resource/:id' component={Resource}/>
+                                <Route exact path='/comments/:id' component={CommentPage}/>
 
                                 {/* both /roster and /roster/:number begin with /roster */}
                                 {/*<Route path='/roster' component={Roster}/>*/}

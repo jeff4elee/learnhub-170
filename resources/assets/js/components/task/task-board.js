@@ -22,12 +22,25 @@ class TaskBoard extends Component {
     render() {
 
         const tasks = this.props.tasks;
+        const taskIds = tasks.allIds;
 
         let taskList = [];
 
-        if (tasks.allIds) {
-            taskList = tasks.allIds.map(id => <TaskCard key={id} task={tasks.byId[id]}/>);
+        if (taskIds) {
+
+            //display subscribed tasks first
+            taskIds.sort(function (a, b) {
+                if (!tasks.byId[a].completed) {
+                    return -1;
+                } else if (!tasks.byId[b].completed) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            taskList = taskIds.map(id => <TaskCard key={id} task={tasks.byId[id]}/>);
         }
+
 
         return (
             <TaskContainer>

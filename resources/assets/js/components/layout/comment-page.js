@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import CommentForm from '../form/comment-form';
 import CommentList from '../comment/comment-list';
+import {fetchResourceComments} from '../../actions/resourceActions';
 
 const Container = styled.div`
     display: flex;
@@ -16,16 +17,21 @@ class CommentPage extends Component {
         super(props);
     }
 
+    componentWillMount() {
+        this.props.fetchResourceComments(this.props.match.params.id);
+    }
+
     render() {
 
-        const resource = this.props.resource;
+        const resource = this.props.resources.byId[this.props.match.params.id];
 
         return (
 
             <Container>
-                <CommentList commentIds={resource.comments}/>
+                {resource && <CommentList commentIds={resource.comments}/>}
                 <CommentForm resourceId={resource.id}/>
             </Container>
+
 
         );
     }
@@ -40,5 +46,11 @@ function mapStateToProps(state) {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchResourceComments: resourceId => dispatch(fetchResourceComments(resourceId))
+    }
+}
+
 //connect allows you to reference the store
-export default connect(mapStateToProps, null)(CommentPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentPage);

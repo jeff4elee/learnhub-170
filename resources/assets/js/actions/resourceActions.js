@@ -32,11 +32,20 @@ export function searchResource(searchTerm) {
     }
 }
 
-export function commentOnResource(comment){
+export function commentOnResource(comment) {
 
     return {
         type: 'CREATE_COMMENT',
         payload: axios.post("/api/resource/comment", comment)
+    }
+
+}
+
+export function fetchResourceComments(resource_id) {
+
+    return {
+        type: 'FETCH_COMMENTS',
+        payload: axios.get("/api/resource/" + resource_id + "/comments")
     }
 
 }

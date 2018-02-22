@@ -5,7 +5,7 @@ import PlusCircle from 'react-icons/lib/fa/plus-circle';
 import FaSearch from 'react-icons/lib/fa/search';
 import FaList from 'react-icons/lib/fa/list';
 import FaCog from 'react-icons/lib/fa/cog';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 const StyledFooter = styled.footer`
     bottom: 0;

@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Response;
 class ResourceController extends Controller
 {
 
-    public function get($resource_id)
-    {
+    public function get_comments($resource_id){
         $resource = Resource::where('id', '=', $resource_id)->first();
         $comments = Comment::where('resource_id', '=', $resource_id)->get();
         $users = array();
@@ -23,6 +22,17 @@ class ResourceController extends Controller
         foreach($comments as $comment){
             array_push($users, $comment->user()->first());
         }
+
+        return Response::make([
+            'data' => ['comments' => $comments, 'users' => $users, 'resource' => $resource],
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
+
+    public function get($resource_id)
+    {
+        $resource = Resource::where('id', '=', $resource_id)->first();
 
         $rating = Rating::where('user_id', '=', Auth::id())
             ->where('resource_id', '=', $resource_id)
@@ -33,7 +43,7 @@ class ResourceController extends Controller
         }
 
         return Response::make([
-            'data' => ['resource' => $resource, 'comments' => $comments, 'users' => $users],
+            'data' => ['resource' => $resource],
             'success' => true,
             'message' => null
         ], 200);
@@ -105,8 +115,10 @@ class ResourceController extends Controller
 
         $comment = Comment::create($request->all());
 
+        $resource = Resource::where('id', $comment->resource_id)->first();
+
         return Response::make([
-            'data' => $comment,
+            'data' => ['resource' => $resource, 'comment' => $comment],
             'success' => true,
             'message' => null
         ], 200);

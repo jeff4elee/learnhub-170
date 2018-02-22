@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 import FaSquareO from "react-icons/lib/fa/square-o";
+import FaSquareCheckSquareO from "react-icons/lib/fa/check-square-o";
+import {toggleTask} from "../../actions/taskActions";
 
 const TaskContainer = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -67,6 +69,11 @@ const Checkbox = styled.button`
 class TaskCard extends Component {
     constructor(props) {
         super(props);
+        this.toggleTask = this.toggleTask.bind(this);
+    }
+
+    toggleTask(){
+        this.props.toggleTask(this.props.task.id);
     }
 
     render() {
@@ -94,7 +101,11 @@ class TaskCard extends Component {
                         <HCardBodyAuthor>By {username}</HCardBodyAuthor>
                     </HCardBody>
                     <HCardFooter>
-                        <FaSquareO style={{cursor: "pointer"}} size={40}/>
+                        { this.props.task.completed ?
+                            <FaSquareCheckSquareO style={{cursor: "pointer"}} size={40} onClick={() => this.toggleTask()}/>
+                            :
+                            <FaSquareO style={{cursor: "pointer"}} size={40} onClick={() => this.toggleTask()}/>
+                        }
                     </HCardFooter>
                 </HCard>
             </TaskContainer>
@@ -111,7 +122,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        toggleTask: (taskId) => dispatch(toggleTask(taskId))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskCard);

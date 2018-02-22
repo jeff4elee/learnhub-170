@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import ReactStars from 'react-stars'
 import {fetchResource, rateResource} from "../../actions/resourceActions";
 import {addResourceAsTask} from "../../actions/taskActions";
-import CommentPage from "../layout/comment-page";
+import {Link} from 'react-router-dom';
 
 const NotificationModal = styled(Modal)`
     position: absolute;
@@ -60,6 +60,19 @@ const ActionButton = styled.button`
     font-size: 20px;
 `;
 
+const ActionLink = styled(Link)`
+    text-align: center;
+    text-decoration: none;
+      background-color: #239b88;
+    color: white;
+    padding: 12px;
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 20px;
+`;
+
 class Resource extends Component {
     constructor(props) {
         super(props);
@@ -68,13 +81,13 @@ class Resource extends Component {
             modalIsOpen: false,
             ratingModal: false,
             taskAddingModal: false,
-            commentsOpened: false
+            reported: false
         };
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
 
-        this.openCommentsWindow = this.openCommentsWindow.bind(this);
+        this.report = this.report.bind(this);
         this.changeRating = this.changeRating.bind(this);
         this.addToTask = this.addToTask.bind(this);
     }
@@ -102,8 +115,8 @@ class Resource extends Component {
         this.props.fetchResource(this.props.match.params.id);
     }
 
-    openCommentsWindow() {
-        this.setState({commentsOpened: true});
+    report() {
+        this.setState({reported: true});
     }
 
     openModal(type) {
@@ -111,13 +124,16 @@ class Resource extends Component {
         let newState = {
             modalIsOpen: true,
             ratingModal: false,
-            taskAddingModal: false
+            taskAddingModal: false,
+            reported: false
         };
 
         if (type === "rate") {
             newState['ratingModal'] = true;
         } else if (type === "task") {
             newState['taskAddingModal'] = true;
+        } else if (type === "report") {
+            newState['reported'] = true;
         }
 
         this.setState(newState);
@@ -135,56 +151,46 @@ class Resource extends Component {
         return (
             <Container>
 
-                {this.state.commentsOpened
-
-                    ?
-
-                    <CommentPage resource={resource}/>
-
-                    :
-
+                <ResourceContainer>
+                    <h1><b>{resource.title}</b></h1>
                     <div>
-                        <ResourceContainer>
-                            <h1><b>{resource.title}</b></h1>
-                            <div>
-                                <b>Links To: </b>
-                                <a href={resource.url} target="_blank"> {resource.url_domain} </a>
-                            </div>
-                            <ResourceBody>
-                                <img src="http://via.placeholder.com/300x250"/>
-                                <ActionButton onClick={() => this.addToTask()}> Add to Tasks </ActionButton>
-                                <ActionButton onClick={() => this.openModal("rate")}> Rate </ActionButton>
-                                <ActionButton onClick={() => this.openCommentsWindow()}> Comment </ActionButton>
-                                <ActionButton> Report </ActionButton>
-                            </ResourceBody>
-                        </ResourceContainer>
-
-                        < NotificationModal
-                            isOpen={this.state.modalIsOpen}
-                            onAfterOpen={this.afterOpenModal}
-                            onRequestClose={this.closeModal}
-                            contentLabel="Example Modal"
-                            ariaHideApp={false}>
-
-
-                            {this.state.taskAddingModal && "Task added successfully!"}
-
-
-                            {this.state.ratingModal &&
-                            <RatingBar>
-                                <ReactStars
-                                    count={5}
-                                    onChange={this.changeRating}
-                                    size={40}
-                                    value={rating}
-                                    color2={'#ffd700'}/>
-                            </RatingBar>}
-
-                        </NotificationModal>
-
+                        <b>Links To: </b>
+                        <a href={resource.url} target="_blank"> {resource.url_domain} </a>
                     </div>
+                    <ResourceBody>
+                        <img src="http://via.placeholder.com/300x250"/>
+                        <ActionButton onClick={() => this.addToTask()}> Add to Tasks </ActionButton>
+                        <ActionButton onClick={() => this.openModal("rate")}> Rate </ActionButton>
+                        <ActionLink to={"/comments/" + resource.id}> Comment </ActionLink>
+                        <ActionButton onClick={() => this.openModal("report")}> Report </ActionButton>
+                    </ResourceBody>
+                </ResourceContainer>
 
-                }
+                < NotificationModal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Example Modal"
+                    ariaHideApp={false}>
+
+
+                    {this.state.taskAddingModal && "Task added successfully!"}
+
+
+                    {this.state.ratingModal &&
+                    <RatingBar>
+                        <ReactStars
+                            count={5}
+                            onChange={this.changeRating}
+                            size={40}
+                            value={rating}
+                            color2={'#ffd700'}/>
+                    </RatingBar>}
+
+                    {this.state.reported && "Resource has been reported"}
+
+                </NotificationModal>
+
 
             </Container>
         )

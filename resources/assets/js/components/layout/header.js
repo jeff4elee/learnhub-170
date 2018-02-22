@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import FaHome from 'react-icons/lib/fa/home';
-import FaStar from 'react-icons/lib/fa/star';
-import PlusCircle from 'react-icons/lib/fa/plus-circle';
-import FaSearch from 'react-icons/lib/fa/search';
-import FaList from 'react-icons/lib/fa/list';
+import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
 import { NavLink } from 'react-router-dom'
+import history from '../../history';
 
 const StyledHeader = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -31,23 +28,16 @@ const HeaderItem = styled.h1`
     font-weight: 600;
 `;
 
+
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
+    }
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
-    }
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
     render() {
         return (
             <StyledHeader>
+                <FaArrowLeft onClick={() => history.goBack()}/>
                 <HeaderItem>
                     BigBub
                 </HeaderItem>

@@ -11,7 +11,7 @@ export default function reducer(state={
         }
         case "CREATE_COMMENT_FULFILLED": {
 
-            let comment = action.payload.data.data;
+            let comment = action.payload.data.data.comment;
             let commentId = comment.id;
 
             return {
@@ -29,10 +29,10 @@ export default function reducer(state={
         case "CREATE_COMMENT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
-        case "FETCH_RESOURCE_PENDING": {
+        case "FETCH_COMMENTS_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-        case "FETCH_RESOURCE_FULFILLED": {
+        case "FETCH_COMMENTS_FULFILLED": {
 
             const fetchedComments = {};
             const commentIds = [];
