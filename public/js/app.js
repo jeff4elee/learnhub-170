@@ -63416,7 +63416,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var FormContainer = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].div(_templateObject);
+var Container = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].div(_templateObject);
 
 var Menu = function (_Component) {
     _inherits(Menu, _Component);
@@ -63426,10 +63426,6 @@ var Menu = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
 
-        _this.state = { value: '' };
-
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.handleLogout = _this.handleLogout.bind(_this);
         return _this;
     }
@@ -63442,31 +63438,13 @@ var Menu = function (_Component) {
             });
         }
     }, {
-        key: 'handleChange',
-        value: function handleChange(event) {
-            this.setState({ value: event.target.value });
-        }
-    }, {
-        key: 'handleSubmit',
-        value: function handleSubmit(event) {
-            alert('A name was submitted: ' + this.state.value);
-            event.preventDefault();
-        }
-    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                FormContainer,
+                Container,
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'form',
-                    { onSubmit: this.handleSubmit },
-                    'Menu:',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit' })
-                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'button',
                     { onClick: function onClick() {
