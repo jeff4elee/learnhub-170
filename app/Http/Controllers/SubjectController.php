@@ -49,7 +49,7 @@ class SubjectController extends Controller
     {
         $user = Auth::user();
 
-        $subscriptions = $user->subscriptions->pluck('subscribeable_id');
+        $subscriptions = $user->subscriptions->pluck('subject_id')->toArray();
 
         $subscribed_subjects = Subject::whereIn('id', $subscriptions)
             ->get()

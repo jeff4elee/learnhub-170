@@ -118,7 +118,7 @@ export default function reducer(state={
             let comment = action.payload.data.data.comment;
             let resource = action.payload.data.data.resource;
             let commentId = comment.id;
-            
+
             return {
                 ...state,
                 byId: {
