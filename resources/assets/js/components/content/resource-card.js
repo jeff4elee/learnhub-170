@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 const ResourceContainer = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 80%;
+    width: 90%;
     height: 125px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -37,18 +37,18 @@ const HCardBodyTitle = styled.div`
 `;
 
 const HCardBodyDescription = styled.div`
-    color: black;
+    color: #474747;
     font-size: 18px;
 `;
 
 const HCardBodyAuthor = styled.div`
-    color: black;
+    color: #474747;
     font-size: 16px;
     text-align: right;
 `;
 
 const HCardFooter = styled.div`
-    color: black;
+    color: #474747;
     width: 30%;
     justify-content: center;
     display: flex;

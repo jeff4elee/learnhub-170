@@ -23,14 +23,14 @@ const FooterList = styled.ul`
 `;
 
 const StyledLink = styled(NavLink)`
-    color: black;
+    color: #474747;
 `;
 
 const FooterItem = styled.li`
     align-self: center;
     color: black;
-    border-left: thin solid #b2b5ba;
-    border-right: thin solid #b2b5ba;
+/*    border-left: thin solid #b2b5ba;
+    border-right: thin solid #b2b5ba;*/
     display: block;
     padding: 0% 4.78% 0% 4.78%;
     line-height: 60px;

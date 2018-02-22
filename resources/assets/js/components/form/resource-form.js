@@ -6,12 +6,22 @@ import history from '../../history';
 import Modal from 'react-modal';
 
 const Input = styled.input`
-    width: 100%;
-    border: none;
-    border-radius: 3px;
-    margin-bottom: 1em;
+    width: 90%;
+    margin: 1em 0em;
     padding: 0.25em;
     display: inline-flex
+
+    border-color: transparent;
+    border: none;
+    border-bottom: 3px solid #474747;
+    background-color: transparent;
+
+    &:focus {
+        border-bottom: 3px solid #239b88;
+        outline: none;
+        color: #239b88;
+    }
+
 `;
 
 const HelperText = styled.div`
@@ -21,6 +31,9 @@ const HelperText = styled.div`
 `;
 
 const BootButton = styled.button`
+
+    margin-top: 1em;
+
     background-color: #239b88;
     color: white;
     width: 40%;
@@ -59,6 +72,7 @@ const NotificationModal = styled(Modal)`
     text-align: center;
     font-size: 30px;
     font-weight: bold;
+    border-radius: 2px;
 `;
 
 const FormContainer = styled.form`
@@ -154,16 +168,11 @@ class ResourceForm extends Component {
             <div>
 
                 <FormContainer onSubmit={this.handleSubmit}>
-                    Subject:
-                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange}/>
-                    Resource Title:
-                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
-                    Url:
-                    <HelperText> Urls must be in the format: https://www.example.com </HelperText>
-                    <Input type="text" value={this.state.url} onChange={this.handleUrlChange}/>
+                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Topic"/>
+                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Title"/>
+                    <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
 
-                    Description:
-                    <Input type="text" value={this.state.description} onChange={this.handleDescriptionChange}/>
+                    <Input type="text" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
                     <BootButton> Create Resource </BootButton>
                 </FormContainer>
 
