@@ -25,7 +25,6 @@ class Home extends Component {
     componentDidMount() {
     }
 
-
     render(){
 
         const subjects = this.props.subjects;
