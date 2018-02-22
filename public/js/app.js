@@ -5645,8 +5645,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n    bottom: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n'], ['\n    bottom: 0;\n    height: 60px;\n    width: 100%;\n    background-color: #F5F5F5;\n    position: fixed;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n'], ['\n    margin-left: -40px;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    color: black;\n'], ['\n    color: black;\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: black;\n    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n']);
+    _templateObject3 = _taggedTemplateLiteral(['\n    color: #474747;\n'], ['\n    color: #474747;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    align-self: center;\n    color: black;\n/*    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;*/\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n'], ['\n    align-self: center;\n    color: black;\n/*    border-left: thin solid #b2b5ba;\n    border-right: thin solid #b2b5ba;*/\n    display: block;\n    padding: 0% 4.78% 0% 4.78%;\n    line-height: 60px;\n    margin: 0;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -61633,7 +61633,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_styled_components__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    width: 90%;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    width: 90%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -61887,10 +61887,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    width: 90%;\n    margin: 1em 0em;\n    padding: 0.25em;\n    display: inline-flex\n\n    border-color: transparent;\n    border: none;\n    border-bottom: 3px solid #474747;\n    background-color: transparent;\n\n    &:focus {\n        border-bottom: 3px solid #239b88;\n        outline: none;\n        color: #239b88;\n    }\n\n'], ['\n    width: 90%;\n    margin: 1em 0em;\n    padding: 0.25em;\n    display: inline-flex\n\n    border-color: transparent;\n    border: none;\n    border-bottom: 3px solid #474747;\n    background-color: transparent;\n\n    &:focus {\n        border-bottom: 3px solid #239b88;\n        outline: none;\n        color: #239b88;\n    }\n\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    color: gray;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: gray;\n    font-style: italic;\n    font-size: 12px;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 85%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    outline: none;\n    flex-direction: column;\n    text-align: center;\n    font-size: 30px;\n    font-weight: bold;\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 85%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    outline: none;\n    flex-direction: column;\n    text-align: center;\n    font-size: 30px;\n    font-weight: bold;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n\n    margin-top: 1em;\n\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n'], ['\n\n    margin-top: 1em;\n\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 85%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    outline: none;\n    flex-direction: column;\n    text-align: center;\n    font-size: 30px;\n    font-weight: bold;\n    border-radius: 2px;\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 85%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    outline: none;\n    flex-direction: column;\n    text-align: center;\n    font-size: 30px;\n    font-weight: bold;\n    border-radius: 2px;\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    margin: 5%;\n    justify-content: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    margin: 5%;\n    justify-content: center;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62018,19 +62018,10 @@ var ResourceForm = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     FormContainer,
                     { onSubmit: this.handleSubmit },
-                    'Subject:',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.subject, onChange: this.handleSubjectChange }),
-                    'Resource Title:',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.title, onChange: this.handleTitleChange }),
-                    'Url:',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        HelperText,
-                        null,
-                        ' Urls must be in the format: https://www.example.com '
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.url, onChange: this.handleUrlChange }),
-                    'Description:',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.description, onChange: this.handleDescriptionChange }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.subject, onChange: this.handleSubjectChange, placeholder: 'Topic' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.title, onChange: this.handleTitleChange, placeholder: 'Title' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.url, onChange: this.handleUrlChange, placeholder: 'Resource URL' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.description, onChange: this.handleDescriptionChange, placeholder: 'Description' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         BootButton,
                         null,
@@ -63847,7 +63838,9 @@ function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_subjectActions__ = __webpack_require__(32);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    width = 90%;\n    text-align = left;\n    padding-left: 20px;\n'], ['\n    width = 90%;\n    text-align = left;\n    padding-left: 20px;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    font-size: 35px;\n    font-weight: bold;\n    color: #474747;\n'], ['\n    font-size: 35px;\n    font-weight: bold;\n    color: #474747;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -63864,6 +63857,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 var ResourcesContainer = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject);
+
+var TitleContainer = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject2);
+
+var Title = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].h2(_templateObject3);
 
 var SubjectBoard = function (_Component) {
     _inherits(SubjectBoard, _Component);
@@ -63894,9 +63891,22 @@ var SubjectBoard = function (_Component) {
             }
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                ResourcesContainer,
+                'div',
                 null,
-                resourcesList
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    TitleContainer,
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        Title,
+                        null,
+                        subject.title
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    ResourcesContainer,
+                    null,
+                    resourcesList
+                )
             );
         }
     }]);
@@ -63933,13 +63943,13 @@ function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 80%;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 90%;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 90%;\n    height: 125px;\n    margin-top: 10px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n    height: 100%;\n'], ['\n    display: flex;\n    flex-direction: row;\n    height: 100%;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    padding: 20px;\n    display: flex;\n    flex-direction: column;\n    width: 70%;\n    font-weight: bold;\n'], ['\n    padding: 20px;\n    display: flex;\n    flex-direction: column;\n    width: 70%;\n    font-weight: bold;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    color: #239b88;\n    font-size: 28px;\n'], ['\n    color: #239b88;\n    font-size: 28px;\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    color: black;\n    font-size: 18px;\n'], ['\n    color: black;\n    font-size: 18px;\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    color: black;\n    font-size: 16px;\n    text-align: right;\n'], ['\n    color: black;\n    font-size: 16px;\n    text-align: right;\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    color: black;\n    width: 30%;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border-left: thin solid #b2b5ba;\n    font-size: 20px;\n    font-weight: bold;\n'], ['\n    color: black;\n    width: 30%;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border-left: thin solid #b2b5ba;\n    font-size: 20px;\n    font-weight: bold;\n']);
+    _templateObject5 = _taggedTemplateLiteral(['\n    color: #474747;\n    font-size: 18px;\n'], ['\n    color: #474747;\n    font-size: 18px;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    color: #474747;\n    font-size: 16px;\n    text-align: right;\n'], ['\n    color: #474747;\n    font-size: 16px;\n    text-align: right;\n']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    color: #474747;\n    width: 30%;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border-left: thin solid #b2b5ba;\n    font-size: 20px;\n    font-weight: bold;\n'], ['\n    color: #474747;\n    width: 30%;\n    justify-content: center;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border-left: thin solid #b2b5ba;\n    font-size: 20px;\n    font-weight: bold;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 

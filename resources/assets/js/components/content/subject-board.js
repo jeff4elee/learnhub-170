@@ -10,6 +10,18 @@ const ResourcesContainer = styled.div`
     align-items: center;
 `;
 
+const TitleContainer = styled.div`
+    width = 90%;
+    text-align = left;
+    padding-left: 20px;
+`;
+
+const Title = styled.h2`
+    font-size: 35px;
+    font-weight: bold;
+    color: #474747;
+`;
+
 class SubjectBoard extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +35,7 @@ class SubjectBoard extends Component {
         const subject = this.props.subjects.byId[this.props.match.params.id];
         const resources = this.props.resources;
 
+
         let resourcesList = [];
 
         if(subject.resources) {
@@ -30,9 +43,17 @@ class SubjectBoard extends Component {
         }
 
         return (
-            <ResourcesContainer>
-                {resourcesList}
-            </ResourcesContainer>
+            <div>
+                <TitleContainer>
+                    <Title>
+                        {subject.title}
+                    </Title>
+                </TitleContainer>
+
+                <ResourcesContainer>
+                    {resourcesList}
+                </ResourcesContainer>
+            </div>
         )
     }
 }
