@@ -7,13 +7,28 @@ import {fetchSubject} from "../../actions/subjectActions"
 const TitleContainer = styled.div`
     width = 90%;
     text-align = left;
-    padding-left: 20px;
+    padding-left: 5%;
 `;
 
 const Title = styled.h2`
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     color: #474747;
+`;
+
+const SubHeader = styled.div`
+    display: flex;
+
+    width = 90%;
+    text-align = left;
+
+    padding-left: 5%;
+    padding-right: 5%;
+
+    padding-bottom: 0;
+
+    justify-content: space-between;
+    font-weight: bold;
 `;
 
 class SubjectBoard extends Component {
@@ -21,11 +36,11 @@ class SubjectBoard extends Component {
         super(props);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.fetchSubject(this.props.match.params.id);
     }
 
-    render(){
+    render() {
 
         const subject = this.props.subjects.byId[this.props.match.params.id];
 
@@ -38,6 +53,16 @@ class SubjectBoard extends Component {
                     </Title>
                 </TitleContainer>
 
+                <SubHeader>
+                    <div>
+                        Resource
+                    </div>
+
+                    <div>
+                        Rating
+                    </div>
+                </SubHeader>
+
                 <ResourceList resourceIds={subject.resources}/>
 
             </div>
@@ -45,7 +70,7 @@ class SubjectBoard extends Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         resources: state.resources,
         subjects: state.subjects

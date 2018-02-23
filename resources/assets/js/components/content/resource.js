@@ -47,20 +47,40 @@ const ResourceBody = styled.div`
     display: flex;
     padding-left: 20px;
     padding-right: 20px;
+    justify-content: center;
 `;
 
-const ActionButton = styled.button`
+const BootButton = styled.button`
+
+    margin-top: 1em;
+
     background-color: #239b88;
     color: white;
-    padding: 12px;
-    margin-top: 12px;
-    margin-left: 12px;
-    margin-right: 12px;
+    width: 100%;
+    display: inline-flex;
     font-weight: bold;
-    font-size: 20px;
+    padding: 5px 7px;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+
+    margin: .75em 0 .75em 0;
+
+    &:hover {
+        background-color: #166357;
+    }
+
 `;
 
-const ActionLink = styled(Link)`
+const Image = styled.img`
+    margin-top: .5em;
+    margin-bottom: .5em;
+`;
+
+const BootLink = styled(Link)`
     text-align: center;
     text-decoration: none;
       background-color: #239b88;
@@ -158,11 +178,11 @@ class Resource extends Component {
                         <a href={resource.url} target="_blank"> {resource.url_domain} </a>
                     </div>
                     <ResourceBody>
-                        <img src="http://via.placeholder.com/300x250"/>
-                        <ActionButton onClick={() => this.addToTask()}> Add to Tasks </ActionButton>
-                        <ActionButton onClick={() => this.openModal("rate")}> Rate </ActionButton>
-                        <ActionLink to={"/comments/" + resource.id}> Comment </ActionLink>
-                        <ActionButton onClick={() => this.openModal("report")}> Report </ActionButton>
+                        <Image src="http://via.placeholder.com/300x250"/>
+                        <BootButton onClick={() => this.addToTask()}> Add to Tasks </BootButton>
+                        <BootButton onClick={() => this.openModal("rate")}> Rate </BootButton>
+                        <BootLink to={"/comments/" + resource.id}> Comment </BootLink>
+                        <BootButton onClick={() => this.openModal("report")}> Report </BootButton>
                     </ResourceBody>
                 </ResourceContainer>
 
