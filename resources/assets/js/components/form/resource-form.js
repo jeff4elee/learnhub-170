@@ -157,7 +157,7 @@ class ResourceForm extends Component {
         }
 
         this.props.createResource({
-            ...this.state, user_id: this.props.user.id, url: valid_url
+            ...this.state, url: valid_url
         }).then(() => {
             this.openModal();
         });

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\FacebookUser;
+use App\User;
+use \GuzzleHttp\Client;
 use App\Http\Controllers\Controller;
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
@@ -26,12 +30,6 @@ class LoginController extends Controller
 //    use AuthenticatesUsers;
     use ThrottlesLogins;
 
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
-     */
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -42,7 +40,6 @@ class LoginController extends Controller
             $this->fireLockoutEvent($request);
             return $this->sendLockoutResponse($request);
         }
-        $credentials = $this->credentials($request);
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
         }
@@ -52,6 +49,7 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
         return $this->sendFailedLoginResponse($request);
     }
+
     /**
      * Validate the user login request.
      *
@@ -65,6 +63,7 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
     }
+
     /**
      * Attempt to log the user into the application.
      *
@@ -77,6 +76,7 @@ class LoginController extends Controller
             $this->credentials($request), $request->filled('remember')
         );
     }
+
     /**
      * Get the needed authorization credentials from the request.
      *
@@ -87,6 +87,7 @@ class LoginController extends Controller
     {
         return $request->only($this->username(), 'password');
     }
+
     /**
      * Send the response after the user was authenticated.
      *
@@ -99,6 +100,7 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
         return $this->authenticated($request, $this->guard()->user());
     }
+
     /**
      * The user has been authenticated.
      *
@@ -114,6 +116,7 @@ class LoginController extends Controller
             'message' => 'You have successfuly logged in!'
         ], 200);
     }
+
     /**
      * Get the failed login response instance.
      *
@@ -128,6 +131,7 @@ class LoginController extends Controller
             $this->username() => [trans('auth.failed')],
         ]);
     }
+
     /**
      * Get the login username to be used by the controller.
      *
@@ -137,6 +141,7 @@ class LoginController extends Controller
     {
         return 'email';
     }
+
     /**
      * Log the user out of the application.
      *
@@ -152,6 +157,7 @@ class LoginController extends Controller
             'message' => 'You have successfuly logged out!'
         ], 200);
     }
+
     /**
      * Get the guard to be used during authentication.
      *
@@ -171,11 +177,12 @@ class LoginController extends Controller
     {
     }
 
-    public function inSession(){
+    public function inSession()
+    {
 
         $user = Auth::user();
 
-        if($user) {
+        if ($user) {
             return Response::make([
                 'data' => $user,
                 'success' => true,
@@ -187,6 +194,43 @@ class LoginController extends Controller
             'data' => null,
             'success' => true,
             'message' => 'No session'
+        ], 401);
+
+    }
+
+    public function facebookLogin(Request $request)
+    {
+        $client = new Client();
+        $res = $client->get('https://graph.facebook.com/debug_token', ['query' => ['input_token' => $request['user_token'],
+            'access_token' => '169331733711181|fb21eae1dca3ba7533ee35643e7df7a2']]);
+
+        if($res->getStatusCode() == 200){
+
+            $fb_user = json_decode($res->getBody()->getContents())->data;
+
+            $facebook_user = FacebookUser::where('facebook_id', $fb_user->user_id)->first();
+
+            if($facebook_user != null){
+                $user = $facebook_user->user;
+            } else {
+                $user = User::create(['email' => $request['email'], 'name' => $request['name'], 'password' => Hash::make("ppqoa")]);
+                FacebookUser::create(['user_id' => $user->id, 'facebook_id' => $fb_user->user_id]);
+            }
+
+            if(Auth::attempt(['email' => $user->email, 'password' => "ppqoa"])){
+                return Response::make([
+                    'data' => $user,
+                    'success' => true,
+                    'message' => 'You have successfully logged in!'
+                ], 200);
+            }
+
+        }
+
+        return Response::make([
+            'data' => null,
+            'success' => true,
+            'message' => 'Invalid fb token'
         ], 401);
 
     }

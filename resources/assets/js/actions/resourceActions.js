@@ -24,3 +24,28 @@ export function rateResource(ratingData) {
     }
 
 }
+
+export function searchResource(searchTerm) {
+    return {
+        type: 'SEARCH_RESOURCE',
+        payload: axios.post("/api/resource/search", {"search_term": searchTerm})
+    }
+}
+
+export function commentOnResource(comment) {
+
+    return {
+        type: 'CREATE_COMMENT',
+        payload: axios.post("/api/resource/comment", comment)
+    }
+
+}
+
+export function fetchResourceComments(resource_id) {
+
+    return {
+        type: 'FETCH_COMMENTS',
+        payload: axios.get("/api/resource/" + resource_id + "/comments")
+    }
+
+}

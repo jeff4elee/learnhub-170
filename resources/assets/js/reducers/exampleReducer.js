@@ -32,7 +32,7 @@ export default function reducer(state={
         case "EXAMPLE_ACTION_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
-        case "STORE::RESET": {
+        case "STORE::RESET_FULFILLED": {
 
             return {
                 byId: {},

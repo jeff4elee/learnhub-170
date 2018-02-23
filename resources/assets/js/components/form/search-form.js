@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {sendExampleAction, resetStore} from '../../actions/exampleActions';
+import {searchResource} from "../../actions/resourceActions";
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
@@ -14,47 +14,41 @@ const FormContainer = styled.div`
 class SearchForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {searchValue: ''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({searchValue: event.target.value});
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        this.props.searchResource(this.state.searchValue);
         event.preventDefault();
     }
 
     render() {
         return (
+
             <FormContainer>
                 <form onSubmit={this.handleSubmit}>
                         Search:
-                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                        <input type="text" value={this.state.searchValue} onChange={this.handleChange}/>
                     <input type="submit" value="Submit"/>
                 </form>
             </FormContainer>
-        );
-    }
-}
 
-function mapStateToProps(state) {
-    return {
-        example: state.example
+        );
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore())
+        searchResource: searchTerm => dispatch(searchResource(searchTerm)),
     }
 }
 
-
 //connect allows you to reference the store
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default connect(null, mapDispatchToProps)(SearchForm);

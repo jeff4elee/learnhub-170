@@ -15,7 +15,7 @@ export default function reducer(state = {
 
             let newIds = [...state.allIds];
 
-            if(!newIds.includes(task.id)){
+            if (!newIds.includes(task.id)) {
                 newIds.push(task.id);
             }
 
@@ -38,20 +38,20 @@ export default function reducer(state = {
         }
         case "FETCH_ALL_TASKS_FULFILLED": {
 
-            const fetchedSubjects = {};
-            const subjectIds = [];
+            const fetchedTasks = {};
+            const taskIds = [];
 
-            for (const subject of action.payload.data.data) {
-                fetchedSubjects[subject.id] = subject;
-                subjectIds.push(subject.id);
+            for (const task of action.payload.data.data.tasks) {
+                fetchedTasks[task.id] = task;
+                taskIds.push(task.id);
             }
 
             return {
                 ...state,
                 byId: {
-                    ...fetchedSubjects
+                    ...fetchedTasks
                 },
-                allIds: subjectIds,
+                allIds: taskIds,
                 fetched: true,
                 fetching: false
             }
@@ -60,7 +60,27 @@ export default function reducer(state = {
         case "FETCH_ALL_TASKS_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
-        case "STORE::RESET": {
+        case "TOGGLE_TASK_FULFILLED": {
+            let task = action.payload.data.data;
+
+            let newIds = [...state.allIds];
+
+            if (!newIds.includes(task.id)) {
+                newIds.push(task.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [task.id]: task
+                },
+                allIds: newIds,
+                fetching: false,
+                fetched: true
+            }
+        }
+        case "STORE::RESET_FULFILLED": {
 
             return {
                 byId: {},

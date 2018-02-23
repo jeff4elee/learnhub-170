@@ -21,6 +21,7 @@ Route::get('/example', function (Request $request) {
     return "Success!";
 });
 
+Route::post('/facebook/login', 'Auth\LoginController@facebookLogin');
 
 Route::post('/subject', 'SubjectController@create');
 Route::get('/subject/all', 'SubjectController@all');
@@ -31,9 +32,13 @@ Route::get('/subject/{subject_id}/toggle_subscription', 'SubjectController@toggl
 Route::get('/subject/{subject_id}', 'SubjectController@get');
 
 Route::post('/resource', 'ResourceController@create');
+Route::post('/resource/comment', 'ResourceController@comment');
+Route::post('/resource/search', 'ResourceController@search');
 Route::post('/task', 'TaskController@add_to_tasks');
 Route::get('/task/all', 'TaskController@get_user_tasks');
+Route::get('/task/{task_id}/toggle', 'TaskController@toggle_task');
 Route::get('/resource/all', 'ResourceController@all');
 Route::get('/resource/{resource_id}', 'ResourceController@get');
+Route::get('/resource/{resource_id}/comments', 'ResourceController@get_comments');
 Route::post('/resource/{resource_id}/rate', 'ResourceController@rate');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Rating;
 use App\Resource;
 use App\Subject;
@@ -12,6 +13,22 @@ use Illuminate\Support\Facades\Response;
 
 class ResourceController extends Controller
 {
+
+    public function get_comments($resource_id){
+        $resource = Resource::where('id', '=', $resource_id)->first();
+        $comments = Comment::where('resource_id', '=', $resource_id)->get();
+        $users = array();
+
+        foreach($comments as $comment){
+            array_push($users, $comment->user()->first());
+        }
+
+        return Response::make([
+            'data' => ['comments' => $comments, 'users' => $users, 'resource' => $resource],
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
 
     public function get($resource_id)
     {
@@ -26,7 +43,7 @@ class ResourceController extends Controller
         }
 
         return Response::make([
-            'data' => $resource,
+            'data' => ['resource' => $resource],
             'success' => true,
             'message' => null
         ], 200);
@@ -54,8 +71,8 @@ class ResourceController extends Controller
     public function create(Request $request)
     {
 
-        //CANT USE Auth::id(), needs to be in web route
-
+        //Auth::id() needs to be in web route
+        $request['user_id'] = Auth::id();
         $request['url_domain'] = parse_url($request['url'])['host'];
         $subject_name = $request['subject'];
         unset($request['subject']);
@@ -78,4 +95,33 @@ class ResourceController extends Controller
             'message' => null
         ], 200);
     }
+
+    public function search(Request $request){
+
+        $seach_term = $request['search_term'];
+
+        $resources = Resource::where('title', 'like', '%' . $seach_term . '%')->get();
+
+        return Response::make([
+            'data' => $resources,
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
+
+    public function comment(Request $request){
+
+        $request['user_id'] = Auth::id();
+
+        $comment = Comment::create($request->all());
+
+        $resource = Resource::where('id', $comment->resource_id)->first();
+
+        return Response::make([
+            'data' => ['resource' => $resource, 'comment' => $comment],
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
+
 }

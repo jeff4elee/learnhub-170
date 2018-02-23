@@ -6,16 +6,16 @@ import Modal from 'react-modal';
 class Comment extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            replying: false,
-            viewingProfileId: null,
-        };
     }
 
     render() {
 
+        const comment = this.props.comment;
+        const user = this.props.users.byId[comment.user_id];
+
         return (
             <div>
+                {user.name}: {comment.comment}
             </div>
         );
 
@@ -24,6 +24,7 @@ class Comment extends Component {
 
 function mapStateToProps(state) {
     return {
+        users: state.users
     };
 }
 
