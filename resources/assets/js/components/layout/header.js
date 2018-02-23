@@ -67,7 +67,7 @@ export default class Header extends React.Component {
                         <BackButton size={30} onClick={() => history.goBack()}/>
                 </HeaderLeft>
                 <HeaderCenter>
-                    BigBub
+                    Resource Hub
                 </HeaderCenter>
                 <HeaderRight>
 
