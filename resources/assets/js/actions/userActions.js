@@ -14,9 +14,16 @@ export function loginUser(user) {
     }
 }
 
+export function facebookLogin(user) {
+    return {
+        type: 'USER_LOGIN',
+        payload: axios.post('/api/facebook/login', user)
+    }
+}
+
 export function logoutUser() {
     return {
-        type: 'USER_LOGOUT',
+        type: 'STORE::RESET',
         payload: axios.post('/logout')
     }
 }

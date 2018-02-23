@@ -4,7 +4,7 @@ import Footer from './footer';
 import Header from './header';
 import Home from "../content/home";
 import ResourceForm from "../form/resource-form";
-import SearchForm from "../form/search-form";
+import SearchPage from "./search-page";
 import Menu from "../menu";
 import TaskBoard from "../task/task-board";
 import LoginPage from "../auth/login-page";
@@ -16,6 +16,7 @@ import styled from 'styled-components';
 import { resumeSession } from "../../actions/userActions";
 import { resetStore } from "../../actions/exampleActions";
 import history from '../../history';
+import CommentPage from '../layout/comment-page';
 
 const Container = styled.div`
     height:100%;
@@ -55,10 +56,11 @@ class Master extends Component {
                                 <Route exact path='/' component={Home}/>
                                 <Route exact path='/task-board' component={TaskBoard}/>
                                 <Route exact path='/resource-form' component={ResourceForm}/>
-                                <Route exact path='/search-form' component={SearchForm}/>
+                                <Route exact path='/search' component={SearchPage}/>
                                 <Route exact path='/menu' component={Menu}/>
-                                <Route path='/subject/:id' component={SubjectBoard}/>
-                                <Route path='/resource/:id' component={Resource}/>
+                                <Route exact path='/subject/:id' component={SubjectBoard}/>
+                                <Route exact path='/resource/:id' component={Resource}/>
+                                <Route exact path='/comments/:id' component={CommentPage}/>
 
                                 {/* both /roster and /roster/:number begin with /roster */}
                                 {/*<Route path='/roster' component={Roster}/>*/}

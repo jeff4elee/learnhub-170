@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loginUser, registerUser, logoutUser, resumeSession} from "../../actions/userActions";
+import {loginUser, registerUser, logoutUser, resumeSession, facebookLogin} from "../../actions/userActions";
 import styled from 'styled-components';
 import history from '../../history';
 import {Link} from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
 
 const LoginLayout = styled.div`
     display: flex;
@@ -81,6 +82,16 @@ class LoginPage extends Component {
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFacebookLogin = this.handleFacebookLogin.bind(this);
+    }
+
+    handleFacebookLogin(response){
+        const user = {
+            user_token: response.accessToken,
+            name: response.name,
+            email: response.email
+        };
+        this.props.facebookLogin(user);
     }
 
     handleEmailChange(event) {
@@ -134,6 +145,19 @@ class LoginPage extends Component {
                         </CenteredContainer>
                     </Form>
 
+                    <CenteredContainer>
+
+                        <FacebookLogin
+                            appId="169331733711181"
+                            autoLoad={false}
+                            fields="name,email,picture"
+                            callback={this.handleFacebookLogin}
+                            cssClass="my-facebook-button-class"
+                            icon="fa-facebook"
+                        />
+
+                    </CenteredContainer>
+
                 </FormContainer>
                 <Link to="/register"> Register Here </Link>
             </LoginLayout>
@@ -148,7 +172,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loginUser: user => dispatch(loginUser(user))
+        loginUser: user => dispatch(loginUser(user)),
+        facebookLogin: user => dispatch(facebookLogin(user))
     }
 }
 

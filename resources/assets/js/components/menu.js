@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {sendExampleAction, resetStore} from '../actions/exampleActions';
 import styled from 'styled-components';
+import {logoutUser} from "../actions/userActions";
+import history from '../history';
 
-const FormContainer = styled.div`
+const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,30 +16,22 @@ const FormContainer = styled.div`
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    handleLogout(){
+        this.props.logoutUser().then(() => {
+            history.push("/");
+        })
     }
 
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-    }
 
     render() {
         return (
-            <FormContainer>
-                <form onSubmit={this.handleSubmit}>
-                        Menu:
-                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </FormContainer>
+            <Container>
+                <button onClick={() => {this.handleLogout()}}> Logout </button>
+            </Container>
         );
     }
 }
@@ -51,7 +45,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore())
+        resetStore: () => dispatch(resetStore()),
+        logoutUser: () => dispatch(logoutUser())
     }
 }
 
