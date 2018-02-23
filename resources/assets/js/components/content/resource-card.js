@@ -7,7 +7,7 @@ const ResourceContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-    height: 125px;
+    // height: 125px;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -43,8 +43,8 @@ const HCardBodyDescription = styled.div`
 
 const HCardBodyAuthor = styled.div`
     color: #474747;
+    opacity: .75;
     font-size: 16px;
-    text-align: right;
 `;
 
 const HCardFooter = styled.div`
@@ -92,7 +92,8 @@ class ResourceCard extends Component {
                         <HCardFooter>
                             <div> {ratingDisplay} </div>
                             <div> {this.props.resource.rating_count}
-                                {this.props.resource.rating_count === 1 ? ' rating' : ' ratings'} </div>
+                                {this.props.resource.rating_count === 1 ? ' rating' : ' ratings'} 
+                            </div>
                         </HCardFooter>
                     </HCard>
                 </Link>

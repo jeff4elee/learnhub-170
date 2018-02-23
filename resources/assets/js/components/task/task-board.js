@@ -10,6 +10,18 @@ const TaskContainer = styled.div`
     align-items: center;
 `;
 
+const TitleContainer = styled.div`
+    width = 90%;
+    text-align = left;
+    padding-left: 5%;
+`;
+
+const Title = styled.h2`
+    font-size: 30px;
+    font-weight: bold;
+    color: #474747;
+`;
+
 class TaskBoard extends Component {
     constructor(props) {
         super(props);
@@ -43,9 +55,16 @@ class TaskBoard extends Component {
 
 
         return (
-            <TaskContainer>
-                {taskList}
-            </TaskContainer>
+            <div>
+                <TitleContainer>
+                    <Title>
+                        Task List
+                    </Title>
+                </TitleContainer>
+                <TaskContainer>
+                    {taskList}
+                </TaskContainer>
+            </div>
         )
     }
 }

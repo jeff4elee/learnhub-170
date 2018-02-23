@@ -13,6 +13,18 @@ const SubjectsContainer = styled.div`
     align-items: center;
 `;
 
+const TitleContainer = styled.div`
+    width = 90%;
+    text-align = left;
+    padding-left: 5%;
+`;
+
+const Title = styled.h2`
+    font-size: 30px;
+    font-weight: bold;
+    color: #474747;
+`;
+
 class Home extends Component {
     constructor(props){
         super(props);
@@ -52,12 +64,13 @@ class Home extends Component {
                 {/*<button onClick={() => this.dispatchExampleAction()}>CLICK</button>*/}
                 {/*{exampleList}*/}
 
+                <TitleContainer>
+                    <Title>
+                        Home
+                    </Title>
+                </TitleContainer>
+
                 <SubjectsContainer>
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
                     {subjectsList}
                 </SubjectsContainer>
             </div>

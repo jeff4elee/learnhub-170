@@ -13,6 +13,26 @@ const Container = styled.div`
     justify-content: center;
 `;
 
+const BootButton = styled.button`
+    background-color: #239b88;
+    color: white;
+    display: inline-flex;
+    font-weight: bold;
+    font-size: 120%;
+    padding: 4% 10%;
+    margin-left: 5%;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: #166357;
+    }
+`;
+
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +50,9 @@ class Menu extends Component {
     render() {
         return (
             <Container>
-                <button onClick={() => {this.handleLogout()}}> Logout </button>
+                <div style={{padding: '30% 0%'}}>
+                </div>
+                <BootButton onClick={() => {this.handleLogout()}}> Logout </BootButton>
             </Container>
         );
     }

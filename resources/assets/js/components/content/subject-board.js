@@ -22,13 +22,15 @@ const SubHeader = styled.div`
     width = 90%;
     text-align = left;
 
-    padding-left: 5%;
-    padding-right: 5%;
-
+    padding-left: 5.5%;
+    padding-right: 5.5%;
     padding-bottom: 0;
+
+    margin-top: 5%;
 
     justify-content: space-between;
     font-weight: bold;
+
 `;
 
 class SubjectBoard extends Component {
@@ -36,11 +38,11 @@ class SubjectBoard extends Component {
         super(props);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.fetchSubject(this.props.match.params.id);
     }
 
-    render(){
+    render() {
 
         const subject = this.props.subjects.byId[this.props.match.params.id];
 
@@ -53,7 +55,6 @@ class SubjectBoard extends Component {
                     </Title>
                 </TitleContainer>
 
-<<<<<<< HEAD
                 <SubHeader>
                     <div>
                         Resource
@@ -64,19 +65,14 @@ class SubjectBoard extends Component {
                     </div>
                 </SubHeader>
 
-                <ResourcesContainer>
-                    {resourcesList}
-                </ResourcesContainer>
-=======
                 <ResourceList resourceIds={subject.resources}/>
 
->>>>>>> 7e346bdd5c9246e57c615cb48e22fd7c81bf4e87
             </div>
         )
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         resources: state.resources,
         subjects: state.subjects

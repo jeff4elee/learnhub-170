@@ -7,9 +7,10 @@ import ResourceList from './resource-list';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin-top: 5%;
     justify-content: center;
 `;
+
 
 class SearchPage extends Component {
     constructor(props) {

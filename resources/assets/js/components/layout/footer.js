@@ -29,8 +29,6 @@ const StyledLink = styled(NavLink)`
 const FooterItem = styled.li`
     align-self: center;
     color: black;
-/*    border-left: thin solid #b2b5ba;
-    border-right: thin solid #b2b5ba;*/
     display: block;
     padding: 0% 4.78% 0% 4.78%;
     line-height: 60px;

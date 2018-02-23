@@ -10,7 +10,6 @@ const TaskContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-    height: 125px;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -39,19 +38,27 @@ const HCardBodyTitle = styled.div`
     font-size: 28px;
 `;
 
+const HCardInfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+`;
+
 const HCardBodyDescription = styled.div`
-    color: black;
+    color: #474747;
     font-size: 18px;
 `;
 
 const HCardBodyAuthor = styled.div`
-    color: black;
+    color: #474747;
+    opacity: .75;
     font-size: 16px;
-    text-align: right;
 `;
 
 const HCardFooter = styled.div`
-    color: black;
+    color: #474747;
     width: 30%;
     justify-content: center;
     display: flex;
