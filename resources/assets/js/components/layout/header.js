@@ -24,16 +24,13 @@ const StyledLink = styled(NavLink)`
 `;
 
 const HeaderLeft = styled.div`
-    flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 2.2%;
     width: 20%;
 `;
 
 const HeaderCenter = styled.h1`
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,13 +45,12 @@ const HeaderCenter = styled.h1`
 `;
 
 const HeaderRight = styled.h1`
-    flex: 1
     display: flex;
     width: 20%;
 `;
 
 const BackButton = styled(FaArrowLeft)`
-    left: 5px;
+    margin-left: 2.2%;
 `;
 
 export default class Header extends React.Component {
