@@ -29,6 +29,7 @@ const HeaderLeft = styled.div`
     justify-content: flex-start;
     align-items: center;
     padding-left: 2.2%;
+    width: 20%;
 `;
 
 const HeaderCenter = styled.h1`
@@ -37,18 +38,19 @@ const HeaderCenter = styled.h1`
     justify-content: center;
     align-items: center;
     font-family: Helvetica;
-    font-size: 40px;    
+    font-size: 36px;    
     color: #239b88;
     letter-spacing: -3px;
     font-weight: 600;
     margin: 0;
     padding: 0;
+    width: 60%;
 `;
 
 const HeaderRight = styled.h1`
     flex: 1
     display: flex;
-    width: 33.4%;
+    width: 20%;
 `;
 
 const BackButton = styled(FaArrowLeft)`
@@ -64,7 +66,9 @@ export default class Header extends React.Component {
         return (
             <StyledHeader>
                 <HeaderLeft>
-                        <BackButton size={30} onClick={() => history.goBack()}/>
+                    {
+                        this.props.hasBack && <BackButton size={30} onClick={() => history.goBack()}/>
+                    }
                 </HeaderLeft>
                 <HeaderCenter>
                     Resource Hub

@@ -56907,7 +56907,7 @@ var Master = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { style: { fontFamily: 'Helvetica' } },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], { hasBack: this.props.user !== null }),
                 this.props.user !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     Container,
                     null,
@@ -61620,9 +61620,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    text-align: center;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    background-color: #F5F5F5;\n'], ['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    text-align: center;\n    left: 0;\n    width: 100%;\n    height: 60px;\n    background-color: #F5F5F5;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: white;\n'], ['\n    color: white;\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    flex: 1;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    padding-left: 2.2%;\n'], ['\n    flex: 1;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    padding-left: 2.2%;\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    flex: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 40px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n'], ['\n    flex: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 40px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    flex: 1\n    display: flex;\n    width: 33.4%;\n'], ['\n    flex: 1\n    display: flex;\n    width: 33.4%;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    flex: 1;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    padding-left: 2.2%;\n    width: 20%;\n'], ['\n    flex: 1;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    padding-left: 2.2%;\n    width: 20%;\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    flex: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 36px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n    width: 60%;\n'], ['\n    flex: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 36px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n    width: 60%;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    flex: 1\n    display: flex;\n    width: 20%;\n'], ['\n    flex: 1\n    display: flex;\n    width: 20%;\n']),
     _templateObject7 = _taggedTemplateLiteral(['\n    left: 5px;\n'], ['\n    left: 5px;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61671,7 +61671,7 @@ var Header = function (_React$Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     HeaderLeft,
                     null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(BackButton, { size: 30, onClick: function onClick() {
+                    this.props.hasBack && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(BackButton, { size: 30, onClick: function onClick() {
                             return __WEBPACK_IMPORTED_MODULE_4__history__["a" /* default */].goBack();
                         } })
                 ),

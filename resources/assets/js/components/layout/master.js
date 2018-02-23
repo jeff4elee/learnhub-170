@@ -48,7 +48,7 @@ class Master extends Component {
 
         return (
             <div style={{ fontFamily: 'Helvetica' }}>
-                <Header/>
+                <Header hasBack={this.props.user !== null}/>
                 {this.props.user !== null ?
                     <Container>
                         <Body>
