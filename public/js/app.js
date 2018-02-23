@@ -63987,7 +63987,6 @@ var LoginPage = function (_Component) {
                             autoLoad: false,
                             fields: 'name,email,picture',
                             callback: this.handleFacebookLogin,
-                            cssClass: 'my-facebook-button-class',
                             icon: 'fa-facebook'
                         })
                     )
