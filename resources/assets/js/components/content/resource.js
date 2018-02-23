@@ -83,14 +83,26 @@ const Image = styled.img`
 const BootLink = styled(Link)`
     text-align: center;
     text-decoration: none;
-      background-color: #239b88;
+    margin-top: 1em;
+
+    background-color: #239b88;
     color: white;
-    padding: 12px;
-    margin-top: 12px;
-    margin-left: 12px;
-    margin-right: 12px;
+    width: 100%;
+    display: inline-flex;
     font-weight: bold;
-    font-size: 20px;
+    padding: 5px 7px;
+
+    justify-content: center;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    letter-spacing: 1px;
+
+    margin: .75em 0 .75em 0;
+
+    &:hover {
+        background-color: #166357;
+    }
 `;
 
 class Resource extends Component {
