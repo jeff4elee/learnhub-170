@@ -56912,7 +56912,6 @@ PersistGate.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__footer__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__header__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__content_home__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__form_resource_form__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__search_page__ = __webpack_require__(225);
@@ -56991,7 +56990,7 @@ var Master = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { style: { fontFamily: 'Helvetica' } },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["default"], null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], null),
                 this.props.user !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     Container,
                     null,
@@ -61537,10 +61536,94 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
 /***/ }),
 /* 171 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: C:/Users/Ben/CSE170/learnhub/resources/assets/js/components/layout/header.js: Unexpected token (72:1)\n\n\u001b[0m \u001b[90m 70 | \u001b[39m        \u001b[36mreturn\u001b[39m (\n \u001b[90m 71 | \u001b[39m            \u001b[33m<\u001b[39m\u001b[33mStyledHeader\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 73 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m style\u001b[33m=\u001b[39m{{}}\u001b[33m>\u001b[39m\n \u001b[90m 74 | \u001b[39m                    \u001b[33m<\u001b[39m\u001b[33mFaArrowLeft\u001b[39m size\u001b[33m=\u001b[39m{\u001b[35m30\u001b[39m} onClick\u001b[33m=\u001b[39m{() \u001b[33m=>\u001b[39m history\u001b[33m.\u001b[39mgoBack()}\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 75 | \u001b[39m                \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_components__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__history__ = __webpack_require__(12);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    width: 100%;\n    height: 60px;\n    background-color: #F5F5F5;\n    padding-left: 3%\n'], ['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    width: 100%;\n    height: 60px;\n    background-color: #F5F5F5;\n    padding-left: 3%\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    color: white;\n'], ['\n    color: white;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    flex: 1;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    padding-left: 2.2%;\n'], ['\n    flex: 1;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    padding-left: 2.2%;\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    flex: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 40px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n'], ['\n    flex: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 40px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    flex: 1\n    display: flex;\n    width: 33.4%;\n'], ['\n    flex: 1\n    display: flex;\n    width: 33.4%;\n']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    left: 5px;\n'], ['\n    left: 5px;\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+var HeaderSection = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div(_templateObject);
+
+var StyledHeader = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div(_templateObject2);
+
+var StyledLink = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["b" /* NavLink */])(_templateObject3);
+
+var HeaderLeft = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div(_templateObject4);
+
+var HeaderCenter = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject5);
+
+var HeaderRight = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject6);
+
+var BackButton = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left___default.a)(_templateObject7);
+
+var Header = function (_React$Component) {
+    _inherits(Header, _React$Component);
+
+    function Header(props) {
+        _classCallCheck(this, Header);
+
+        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+    }
+
+    _createClass(Header, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                StyledHeader,
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { style: {} },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left___default.a, { size: 30, onClick: function onClick() {
+                            return __WEBPACK_IMPORTED_MODULE_4__history__["a" /* default */].goBack();
+                        } })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    HeaderCenter,
+                    null,
+                    'BigBub'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { style: { visibility: 'hidden' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left___default.a, { size: 30 })
+                )
+            );
+        }
+    }]);
+
+    return Header;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (Header);
 
 /***/ }),
 /* 172 */,
@@ -66824,7 +66907,44 @@ function reducer() {
 }
 
 /***/ }),
-/* 232 */,
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactIconBase = __webpack_require__(8);
+
+var _reactIconBase2 = _interopRequireDefault(_reactIconBase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FaArrowLeft = function FaArrowLeft(props) {
+    return _react2.default.createElement(
+        _reactIconBase2.default,
+        _extends({ viewBox: '0 0 40 40' }, props),
+        _react2.default.createElement(
+            'g',
+            null,
+            _react2.default.createElement('path', { d: 'm36.3 20v2.9q0 1.1-0.7 2t-1.9 0.8h-15.7l6.5 6.6q0.9 0.8 0.9 2t-0.9 2l-1.7 1.7q-0.8 0.8-2 0.8-1.1 0-2-0.8l-14.5-14.6q-0.9-0.8-0.9-2 0-1.1 0.9-2l14.5-14.5q0.8-0.9 2-0.9 1.2 0 2 0.9l1.7 1.6q0.9 0.9 0.9 2.1t-0.9 2l-6.5 6.5h15.7q1.1 0 1.9 0.9t0.7 2z' })
+        )
+    );
+};
+
+exports.default = FaArrowLeft;
+module.exports = exports['default'];
+
+/***/ }),
 /* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 

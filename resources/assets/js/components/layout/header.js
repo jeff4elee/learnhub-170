@@ -11,14 +11,8 @@ const StyledHeader = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
     justify-content: space-between;
     align-items: center;
-=======
-    justify-content: center;
-    text-align: center;
-    left: 0;
->>>>>>> ad9373bbca54681bb0a8fbdecd5b6939d99bd780
     width: 100%;
     height: 60px;
     background-color: #F5F5F5;
@@ -69,29 +63,17 @@ export default class Header extends React.Component {
     render() {
         return (
             <StyledHeader>
-<<<<<<< HEAD
                 <div style={{}}>
                     <FaArrowLeft size={30} onClick={() => history.goBack()}/>
                 </div>
-                <HeaderItem>
+                <HeaderCenter>
                     BigBub
-                </HeaderItem>
+                </HeaderCenter>
 
                 {/*Used for flexbox centering*/}
                 <div style={{visibility: 'hidden'}}>
                     <FaArrowLeft size={30}/>
                 </div>
-=======
-                <HeaderLeft>
-                        <BackButton size={30} onClick={() => history.goBack()}/>
-                </HeaderLeft>
-                <HeaderCenter>
-                    BigBub
-                </HeaderCenter>
-                <HeaderRight>
-
-                </HeaderRight>
->>>>>>> ad9373bbca54681bb0a8fbdecd5b6939d99bd780
             </StyledHeader>
         );
     }
