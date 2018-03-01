@@ -25,6 +25,7 @@ class Subject extends Model
     {
         $array = parent::toArray();
         $array["subscribed"] = Subscription::where('subject_id', $this->id)->where('user_id',Auth::id())->exists();
+        $array["subscribers"] = sizeof($this->subscribers()->get()->toArray());
         return $array;
     }
 }

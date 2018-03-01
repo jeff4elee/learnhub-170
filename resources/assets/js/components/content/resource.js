@@ -113,7 +113,7 @@ class Resource extends Component {
             modalIsOpen: false,
             ratingModal: false,
             taskAddingModal: false,
-            reported: false
+            reported: false,
         };
 
         this.openModal = this.openModal.bind(this);
@@ -122,6 +122,7 @@ class Resource extends Component {
         this.report = this.report.bind(this);
         this.changeRating = this.changeRating.bind(this);
         this.addToTask = this.addToTask.bind(this);
+        this.submitRating = this.submitRating.bind(this);
     }
 
     addToTask() {
@@ -130,21 +131,25 @@ class Resource extends Component {
         });
     }
 
-    changeRating(newRating) {
-
+    submitRating(){
         const ratingData = {
             "resource_id": this.props.match.params.id,
-            "rating": newRating
+            "rating": this.state.rating
         };
 
         this.props.rateResource(ratingData).then(() => {
             this.closeModal();
         });
+    }
 
+    changeRating(newRating) {
+        this.setState({rating: newRating});
     }
 
     componentWillMount() {
-        this.props.fetchResource(this.props.match.params.id);
+        this.props.fetchResource(this.props.match.params.id).then(() => {
+            this.setState({rating: this.props.resources.byId[this.props.match.params.id].personal_rating});
+        });
     }
 
     report() {
@@ -178,20 +183,20 @@ class Resource extends Component {
     render() {
 
         const resource = this.props.resources.byId[this.props.match.params.id];
-        const rating = this.props.resources.byId[this.props.match.params.id].personal_rating;
 
         return (
             <Container>
 
                 <ResourceContainer>
                     <h1><b>{resource.title}</b></h1>
-                    <div>
+                    <div style={{fontSize: "18px"}}>
                         <b>Links To: </b>
                         <a href={resource.url} target="_blank"> {resource.url_domain} </a>
                     </div>
                     <ResourceBody>
-                        <Image src="http://via.placeholder.com/300x250"/>
-                        <BootButton onClick={() => this.addToTask()}> Add to Tasks </BootButton>
+                        <a href={resource.url} target="_blank"><Image src="http://via.placeholder.com/300x250"/></a>
+                        <div> {resource.description} </div>
+                        <BootButton onClick={() => this.addToTask()}> Save to Tasklist </BootButton>
                         <BootButton onClick={() => this.openModal("rate")}> Rate </BootButton>
                         <BootLink to={"/comments/" + resource.id}> Comment </BootLink>
                         <BootButton onClick={() => this.openModal("report")}> Report </BootButton>
@@ -210,14 +215,17 @@ class Resource extends Component {
 
 
                     {this.state.ratingModal &&
+                        <div>
                     <RatingBar>
                         <ReactStars
                             count={5}
                             onChange={this.changeRating}
-                            size={40}
-                            value={rating}
+                            size={50}
+                            value={this.state.rating}
                             color2={'#ffd700'}/>
-                    </RatingBar>}
+                    </RatingBar>
+                            <button onClick={() => this.submitRating()}>Submit</button>
+                        </div>}
 
                     {this.state.reported && "Resource has been reported"}
 

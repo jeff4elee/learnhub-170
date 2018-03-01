@@ -61859,8 +61859,8 @@ var _templateObject = _taggedTemplateLiteral(['\n    color: white;\n    display:
     _templateObject5 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n'], ['\n    display: flex;\n    flex-direction: row;\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n    color: black;\n    padding: 2.5%;\n    display: flex;\n    flex-direction: column;\n    width: 60%;\n'], ['\n    color: black;\n    padding: 2.5%;\n    display: flex;\n    flex-direction: column;\n    width: 60%;\n']),
     _templateObject7 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-grow: 1;\n    flex-direction: column;\n    // justify-content: center;\n'], ['\n    display: flex;\n    flex-grow: 1;\n    flex-direction: column;\n    // justify-content: center;\n']),
-    _templateObject8 = _taggedTemplateLiteral(['\n    font-size: 200%;\n'], ['\n    font-size: 200%;\n']),
-    _templateObject9 = _taggedTemplateLiteral(['\n    width: 40%;\n    border-left: thin solid #b2b5ba;\n'], ['\n    width: 40%;\n    border-left: thin solid #b2b5ba;\n']),
+    _templateObject8 = _taggedTemplateLiteral(['\n    font-size: 200%;\n    color: #239b88;\n'], ['\n    font-size: 200%;\n    color: #239b88;\n']),
+    _templateObject9 = _taggedTemplateLiteral(['\n    width: 40%;\n    border-left: thin solid #b2b5ba;\n    font-size: 24px;\n    padding: 2px;\n'], ['\n    width: 40%;\n    border-left: thin solid #b2b5ba;\n    font-size: 24px;\n    padding: 2px;\n']),
     _templateObject10 = _taggedTemplateLiteral(['\n    align-self: flex-end;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n'], ['\n    align-self: flex-end;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61919,6 +61919,8 @@ var SubjectCard = function (_Component) {
         value: function render() {
             var _this2 = this;
 
+            var numSubscribers = this.props.subject.subscribers;
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 SubjectContainer,
                 null,
@@ -61933,7 +61935,7 @@ var SubjectCard = function (_Component) {
                             { to: '/subject/' + this.props.subject.id, style: { textDecoration: 'none' } },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
-                                { style: { fontSize: "1.75em" } },
+                                { style: { fontSize: "1.75em", color: "#239b88" } },
                                 this.props.subject.title
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -61959,7 +61961,12 @@ var SubjectCard = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         HCardFooter,
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(RightImage, { src: 'http://via.placeholder.com/200x150' })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { style: { textAlign: "center" } },
+                            numSubscribers
+                        ),
+                        ' Subscribers'
                     )
                 )
             );
@@ -62005,7 +62012,8 @@ var _templateObject = _taggedTemplateLiteral(['\n    width: 90%;\n    margin: 1e
     _templateObject2 = _taggedTemplateLiteral(['\n    color: gray;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: gray;\n    font-style: italic;\n    font-size: 12px;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n\n    margin-top: 1em;\n\n    background-color: #239b88;\n    color: white;\n    width: 50%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n'], ['\n\n    margin-top: 1em;\n\n    background-color: #239b88;\n    color: white;\n    width: 50%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 85%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    outline: none;\n    flex-direction: column;\n    text-align: center;\n    font-size: 30px;\n    font-weight: bold;\n    border-radius: 2px;\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 85%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    outline: none;\n    flex-direction: column;\n    text-align: center;\n    font-size: 30px;\n    font-weight: bold;\n    border-radius: 2px;\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    margin: 5%;\n    justify-content: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    margin: 5%;\n    justify-content: center;\n']);
+    _templateObject5 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    margin: 5%;\n    justify-content: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    margin: 5%;\n    justify-content: center;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n    align-self: left;\n    margin-left: 5%;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n    align-self: left;\n    margin-left: 5%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62032,6 +62040,8 @@ var NotificationModal = Object(__WEBPACK_IMPORTED_MODULE_2_styled_components__["
 
 var FormContainer = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].form(_templateObject5);
 
+var Error = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject6);
+
 var ResourceForm = function (_Component) {
     _inherits(ResourceForm, _Component);
 
@@ -62045,7 +62055,8 @@ var ResourceForm = function (_Component) {
             title: '',
             url: '',
             description: '',
-            modalIsOpen: false
+            modalIsOpen: false,
+            error: false
         };
 
         _this.handleSubjectChange = _this.handleSubjectChange.bind(_this);
@@ -62080,6 +62091,7 @@ var ResourceForm = function (_Component) {
         key: 'handleSubjectChange',
         value: function handleSubjectChange(event) {
             this.setState(_extends({}, this.state, {
+                error: false,
                 subject: event.target.value
             }));
         }
@@ -62087,6 +62099,7 @@ var ResourceForm = function (_Component) {
         key: 'handleTitleChange',
         value: function handleTitleChange(event) {
             this.setState(_extends({}, this.state, {
+                error: false,
                 title: event.target.value
             }));
         }
@@ -62094,6 +62107,7 @@ var ResourceForm = function (_Component) {
         key: 'handleUrlChange',
         value: function handleUrlChange(event) {
             this.setState(_extends({}, this.state, {
+                error: false,
                 url: event.target.value
             }));
         }
@@ -62102,6 +62116,7 @@ var ResourceForm = function (_Component) {
         value: function handleDescriptionChange(event) {
 
             this.setState(_extends({}, this.state, {
+                error: false,
                 description: event.target.value
             }));
         }
@@ -62111,6 +62126,11 @@ var ResourceForm = function (_Component) {
             var _this2 = this;
 
             event.preventDefault();
+
+            if (!this.state.subject || !this.state.title || !this.state.url || !this.state.description || this.state.subject.length > 20) {
+                this.setState({ error: true });
+                return;
+            }
 
             var valid_url = this.state.url;
 
@@ -62126,6 +62146,7 @@ var ResourceForm = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
@@ -62133,9 +62154,29 @@ var ResourceForm = function (_Component) {
                     FormContainer,
                     { onSubmit: this.handleSubmit },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.subject, onChange: this.handleSubjectChange, placeholder: 'Topic' }),
+                    this.state.error && (!this.state.subject || this.state.subject.length > 20) && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        Error,
+                        null,
+                        ' Invalid - Input is empty or greater than 20 characters '
+                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.title, onChange: this.handleTitleChange, placeholder: 'Title' }),
+                    this.state.error && !this.state.title && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        Error,
+                        null,
+                        ' Invalid Title '
+                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.url, onChange: this.handleUrlChange, placeholder: 'Resource URL' }),
+                    this.state.error && !this.state.url && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        Error,
+                        null,
+                        ' Invalid URL '
+                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.description, onChange: this.handleDescriptionChange, placeholder: 'Description' }),
+                    this.state.error && !this.state.description && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        Error,
+                        null,
+                        ' Invalid Description '
+                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         BootButton,
                         null,
@@ -62362,6 +62403,7 @@ Modal.propTypes = {
   }),
   portalClassName: _propTypes2.default.string,
   bodyOpenClassName: _propTypes2.default.string,
+  htmlOpenClassName: _propTypes2.default.string,
   className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
     base: _propTypes2.default.string.isRequired,
     afterOpen: _propTypes2.default.string.isRequired,
@@ -62384,7 +62426,9 @@ Modal.propTypes = {
   aria: _propTypes2.default.object,
   role: _propTypes2.default.string,
   contentLabel: _propTypes2.default.string,
-  shouldCloseOnEsc: _propTypes2.default.bool
+  shouldCloseOnEsc: _propTypes2.default.bool,
+  overlayRef: _propTypes2.default.func,
+  contentRef: _propTypes2.default.func
 };
 Modal.defaultProps = {
   isOpen: false,
@@ -62463,9 +62507,9 @@ var _ariaAppHider = __webpack_require__(65);
 
 var ariaAppHider = _interopRequireWildcard(_ariaAppHider);
 
-var _bodyClassList = __webpack_require__(181);
+var _classList = __webpack_require__(181);
 
-var bodyClassList = _interopRequireWildcard(_bodyClassList);
+var classList = _interopRequireWildcard(_classList);
 
 var _safeHTMLElement = __webpack_require__(66);
 
@@ -62506,20 +62550,26 @@ var ModalPortal = function (_Component) {
 
     _this.setOverlayRef = function (overlay) {
       _this.overlay = overlay;
+      _this.props.overlayRef && _this.props.overlayRef(overlay);
     };
 
     _this.setContentRef = function (content) {
       _this.content = content;
+      _this.props.contentRef && _this.props.contentRef(content);
     };
 
     _this.afterClose = function () {
       var _this$props = _this.props,
           appElement = _this$props.appElement,
-          ariaHideApp = _this$props.ariaHideApp;
+          ariaHideApp = _this$props.ariaHideApp,
+          htmlOpenClassName = _this$props.htmlOpenClassName,
+          bodyOpenClassName = _this$props.bodyOpenClassName;
 
-      // Remove body class
+      // Remove classes.
 
-      bodyClassList.remove(_this.props.bodyOpenClassName);
+      classList.remove(document.body, bodyOpenClassName);
+
+      htmlOpenClassName && classList.remove(document.getElementsByTagName("html")[0], htmlOpenClassName);
 
       // Reset aria-hidden attribute if all modals have been removed
       if (ariaHideApp && ariaHiddenInstances > 0) {
@@ -62711,6 +62761,10 @@ var ModalPortal = function (_Component) {
           // eslint-disable-next-line no-console
           console.warn('React-Modal: "bodyOpenClassName" prop has been modified. ' + "This may cause unexpected behavior when multiple modals are open.");
         }
+        if (newProps.htmlOpenClassName !== this.props.htmlOpenClassName) {
+          // eslint-disable-next-line no-console
+          console.warn('React-Modal: "htmlOpenClassName" prop has been modified. ' + "This may cause unexpected behavior when multiple modals are open.");
+        }
       }
       // Focus only needs to be set once when the modal is being opened
       if (!this.props.isOpen && newProps.isOpen) {
@@ -62740,11 +62794,15 @@ var ModalPortal = function (_Component) {
       var _props = this.props,
           appElement = _props.appElement,
           ariaHideApp = _props.ariaHideApp,
+          htmlOpenClassName = _props.htmlOpenClassName,
           bodyOpenClassName = _props.bodyOpenClassName;
-      // Add body class
 
-      bodyClassList.add(bodyOpenClassName);
-      // Add aria-hidden to appElement
+      // Add classes.
+
+      classList.add(document.body, bodyOpenClassName);
+
+      htmlOpenClassName && classList.add(document.getElementsByTagName("html")[0], htmlOpenClassName);
+
       if (ariaHideApp) {
         ariaHiddenInstances += 1;
         ariaAppHider.hide(appElement);
@@ -62817,6 +62875,7 @@ ModalPortal.propTypes = {
   className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
   overlayClassName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
   bodyOpenClassName: _propTypes2.default.string,
+  htmlOpenClassName: _propTypes2.default.string,
   ariaHideApp: _propTypes2.default.bool,
   appElement: _propTypes2.default.instanceOf(_safeHTMLElement2.default),
   onAfterOpen: _propTypes2.default.func,
@@ -62829,7 +62888,9 @@ ModalPortal.propTypes = {
   contentLabel: _propTypes2.default.string,
   aria: _propTypes2.default.object,
   children: _propTypes2.default.node,
-  shouldCloseOnEsc: _propTypes2.default.bool
+  shouldCloseOnEsc: _propTypes2.default.bool,
+  overlayRef: _propTypes2.default.func,
+  contentRef: _propTypes2.default.func
 };
 exports.default = ModalPortal;
 module.exports = exports["default"];
@@ -63027,41 +63088,108 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var classListMap = {};
+exports.dumpClassLists = dumpClassLists;
+var htmlClassList = {};
+var docBodyClassList = {};
 
-var addClassToMap = function addClassToMap(className) {
-  // Set variable and default if none
-  if (!classListMap[className]) {
-    classListMap[className] = 0;
+function dumpClassLists() {
+  if (true) {
+    var classes = document.getElementsByTagName("html")[0].className;
+    var buffer = "Show tracked classes:\n\n";
+
+    buffer += "<html /> (" + classes + "):\n";
+    for (var x in htmlClassList) {
+      buffer += "  " + x + " " + htmlClassList[x] + "\n";
+    }
+
+    classes = document.body.className;
+
+    // eslint-disable-next-line max-len
+    buffer += "\n\ndoc.body (" + classes + "):\n";
+    for (var _x in docBodyClassList) {
+      buffer += "  " + _x + " " + docBodyClassList[_x] + "\n";
+    }
+
+    buffer += "\n";
+
+    // eslint-disable-next-line no-console
+    console.log(buffer);
   }
-  classListMap[className] += 1;
+}
+
+/**
+ * Track the number of reference of a class.
+ * @param {object} poll The poll to receive the reference.
+ * @param {string} className The class name.
+ * @return {string}
+ */
+var incrementReference = function incrementReference(poll, className) {
+  if (!poll[className]) {
+    poll[className] = 0;
+  }
+  poll[className] += 1;
   return className;
 };
 
-var removeClassFromMap = function removeClassFromMap(className) {
-  if (classListMap[className]) {
-    classListMap[className] -= 1;
+/**
+ * Drop the reference of a class.
+ * @param {object} poll The poll to receive the reference.
+ * @param {string} className The class name.
+ * @return {string}
+ */
+var decrementReference = function decrementReference(poll, className) {
+  if (poll[className]) {
+    poll[className] -= 1;
   }
   return className;
 };
 
-var add = function add(bodyClass) {
-  bodyClass.split(" ").map(addClassToMap).forEach(function (className) {
-    return document.body.classList.add(className);
+/**
+ * Track a class and add to the given class list.
+ * @param {Object} classListRef A class list of an element.
+ * @param {Object} poll         The poll to be used.
+ * @param {Array}  classes      The list of classes to be tracked.
+ */
+var trackClass = function trackClass(classListRef, poll, classes) {
+  classes.forEach(function (className) {
+    incrementReference(poll, className);
+    classListRef.add(className);
   });
 };
 
-var remove = function remove(bodyClass) {
-  // Remove unused class(es) from body
-  bodyClass.split(" ").map(removeClassFromMap).filter(function (className) {
-    return classListMap[className] === 0;
-  }).forEach(function (className) {
-    return document.body.classList.remove(className);
+/**
+ * Untrack a class and remove from the given class list if the reference
+ * reaches 0.
+ * @param {Object} classListRef A class list of an element.
+ * @param {Object} poll         The poll to be used.
+ * @param {Array}  classes      The list of classes to be untracked.
+ */
+var untrackClass = function untrackClass(classListRef, poll, classes) {
+  classes.forEach(function (className) {
+    decrementReference(poll, className);
+    poll[className] === 0 && classListRef.remove(className);
   });
 };
 
-exports.add = add;
-exports.remove = remove;
+/**
+ * Public inferface to add classes to the document.body.
+ * @param {string} bodyClass The class string to be added.
+ *                           It may contain more then one class
+ *                           with ' ' as separator.
+ */
+var add = exports.add = function add(element, classString) {
+  return trackClass(element.classList, element.nodeName.toLowerCase() == "html" ? htmlClassList : docBodyClassList, classString.split(" "));
+};
+
+/**
+ * Public inferface to remove classes from the document.body.
+ * @param {string} bodyClass The class string to be added.
+ *                           It may contain more then one class
+ *                           with ' ' as separator.
+ */
+var remove = exports.remove = function remove(element, classString) {
+  return untrackClass(element.classList, element.nodeName.toLowerCase() == "html" ? htmlClassList : docBodyClassList, classString.split(" "));
+};
 
 /***/ }),
 /* 182 */
@@ -63352,11 +63480,6 @@ var ResourceCard = function (_Component) {
                                 HCardBodyTitle,
                                 null,
                                 this.props.resource.title
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                HCardBodyDescription,
-                                null,
-                                this.props.resource.description
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 HCardBodyAuthor,
@@ -63855,7 +63978,7 @@ var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    align-i
     _templateObject3 = _taggedTemplateLiteral(['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    display: flex;\n    height: auto;\n    align-items: center;\n    justify-content: center;\n'], ['\n    padding: 1em 1em 0.5em 1em;\n    background: #f4f7f8;\n    display: flex;\n    height: auto;\n    align-items: center;\n    justify-content: center;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    width: 100%;\n    margin: auto;\n    flex-direction: column;\n'], ['\n    width: 100%;\n    margin: auto;\n    flex-direction: column;\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n    text-align: center;\n    margin-bottom: 5%;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n    text-align: center;\n    margin-bottom: 5%;\n']),
     _templateObject7 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63954,6 +64077,16 @@ var LoginPage = function (_Component) {
         key: 'render',
         value: function render() {
 
+            var loginError = "";
+
+            if (this.props.error) {
+                loginError = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    Error,
+                    null,
+                    ' The given credentials do not match any records. '
+                );
+            }
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 LoginLayout,
                 null,
@@ -63963,6 +64096,7 @@ var LoginPage = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         Form,
                         { onSubmit: this.handleSubmit },
+                        loginError,
                         'Email',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.email, onChange: this.handleEmailChange }),
                         'Password',
@@ -64004,7 +64138,9 @@ var LoginPage = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        error: state.auth.loginError
+    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -64430,6 +64566,7 @@ var Resource = function (_Component) {
         _this.report = _this.report.bind(_this);
         _this.changeRating = _this.changeRating.bind(_this);
         _this.addToTask = _this.addToTask.bind(_this);
+        _this.submitRating = _this.submitRating.bind(_this);
         return _this;
     }
 
@@ -64443,13 +64580,13 @@ var Resource = function (_Component) {
             });
         }
     }, {
-        key: 'changeRating',
-        value: function changeRating(newRating) {
+        key: 'submitRating',
+        value: function submitRating() {
             var _this3 = this;
 
             var ratingData = {
                 "resource_id": this.props.match.params.id,
-                "rating": newRating
+                "rating": this.state.rating
             };
 
             this.props.rateResource(ratingData).then(function () {
@@ -64457,9 +64594,18 @@ var Resource = function (_Component) {
             });
         }
     }, {
+        key: 'changeRating',
+        value: function changeRating(newRating) {
+            this.setState({ rating: newRating });
+        }
+    }, {
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.props.fetchResource(this.props.match.params.id);
+            var _this4 = this;
+
+            this.props.fetchResource(this.props.match.params.id).then(function () {
+                _this4.setState({ rating: _this4.props.resources.byId[_this4.props.match.params.id].personal_rating });
+            });
         }
     }, {
         key: 'report',
@@ -64495,10 +64641,9 @@ var Resource = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             var resource = this.props.resources.byId[this.props.match.params.id];
-            var rating = this.props.resources.byId[this.props.match.params.id].personal_rating;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 Container,
@@ -64517,7 +64662,7 @@ var Resource = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        null,
+                        { style: { fontSize: "18px" } },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'b',
                             null,
@@ -64534,18 +64679,29 @@ var Resource = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         ResourceBody,
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Image, { src: 'http://via.placeholder.com/300x250' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            BootButton,
-                            { onClick: function onClick() {
-                                    return _this4.addToTask();
-                                } },
-                            ' Add to Tasks '
+                            'a',
+                            { href: resource.url, target: '_blank' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Image, { src: 'http://via.placeholder.com/300x250' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            null,
+                            ' ',
+                            resource.description,
+                            ' '
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             BootButton,
                             { onClick: function onClick() {
-                                    return _this4.openModal("rate");
+                                    return _this5.addToTask();
+                                } },
+                            ' Save to Tasklist '
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            BootButton,
+                            { onClick: function onClick() {
+                                    return _this5.openModal("rate");
                                 } },
                             ' Rate '
                         ),
@@ -64557,7 +64713,7 @@ var Resource = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             BootButton,
                             { onClick: function onClick() {
-                                    return _this4.openModal("report");
+                                    return _this5.openModal("report");
                                 } },
                             ' Report '
                         )
@@ -64573,14 +64729,25 @@ var Resource = function (_Component) {
                         ariaHideApp: false },
                     this.state.taskAddingModal && "Task added successfully!",
                     this.state.ratingModal && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        RatingBar,
+                        'div',
                         null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_stars___default.a, {
-                            count: 5,
-                            onChange: this.changeRating,
-                            size: 40,
-                            value: rating,
-                            color2: '#ffd700' })
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            RatingBar,
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_stars___default.a, {
+                                count: 5,
+                                onChange: this.changeRating,
+                                size: 50,
+                                value: this.state.rating,
+                                color2: '#ffd700' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    return _this5.submitRating();
+                                } },
+                            'Submit'
+                        )
                     ),
                     this.state.reported && "Resource has been reported"
                 )
@@ -64934,7 +65101,8 @@ exports.default = ReactStars;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_resourceActions__ = __webpack_require__(15);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    margin: 5%;\n    justify-content: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    margin: 5%;\n    justify-content: center;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    margin: 5%;\n    justify-content: center;\n'], ['\n    display: flex;\n    flex-direction: column;\n    margin: 5%;\n    justify-content: center;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    color: #239b88;\n    font-size: 28px;\n    margin-bottom: 5%;\n'], ['\n    color: #239b88;\n    font-size: 28px;\n    margin-bottom: 5%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -64952,6 +65120,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 var Container = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject);
+
+var CommentPageTitle = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject2);
 
 var CommentPage = function (_Component) {
     _inherits(CommentPage, _Component);
@@ -64976,6 +65146,16 @@ var CommentPage = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 Container,
                 null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    CommentPageTitle,
+                    null,
+                    'Commenting on ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        resource.title
+                    )
+                ),
                 resource && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__comment_comment_list__["a" /* default */], { commentIds: resource.comments }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__form_comment_form__["a" /* default */], { resourceId: resource.id })
             );
@@ -65133,7 +65313,7 @@ function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_styled_components__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n"], ["\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n    margin-left: 10%;\n"], ["\n    display: flex;\n    flex-direction: column;\n    margin-left: 10%;\n"]);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66367,7 +66547,7 @@ function reducer() {
         case "RATE_RESOURCE_FULFILLED":
             {
 
-                var _resource5 = action.payload.data.data;
+                var _resource5 = action.payload.data.data.resource;
                 var _newIds2 = [].concat(_toConsumableArray(state.allIds));
 
                 if (!state.allIds.includes(_resource5.id)) {
@@ -66498,7 +66678,7 @@ function reducer() {
             }
         case "USER_LOGOUT_REJECTED":
             {
-                return _extends({}, state, { fetching: false, error: action.payload });
+                return _extends({}, state, { fetching: false, error: action.payloa });
             }
         case "USER_LOGOUT_FULFILLED":
             {
@@ -66545,6 +66725,8 @@ function reducer() {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = reducer;
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -66624,7 +66806,9 @@ function reducer() {
                         var _user = _step2.value;
 
                         _fetchedUsers[_user.id] = _user;
-                        _userIds.push(_user.id);
+                        if (!_userIds.includes(_user.id)) {
+                            _userIds.push(_user.id);
+                        }
                     }
                 } catch (err) {
                     _didIteratorError2 = true;
@@ -66646,6 +66830,20 @@ function reducer() {
                     allIds: [].concat(_toConsumableArray(state.allIds)).concat(_userIds.filter(function (id) {
                         return !state.allIds.includes(id);
                     })),
+                    fetched: true,
+                    fetching: false
+                });
+            }
+        case "USER_LOGIN_FULFILLED":
+            {
+                var _user2 = action.payload.data.data;
+                var newIds = [].concat(_toConsumableArray(state.allIds));
+                if (!newIds.includes(_user2.id)) {
+                    newIds.push(_user2.id);
+                }
+                return _extends({}, state, {
+                    byId: _extends({}, state.byId, _defineProperty({}, _user2.id, _user2)),
+                    allIds: newIds,
                     fetched: true,
                     fetching: false
                 });
@@ -66886,6 +67084,7 @@ function reducer() {
                     fetching: false
                 });
             }
+
         case "STORE::RESET_FULFILLED":
             {
 

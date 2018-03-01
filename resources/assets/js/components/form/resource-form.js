@@ -83,6 +83,14 @@ const FormContainer = styled.form`
     justify-content: center;
 `;
 
+const Error = styled.div`
+    color: red;
+    font-style: italic;
+    font-size: 12px;
+    align-self: left;
+    margin-left: 5%;
+`;
+
 class ResourceForm extends Component {
     constructor(props) {
         super(props);
@@ -92,6 +100,7 @@ class ResourceForm extends Component {
             url: '',
             description: '',
             modalIsOpen: false,
+            error: false
         };
 
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
@@ -121,6 +130,7 @@ class ResourceForm extends Component {
     handleSubjectChange(event) {
         this.setState({
             ...this.state,
+            error: false,
             subject: event.target.value
         });
     }
@@ -128,6 +138,7 @@ class ResourceForm extends Component {
     handleTitleChange(event) {
         this.setState({
             ...this.state,
+            error: false,
             title: event.target.value
         });
     }
@@ -135,6 +146,7 @@ class ResourceForm extends Component {
     handleUrlChange(event) {
         this.setState({
             ...this.state,
+            error: false,
             url: event.target.value
         });
     }
@@ -143,12 +155,19 @@ class ResourceForm extends Component {
 
         this.setState({
             ...this.state,
+            error: false,
             description: event.target.value
         });
     }
 
     handleSubmit(event) {
         event.preventDefault();
+
+        if(!this.state.subject || !this.state.title || !this.state.url || !this.state.description
+            || this.state.subject.length > 20){
+            this.setState({error: true});
+            return;
+        }
 
         let valid_url = this.state.url;
 
@@ -164,15 +183,24 @@ class ResourceForm extends Component {
     }
 
     render() {
+
         return (
             <div>
 
                 <FormContainer onSubmit={this.handleSubmit}>
+
                     <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Topic"/>
+                    { this.state.error && (!this.state.subject || this.state.subject.length > 20) && <Error> Invalid - Input is empty or greater than 20 characters </Error>}
+
                     <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Title"/>
+                    { this.state.error && !this.state.title && <Error> Invalid Title </Error>}
+
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
+                    { this.state.error && !this.state.url && <Error> Invalid URL </Error>}
 
                     <Input type="text" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
+                    { this.state.error && !this.state.description && <Error> Invalid Description </Error>}
+
                     <BootButton> Create Resource </BootButton>
                 </FormContainer>
 

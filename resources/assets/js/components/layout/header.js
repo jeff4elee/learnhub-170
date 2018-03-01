@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
-import {NavLink} from 'react-router-dom'
+import {NavLink, Route, Switch} from 'react-router-dom'
 import history from '../../history';
 
 const HeaderSection = styled.div`

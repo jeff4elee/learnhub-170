@@ -49,15 +49,7 @@ class Home extends Component {
 
         return (
             <div>
-                {/*<button onClick={() => this.dispatchExampleAction()}>CLICK</button>*/}
-                {/*{exampleList}*/}
-
                 <SubjectsContainer>
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
-                    {/*<SubjectCard/>*/}
                     {subjectsList}
                 </SubjectsContainer>
             </div>

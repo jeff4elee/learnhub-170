@@ -86,7 +86,6 @@ class ResourceCard extends Component {
                     <HCard>
                         <HCardBody>
                             <HCardBodyTitle>{this.props.resource.title}</HCardBodyTitle>
-                            <HCardBodyDescription>{this.props.resource.description}</HCardBodyDescription>
                             <HCardBodyAuthor>By {username}</HCardBodyAuthor>
                         </HCardBody>
                         <HCardFooter>

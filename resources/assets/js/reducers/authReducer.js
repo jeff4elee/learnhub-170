@@ -38,7 +38,7 @@ export default function reducer(state={
             return {...state, fetching: true}
         }
         case "USER_LOGOUT_REJECTED": {
-            return {...state, fetching: false, error: action.payload}
+            return {...state, fetching: false, error: action.payloa}
         }
         case "USER_LOGOUT_FULFILLED": {
             return {

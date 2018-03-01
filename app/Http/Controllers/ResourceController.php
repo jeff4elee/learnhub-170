@@ -70,7 +70,6 @@ class ResourceController extends Controller
 
     public function create(Request $request)
     {
-
         //Auth::id() needs to be in web route
         $request['user_id'] = Auth::id();
         $request['url_domain'] = parse_url($request['url'])['host'];
@@ -100,7 +99,8 @@ class ResourceController extends Controller
 
         $seach_term = $request['search_term'];
 
-        $resources = Resource::where('title', 'like', '%' . $seach_term . '%')->get();
+        $resources = Resource::where('title', 'like', '%' . $seach_term . '%')
+            ->orWhere('description', 'like', '%' . $seach_term . '%')->get();
 
         return Response::make([
             'data' => $resources,

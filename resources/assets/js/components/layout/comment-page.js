@@ -12,6 +12,12 @@ const Container = styled.div`
     justify-content: center;
 `;
 
+const CommentPageTitle = styled.div`
+    color: #239b88;
+    font-size: 28px;
+    margin-bottom: 5%;
+`;
+
 class CommentPage extends Component {
     constructor(props) {
         super(props);
@@ -28,6 +34,7 @@ class CommentPage extends Component {
         return (
 
             <Container>
+                <CommentPageTitle>Commenting on <b>{resource.title}</b></CommentPageTitle>
                 {resource && <CommentList commentIds={resource.comments}/>}
                 <CommentForm resourceId={resource.id}/>
             </Container>
