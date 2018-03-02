@@ -23,7 +23,7 @@ class SearchPage extends Component {
         super(props);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.props.fetchPopular();
     }
 
