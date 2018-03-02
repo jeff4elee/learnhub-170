@@ -31,6 +31,6 @@ export function search(searchTerm) {
 export function fetchPopular(){
     return {
         type: 'FETCH_POPULAR',
-        payload: axios.get("/api/popular")
+        payload: axios.get("/api/search/popular")
     }
 }
