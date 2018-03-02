@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //REMEMBER TO SET DB, AND APP URL (sets up php artisan)
-        URL::forceScheme('https');
+        URL::forceScheme('https'); 
         Schema::defaultStringLength(191);
     }
 
