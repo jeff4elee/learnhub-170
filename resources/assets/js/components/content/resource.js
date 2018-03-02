@@ -195,7 +195,7 @@ class Resource extends Component {
                     </div>
                     <ResourceBody>
                         <a href={resource.url} target="_blank"><Image src="http://via.placeholder.com/300x250"/></a>
-                        <div> {resource.description} </div>
+                        <div> <b> Description: </b>{resource.description} </div>
                         <BootButton onClick={() => this.addToTask()}> Save to Tasklist </BootButton>
                         <BootButton onClick={() => this.openModal("rate")}> Rate </BootButton>
                         <BootLink to={"/comments/" + resource.id}> Comment </BootLink>

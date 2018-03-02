@@ -1,6 +1,7 @@
 export default function reducer(state={
     byId: {},
     allIds: [],
+    searchIds: [],
     fetching: false,
     fetched: false,
     error: null
@@ -76,6 +77,51 @@ export default function reducer(state={
                 fetched: true,
                 fetching: false
             }
+        }
+        case "SEARCH_FULFILLED": {
+
+            const fetchedSubjects = {};
+            const subjectIds = [];
+
+            for (const subject of action.payload.data.data.subjects) {
+                fetchedSubjects[subject.id] = subject;
+                subjectIds.push(subject.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedSubjects
+                },
+                allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
+                searchIds: subjectIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
+        case "FETCH_POPULAR_FULFILLED": {
+
+            const fetchedSubjects = {};
+            const subjectIds = [];
+
+            for (const subject of action.payload.data.data.subjects) {
+                fetchedSubjects[subject.id] = subject;
+                subjectIds.push(subject.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedSubjects
+                },
+                allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
+                fetched: true,
+                fetching: false
+            }
+
         }
         case "STORE::RESET_FULFILLED": {
 

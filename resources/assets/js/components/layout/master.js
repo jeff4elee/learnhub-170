@@ -17,6 +17,7 @@ import { resumeSession } from "../../actions/userActions";
 import { resetStore } from "../../actions/exampleActions";
 import history from '../../history';
 import CommentPage from '../layout/comment-page';
+import SearchPageB from './search-page-B';
 
 const Container = styled.div`
     height:100%;
@@ -57,6 +58,7 @@ class Master extends Component {
                                 <Route exact path='/task-board' component={TaskBoard}/>
                                 <Route exact path='/resource-form' component={ResourceForm}/>
                                 <Route exact path='/search' component={SearchPage}/>
+                                <Route exact path='/search-b' component={SearchPageB}/>
                                 <Route exact path='/menu' component={Menu}/>
                                 <Route exact path='/subject/:id' component={SubjectBoard}/>
                                 <Route exact path='/resource/:id' component={Resource}/>

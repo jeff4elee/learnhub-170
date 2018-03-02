@@ -27,7 +27,7 @@ const HCardBody = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 64%;
     font-weight: bold;
 `;
 
@@ -49,7 +49,7 @@ const HCardBodyAuthor = styled.div`
 
 const HCardFooter = styled.div`
     color: #474747;
-    width: 30%;
+    width: 36%;
     justify-content: center;
     display: flex;
     flex-direction: column;

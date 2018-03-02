@@ -1,14 +1,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {searchResource} from "../../actions/resourceActions";
+import {search} from "../../actions/subjectActions";
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 5%;
+    margin: 0%;
     justify-content: center;
+`;
+
+const Form = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+`;
+
+const Search = styled.input`
+    flex-grow: 1;
 `;
 
 class SearchForm extends Component {
@@ -25,7 +35,9 @@ class SearchForm extends Component {
     }
 
     handleSubmit(event) {
-        this.props.searchResource(this.state.searchValue);
+        if(this.state.searchValue.length !== 0) {
+            this.props.search(this.state.searchValue);
+        }
         event.preventDefault();
     }
 
@@ -33,11 +45,10 @@ class SearchForm extends Component {
         return (
 
             <FormContainer>
-                <form onSubmit={this.handleSubmit}>
-                        Search:
-                        <input type="text" value={this.state.searchValue} onChange={this.handleChange}/>
+                <Form onSubmit={this.handleSubmit}>
+                        <Search type="text" placeholder="Search" value={this.state.searchValue} onChange={this.handleChange}/>
                     <input type="submit" value="Submit"/>
-                </form>
+                </Form>
             </FormContainer>
 
         );
@@ -46,7 +57,7 @@ class SearchForm extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        searchResource: searchTerm => dispatch(searchResource(searchTerm)),
+        search: searchTerm => dispatch(search(searchTerm)),
     }
 }
 
