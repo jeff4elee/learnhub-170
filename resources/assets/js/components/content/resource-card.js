@@ -7,7 +7,7 @@ const ResourceContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-    height: 125px;
+    flex: 1 1 1;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -24,7 +24,7 @@ const HCard = styled.div`
 `;
 
 const HCardBody = styled.div`
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     width: 64%;
