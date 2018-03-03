@@ -50,6 +50,8 @@ const Error = styled.div`
     color: red;
     font-style: italic;
     font-size: 12px;
+    text-align: center;
+    margin-bottom: 5%;
 `;
 
 const BootButton = styled.button`
@@ -126,11 +128,20 @@ class LoginPage extends Component {
 
     render() {
 
+        let loginError = "";
+
+        if (this.props.error) {
+            loginError = <Error> The given credentials do not match any records. </Error>;
+        }
+
         return (
             <LoginLayout>
                 <FormContainer>
 
                     <Form onSubmit={this.handleSubmit}>
+
+                        {loginError}
+
                         Email
                         <Input type="text" value={this.state.email} onChange={this.handleEmailChange}/>
 
@@ -152,7 +163,6 @@ class LoginPage extends Component {
                             autoLoad={false}
                             fields="name,email,picture"
                             callback={this.handleFacebookLogin}
-                            cssClass="my-facebook-button-class"
                             icon="fa-facebook"
                         />
 
@@ -167,7 +177,9 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        error: state.auth.loginError
+    };
 }
 
 function mapDispatchToProps(dispatch) {

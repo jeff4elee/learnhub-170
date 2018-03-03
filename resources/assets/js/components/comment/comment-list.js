@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const CommentsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-left: 10%;
 `;
 
 class CommentList extends Component {

@@ -132,7 +132,7 @@ export default function reducer(state={
         }
         case "RATE_RESOURCE_FULFILLED": {
 
-            const resource = action.payload.data.data;
+            const resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
             if(!state.allIds.includes(resource.id)){

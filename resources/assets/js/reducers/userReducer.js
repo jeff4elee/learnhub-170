@@ -42,7 +42,9 @@ export default function reducer(state={
 
             for (const user of action.payload.data.data.users) {
                 fetchedUsers[user.id] = user;
-                userIds.push(user.id);
+                if(!userIds.includes(user.id)) {
+                    userIds.push(user.id);
+                }
             }
 
             return {
@@ -56,6 +58,23 @@ export default function reducer(state={
                 fetching: false
             }
 
+        }
+        case "USER_LOGIN_FULFILLED": {
+            const user = action.payload.data.data;
+            let newIds = [...state.allIds];
+            if(!newIds.includes(user.id)){
+                newIds.push(user.id);
+            }
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [user.id]: user
+                },
+                allIds: newIds,
+                fetched: true,
+                fetching: false,
+            }
         }
         case "STORE::RESET_FULFILLED": {
 

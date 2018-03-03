@@ -63,11 +63,14 @@ const HCardDescription = styled(Link)`
 
 const HCardTitle = styled.h3`
     font-size: 200%;
+    color: #239b88;
 `;
 
 const HCardFooter = styled.div`
     width: 40%;
     border-left: thin solid #b2b5ba;
+    font-size: 24px;
+    padding: 2px;
 `;
 
 const RightImage = styled.img`
@@ -88,12 +91,15 @@ class SubjectCard extends Component {
     }
 
     render() {
+
+        const numSubscribers = this.props.subject.subscribers;
+
         return (
             <SubjectContainer>
                 <HCard>
                     <HCardBody>
                         <HCardDescription to={`/subject/` + this.props.subject.id} style={{textDecoration: 'none'}}>
-                                <div style={{fontSize: "1.75em", color: '#239b88'}}>{this.props.subject.title}</div>
+                                <div style={{fontSize: "1.75em", color: "#239b88"}}>{this.props.subject.title}</div>
                                 {/*<HCardTitle>{this.props.subject.title}</HCardTitle>*/}
                                 <div style={{fontSize: "1em"}}>{this.props.subject.description}</div>
                         </HCardDescription>
@@ -104,7 +110,8 @@ class SubjectCard extends Component {
                         }
                     </HCardBody>
                     <HCardFooter>
-                        <RightImage src="http://via.placeholder.com/200x150"/>
+                        <div style={{textAlign: "center"}}>{ numSubscribers }</div> Subscribers
+                        {/*<RightImage src="http://via.placeholder.com/200x150"/>*/}
                     </HCardFooter>
                 </HCard>
             </SubjectContainer>
