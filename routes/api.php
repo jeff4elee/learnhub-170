@@ -25,6 +25,8 @@ Route::post('/facebook/login', 'Auth\LoginController@facebookLogin');
 
 Route::post('/subject', 'SubjectController@create');
 Route::get('/subject/all', 'SubjectController@all');
+Route::get('/search/popular/', 'SearchController@popular');
+Route::get('/search/{search_term}', 'SearchController@broad_search');
 
 //routes match above route, must be declared later
 Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');
@@ -33,7 +35,7 @@ Route::get('/subject/{subject_id}', 'SubjectController@get');
 
 Route::post('/resource', 'ResourceController@create');
 Route::post('/resource/comment', 'ResourceController@comment');
-Route::post('/resource/search', 'ResourceController@search');
+//Route::post('/resource/search', 'ResourceController@search');
 Route::post('/task', 'TaskController@add_to_tasks');
 Route::get('/task/all', 'TaskController@get_user_tasks');
 Route::get('/task/{task_id}/toggle', 'TaskController@toggle_task');

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {searchResource} from "../../actions/resourceActions";
+import {search} from "../../actions/subjectActions";
 import styled from 'styled-components';
+import FaSearch from 'react-icons/lib/fa/search';
 
 const Input = styled.input`
 
@@ -9,6 +10,7 @@ const Input = styled.input`
     border: none;
     border-bottom: 3px solid #474747;
     background-color: transparent;
+    padding-left: 5px;
 
     &:focus {
         border-bottom: 3px solid #239b88;
@@ -47,6 +49,38 @@ const BootButton = styled.button`
 
 `;
 
+const SearchButton = styled.button`
+    color: white;
+    background-color: #239b88;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    border-color: #239b88;
+    text-align: center;
+    line-height: 2.5em;
+`;
+
+
+const Form = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+`;
+
+const Search = styled.input`
+    flex-grow: 1;
+
+
+    border-color: transparent;
+    border: none;
+    border: 2px solid #239b88;
+    border-radius: 5px 0 0 5px;    
+    padding-left: 2%;
+
+    &:focus {
+        outline: none;
+    }
+`;
+
 class SearchForm extends Component {
     constructor(props) {
         super(props);
@@ -61,7 +95,9 @@ class SearchForm extends Component {
     }
 
     handleSubmit(event) {
-        this.props.searchResource(this.state.searchValue);
+        if(this.state.searchValue.length !== 0) {
+            this.props.search(this.state.searchValue);
+        }
         event.preventDefault();
     }
 
@@ -69,14 +105,14 @@ class SearchForm extends Component {
         return (
 
             <FormContainer>
-                <form onSubmit={this.handleSubmit}>
-                    <div style={{float: 'left'}}>
-                        <Input type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Search"/>
-                    </div>
-                    <div style={{float: 'right'}}>
-                        <BootButton type="submit">Submit</BootButton>
-                    </div>
-                </form>
+                <Form onSubmit={this.handleSubmit}>
+                        <Search type="text" placeholder="Search" value={this.state.searchValue} onChange={this.handleChange}/>
+                    {/*<input type="submit" value="Submit"/>*/}
+                    <SearchButton type="submit">
+
+                            <FaSearch size={20}/>
+                    </SearchButton>
+                </Form>
             </FormContainer>
 
         );
@@ -85,7 +121,7 @@ class SearchForm extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        searchResource: searchTerm => dispatch(searchResource(searchTerm)),
+        search: searchTerm => dispatch(search(searchTerm)),
     }
 }
 

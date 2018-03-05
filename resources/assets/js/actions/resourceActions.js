@@ -25,13 +25,6 @@ export function rateResource(ratingData) {
 
 }
 
-export function searchResource(searchTerm) {
-    return {
-        type: 'SEARCH_RESOURCE',
-        payload: axios.post("/api/resource/search", {"search_term": searchTerm})
-    }
-}
-
 export function commentOnResource(comment) {
 
     return {

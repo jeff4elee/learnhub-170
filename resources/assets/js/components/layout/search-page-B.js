@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import SearchForm from '../form/search-form';
-import ResourceList from './resource-list';
+import SubjectList from './subject-list';
 import {fetchPopular} from '../../actions/subjectActions';
 
 const Container = styled.div`
@@ -12,55 +12,48 @@ const Container = styled.div`
     justify-content: center;
 `;
 
-const SearchBarContainer = styled.div`
-    margin-top: 5%;
-`; 
-
 const SubtitleText = styled.div`
    font-size: 28px;
    font-weight: bold;
    margin-left: 2.5%;
-   margin-top: 5%;
-   color: #474747;
 `;
 
 class SearchPage extends Component {
     constructor(props) {
         super(props);
     }
+
     componentDidMount(){
         this.props.fetchPopular();
     }
+
     render() {
 
-        const byId = this.props.resources.byId;
+        const byId = this.props.subjects.byId;
 
         function sort(arr) {
-            return arr.concat().sort(function(p1, p2) { return byId[p2].rating - byId[p1].rating; });
+            return arr.concat().sort(function(p1, p2) { return byId[p2].subscribers - byId[p1].subscribers; });
         }
 
-        const topResources = sort(this.props.resources.allIds).slice(0, 5);
+        const topSubjects = sort(this.props.subjects.allIds).slice(0, 5);
 
         return (
 
             <Container>
-                <SearchBarContainer>
-                    <SearchForm/>
-                </SearchBarContainer>
+                <SearchForm/>
                 <SubtitleText> Search Results </SubtitleText>
-                <ResourceList resourceIds={this.props.resources.searchIds}/>
-                <SubtitleText> Popular Resources </SubtitleText>
-                <ResourceList resourceIds={topResources}/>
+                <SubjectList subjectIds={this.props.subjects.searchIds}/>
+                <SubtitleText> Popular Topics </SubtitleText>
+                <SubjectList subjectIds={topSubjects}/>
             </Container>
 
         );
     }
 }
 
-
 function mapStateToProps(state) {
     return {
-        resources: state.resources
+        subjects: state.subjects
     }
 }
 

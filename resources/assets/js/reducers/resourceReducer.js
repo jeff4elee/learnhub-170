@@ -151,12 +151,37 @@ export default function reducer(state={
             }
 
         }
-        case "SEARCH_RESOURCE_FULFILLED": {
+        case "SEARCH_FULFILLED": {
 
             const fetchedResources = {};
             const resourceIds = [];
 
-            for (const resource of action.payload.data.data) {
+
+            for (const resource of action.payload.data.data.resources) {
+                fetchedResources[resource.id] = resource;
+                resourceIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedResources
+                },
+                allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
+                searchIds: resourceIds,
+                fetched: true,
+                fetching: false
+            }
+
+        }
+        case "FETCH_POPULAR_FULFILLED": {
+
+            const fetchedResources = {};
+            const resourceIds = [];
+
+
+            for (const resource of action.payload.data.data.resources) {
                 fetchedResources[resource.id] = resource;
                 resourceIds.push(resource.id);
             }

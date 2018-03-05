@@ -51,7 +51,7 @@ const HCardBody = styled.div`
     padding: 2.5%;
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 58%;
 `;
 
 const HCardDescription = styled(Link)`
@@ -67,10 +67,13 @@ const HCardTitle = styled.h3`
 `;
 
 const HCardFooter = styled.div`
-    width: 40%;
-    border-left: thin solid #b2b5ba;
-    font-size: 24px;
+    width: 42%;
+    // border-left: thin solid #b2b5ba;
+    font-size: 120%;
     padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 const RightImage = styled.img`
@@ -110,7 +113,7 @@ class SubjectCard extends Component {
                         }
                     </HCardBody>
                     <HCardFooter>
-                        <div style={{textAlign: "center"}}>{ numSubscribers }</div> Subscribers
+                        <div style={{textAlign: "center"}}>{ numSubscribers } { numSubscribers !== 1 ? "Subscribers" : "Subscriber" }</div>
                         {/*<RightImage src="http://via.placeholder.com/200x150"/>*/}
                     </HCardFooter>
                 </HCard>

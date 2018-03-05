@@ -7,7 +7,7 @@ const ResourceContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-    // height: 125px;
+    flex: 1 1 1;
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -24,39 +24,52 @@ const HCard = styled.div`
 `;
 
 const HCardBody = styled.div`
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 64%;
     font-weight: bold;
 `;
 
 const HCardBodyTitle = styled.div`
     color: #239b88;
-    font-size: 28px;
+    font-size: 130%;
 `;
 
 const HCardBodyDescription = styled.div`
     color: #474747;
     font-size: 18px;
+    width: 100%;
 `;
 
 const HCardBodyAuthor = styled.div`
     color: #474747;
     opacity: .75;
-    font-size: 16px;
+    font-size: 110%;
 `;
 
 const HCardFooter = styled.div`
     color: #474747;
-    width: 30%;
-    justify-content: center;
+    width: 36%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-left: thin solid #b2b5ba;
-    font-size: 20px;
+    justify-content: center;
+    // align-items: center;
+    // border-left: thin solid #b2b5ba;
+    font-size: 130%;
     font-weight: bold;
+    text-align: right;
+    padding-right: 5%;
+    // background-color: red;
+`;
+
+const RatingSubtext = styled.h3`
+    font-size: 75%;
+    font-weight: bold;
+    opacity: .5;
+    padding: 0;
+    padding-top: 2%;
+    margin: 0;
 `;
 
 class ResourceCard extends Component {
@@ -77,7 +90,8 @@ class ResourceCard extends Component {
 
         const ratingDisplay = <div>
             {this.props.resource.rating}
-            {this.props.resource.rating_count > 0 && '/' + 5}
+            {/*{this.props.resource.rating_count > 0 && '/' + 5}*/}
+            {this.props.resource.rating_count > 0 && ' / ' + 5}
         </div>;
 
         return (
@@ -90,8 +104,11 @@ class ResourceCard extends Component {
                         </HCardBody>
                         <HCardFooter>
                             <div> {ratingDisplay} </div>
-                            <div> {this.props.resource.rating_count}
-                                {this.props.resource.rating_count === 1 ? ' rating' : ' ratings'} 
+                            <div> 
+                                <RatingSubtext>
+                                    {this.props.resource.rating_count}
+                                    {this.props.resource.rating_count === 1 ? ' Rating' : ' Ratings'} 
+                                </RatingSubtext>
                             </div>
                         </HCardFooter>
                     </HCard>

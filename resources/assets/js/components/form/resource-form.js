@@ -5,6 +5,12 @@ import {createResource} from '../../actions/resourceActions';
 import history from '../../history';
 import Modal from 'react-modal';
 
+const Container = styled.div`
+    background-color: black
+    border: 2px solid black;
+    border-radius: 5px;
+`;
+
 const Input = styled.input`
     width: 90%;
     margin: 1em 0em;
@@ -13,7 +19,7 @@ const Input = styled.input`
 
     border-color: transparent;
     border: none;
-    border-bottom: 3px solid #474747;
+    border-bottom: 2px solid #474747;
     background-color: transparent;
 
     &:focus {
@@ -22,6 +28,23 @@ const Input = styled.input`
         color: #239b88;
     }
 
+`;
+
+const TextArea = Input.withComponent('textarea');
+
+const TextBox = TextArea.extend`
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #fcfcfc;
+
+    // box-shadow: inset 0 4px 8px -1px rgba(0,0,0,0.1);
+
+    &:focus {
+        border: 2px solid #239b88;
+        border-radius: 5px;
+        outline: none;
+        color: #239b88;
+    }
 `;
 
 const HelperText = styled.div`
@@ -70,9 +93,10 @@ const NotificationModal = styled(Modal)`
     outline: none;
     flex-direction: column;
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    border-radius: 2px;
+    font0family: Helvetica;
+    border-radius: 5px;
 `;
 
 const FormContainer = styled.form`
@@ -81,6 +105,13 @@ const FormContainer = styled.form`
     align-items: center;
     margin: 5%;
     justify-content: center;
+    padding-bottom: 5%;
+
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    background-color: #F5F5F5;
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
 `;
 
 const Error = styled.div`
@@ -185,7 +216,8 @@ class ResourceForm extends Component {
     render() {
 
         return (
-            <div>
+            <Container>
+                {/*<div>*/}
 
                 <FormContainer onSubmit={this.handleSubmit}>
 
@@ -198,7 +230,10 @@ class ResourceForm extends Component {
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
                     { this.state.error && !this.state.url && <Error> Invalid URL </Error>}
 
-                    <Input type="text" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
+                    {/*<Input type="text" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
+                    { this.state.error && !this.state.description && <Error> Invalid Description </Error>}*/}
+
+                    <TextBox rows="7" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"></TextBox>
                     { this.state.error && !this.state.description && <Error> Invalid Description </Error>}
 
                     <BootButton> Create Resource </BootButton>
@@ -215,7 +250,8 @@ class ResourceForm extends Component {
 
                 </NotificationModal>
 
-            </div>
+            </Container>
+            // {/*</div>*/}
         );
     }
 }

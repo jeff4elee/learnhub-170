@@ -35,7 +35,7 @@ const HCardBody = styled(Link)`
 
 const HCardBodyTitle = styled.div`
     color: #239b88;
-    font-size: 28px;
+    font-size: 130%;
 `;
 
 const HCardInfoContainer = styled.div`
@@ -48,13 +48,18 @@ const HCardInfoContainer = styled.div`
 
 const HCardBodyDescription = styled.div`
     color: #474747;
-    font-size: 18px;
+    width: 100%;
+
+    font-size: 110%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const HCardBodyAuthor = styled.div`
     color: #474747;
     opacity: .75;
-    font-size: 16px;
+    font-size: 110%;
 `;
 
 const HCardFooter = styled.div`
@@ -64,7 +69,7 @@ const HCardFooter = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-left: thin solid #b2b5ba;
+    // border-left: thin solid #b2b5ba;
     font-size: 20px;
     font-weight: bold;
 `;

@@ -31,13 +31,22 @@ const CenteredContainer = styled.div`
     justify-content: center;
 `;
 
+const SubtextContainer = CenteredContainer.extend`
+    padding: 0;
+    opacity: .75;
+`;
+
+const FBButtonContainer = CenteredContainer.extend`
+    padding-top: 0;
+`;
+
 const Input = styled.input`
     width: 100%;
     border: none;
     border-radius: 3px;
     margin-bottom: 1em;
     padding: 0.25em;
-    display: inline-flex
+    display: inline-flex;
 `;
 
 const Form = styled.form`
@@ -156,7 +165,13 @@ class LoginPage extends Component {
                         </CenteredContainer>
                     </Form>
 
-                    <CenteredContainer>
+                    <SubtextContainer>
+                        <p>
+                            or
+                        </p>
+                    </SubtextContainer>
+
+                    <FBButtonContainer>
 
                         <FacebookLogin
                             appId="169331733711181"
@@ -166,10 +181,10 @@ class LoginPage extends Component {
                             icon="fa-facebook"
                         />
 
-                    </CenteredContainer>
+                    </FBButtonContainer>
 
                 </FormContainer>
-                <Link to="/register"> Register Here </Link>
+                <Link to="/register"> Don't have an account? Register Here </Link>
             </LoginLayout>
         )
 
