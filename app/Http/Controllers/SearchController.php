@@ -6,6 +6,7 @@ use App\Rating;
 use App\Resource;
 use App\Subject;
 use App\Subscription;
+use App\Tag;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -43,9 +44,16 @@ class SearchController extends Controller
 
     public function broad_search($search_term)
     {
-        $resources = Resource::where('title', 'like', '%' . $search_term . '%')
-            ->orWhere('description', 'like', '%' . $search_term . '%')->get();
-        $subjects = Subject::where('title', 'like', '%' . $search_term . '%')->get();
+        $resources = Resource::where('title', 'like', $search_term . '%')
+            ->orWhere('description', 'like', $search_term . '%')->get()->toArray();
+
+        $tag = Tag::where('tag', $search_term)->first();
+        if($tag != null){
+            $tagged_resources = $tag->resources()->get()->toArray();
+            $resources = array_merge($resources, $tagged_resources);
+        }
+
+        $subjects = Subject::where('title', 'like', $search_term . '%')->get();
 
         return Response::make([
             'data' => ['resources' => $resources,
@@ -57,9 +65,12 @@ class SearchController extends Controller
 
     public function search_resources($search_term)
     {
+        $tagged_resources = Tag::where('tag', $search_term)->first()->resources;
 
-        $resources = Resource::where('title', 'like', '%' . $search_term . '%')
-            ->orWhere('description', 'like', '%' . $search_term . '%')->get();
+        $matching_resources = Resource::where('title', 'like', $search_term . '%')
+            ->orWhere('description', 'like', $search_term . '%')->get()->toArray();
+
+        $resources = array_merge($matching_resources, $tagged_resources);
 
         return Response::make([
             'data' => $resources,
@@ -70,8 +81,7 @@ class SearchController extends Controller
 
     public function search_subjects($search_term)
     {
-
-        $subjects = Subject::where('title', 'like', '%' . $search_term . '%')->get();
+        $subjects = Subject::where('title', 'like', $search_term . '%')->get();
 
         return Response::make([
             'data' => $subjects,

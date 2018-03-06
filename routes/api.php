@@ -27,6 +27,8 @@ Route::post('/subject', 'SubjectController@create');
 Route::get('/subject/all', 'SubjectController@all');
 Route::get('/search/popular/', 'SearchController@popular');
 Route::get('/search/{search_term}', 'SearchController@broad_search');
+Route::get('/feed', 'SubscriptionController@feed');
+Route::get('/self/resources', 'ResourceController@get_owned');
 
 //routes match above route, must be declared later
 Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {createResource} from '../../actions/resourceActions';
 import history from '../../history';
 import Modal from 'react-modal';
+import {isAlphaNumeric} from '../utils';
 
 const Container = styled.div`
     background-color: black
@@ -130,6 +131,7 @@ class ResourceForm extends Component {
             title: '',
             url: '',
             description: '',
+            tags: '',
             modalIsOpen: false,
             error: false
         };
@@ -137,6 +139,7 @@ class ResourceForm extends Component {
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleUrlChange = this.handleUrlChange.bind(this);
+        this.handleTagChange = this.handleTagChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -160,7 +163,6 @@ class ResourceForm extends Component {
 
     handleSubjectChange(event) {
         this.setState({
-            ...this.state,
             error: false,
             subject: event.target.value
         });
@@ -168,7 +170,6 @@ class ResourceForm extends Component {
 
     handleTitleChange(event) {
         this.setState({
-            ...this.state,
             error: false,
             title: event.target.value
         });
@@ -176,16 +177,20 @@ class ResourceForm extends Component {
 
     handleUrlChange(event) {
         this.setState({
-            ...this.state,
             error: false,
             url: event.target.value
+        });
+    }
+
+    handleTagChange(event){
+        this.setState({
+            tags: event.target.value
         });
     }
 
     handleDescriptionChange(event) {
 
         this.setState({
-            ...this.state,
             error: false,
             description: event.target.value
         });
@@ -206,8 +211,28 @@ class ResourceForm extends Component {
             valid_url = 'https://' + valid_url;
         }
 
+        if(!this.state.tags){
+            this.props.createResource({
+                ...this.state, url: valid_url, tags: null
+            }).then(() => {
+                this.openModal();
+            });
+            return;
+        }
+
+        let parsedTags = this.state.tags;
+
+        parsedTags = parsedTags.split(",");
+
+        for(let i = 0; i < parsedTags.length; i++) {
+
+            if(isAlphaNumeric(parsedTags[i])) {
+                parsedTags[i] = parsedTags[i].trim();
+            }
+        }
+
         this.props.createResource({
-            ...this.state, url: valid_url
+            ...this.state, url: valid_url, tags: parsedTags
         }).then(() => {
             this.openModal();
         });
@@ -225,16 +250,15 @@ class ResourceForm extends Component {
                     { this.state.error && (!this.state.subject || this.state.subject.length > 20) && <Error> Invalid - Input is empty or greater than 20 characters </Error>}
 
                     <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Title"/>
-                    { this.state.error && !this.state.title && <Error> Invalid Title </Error>}
+                    { this.state.error && !this.state.title && <Error> Invalid Title - Required </Error>}
 
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
-                    { this.state.error && !this.state.url && <Error> Invalid URL </Error>}
+                    { this.state.error && !this.state.url && <Error> Invalid URL - Required </Error>}
 
-                    {/*<Input type="text" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
-                    { this.state.error && !this.state.description && <Error> Invalid Description </Error>}*/}
+                    {/*<Input type="text" value={this.state.tags} onChange={this.handleTagChange} placeholder="Tags (comma separated)"/>*/}
 
-                    <TextBox rows="7" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"></TextBox>
-                    { this.state.error && !this.state.description && <Error> Invalid Description </Error>}
+                    <TextBox rows="7" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
+                    { this.state.error && !this.state.description && <Error> Invalid Description - Required</Error>}
 
                     <BootButton> Create Resource </BootButton>
                 </FormContainer>
