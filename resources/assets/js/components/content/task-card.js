@@ -80,6 +80,33 @@ const Checkbox = styled.button`
     
 `;
 
+function dateDiffInDays(a, b) {
+
+    var _MS_PER_MINUTE = 1000 * 60;
+
+    var _MS_PER_HOUR = 1000 * 60 * 60;
+
+    var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    // Discard the time and time-zone information.
+    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getDate());
+    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
+
+    var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
+    var timeField = "minutes";
+
+    if(diff >= 60){
+        diff = Math.floor((utc2 - utc1)/_MS_PER_HOUR);
+        timeField = "hours";
+        if(diff >= 24){
+            diff = Math.floor((utc2 - utc1)/_MS_PER_DAY);
+            timeField = "days"
+        }
+    }
+
+    return diff.toString() + " " + timeField + " ago";
+}
+
 class TaskCard extends Component {
     constructor(props) {
         super(props);
@@ -106,12 +133,17 @@ class TaskCard extends Component {
             {resource.rating_count > 0 && '/' + 5}
         </div>;
 
+        let now = new Date(new Date().toUTCString().substr(0, 25));
+        const createdAt = new Date(resource.created_at);
+        const diff = dateDiffInDays(now, createdAt);
+
         return (
             <TaskContainer>
                 <HCard>
                     <HCardBody to={'/resource/' + resource.id} style={{textDecoration: 'none'}}>
                         <HCardBodyTitle>{resource.title}</HCardBodyTitle>
-                        <HCardBodyAuthor>By {username}</HCardBodyAuthor>
+                        <HCardBodyDescription>{resource.description}</HCardBodyDescription>
+                        <HCardBodyAuthor>By {username}, {diff} </HCardBodyAuthor>
                     </HCardBody>
                     <HCardFooter>
                         { this.props.task.completed ?
