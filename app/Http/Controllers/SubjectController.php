@@ -67,7 +67,7 @@ class SubjectController extends Controller
         $subjects = array_merge($subscribed_subjects->toArray(), $other_subjects->toArray());
 
         return Response::make([
-            'data' => $subjects,
+            'data' => ['subjects' => $subjects],
             'success' => true,
             'message' => null
         ], 200);

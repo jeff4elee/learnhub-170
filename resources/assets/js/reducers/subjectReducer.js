@@ -16,7 +16,7 @@ export default function reducer(state={
             const fetchedSubjects = {};
             const subjectIds = [];
 
-            for (const subject of action.payload.data.data) {
+            for (const subject of action.payload.data.data.subjects) {
                 fetchedSubjects[subject.id] = subject;
                 subjectIds.push(subject.id);
             }

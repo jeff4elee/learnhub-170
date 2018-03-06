@@ -15,26 +15,6 @@ use Illuminate\Support\Facades\Response;
 class ResourceController extends Controller
 {
 
-    public function get_feed()
-    {
-        $user = Auth::user();
-        $subs = $user->subscriptions()->get()->toArray();
-
-        $subjectIds = array();
-        foreach ($subs as $sub) {
-            array_push($subjectIds, $sub->id);
-        }
-
-        $subjects = Subject::whereIn('subject_id', $subjectIds)->get();
-        $resources = Resource::whereIn('subject_id', $subjectIds)->latest()->take(10)->get();
-
-        return Response::make([
-            'data' => ['resources' => $resources, 'subjects' => $subjects],
-            'success' => true,
-            'message' => null
-        ], 200);
-    }
-
     public function get_owned()
     {
         $resources = Resource::where('user_id', '=', Auth::id())->get();
