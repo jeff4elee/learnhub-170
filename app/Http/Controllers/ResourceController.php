@@ -80,6 +80,15 @@ class ResourceController extends Controller
         return $this->get($request['resource_id']);
     }
 
+    public function delete($resource_id){
+        $resource = Resource::where('id', $resource_id)->where('user_id', Auth::id())->first();
+        $resource->delete();
+        return Response::make([
+            'data' => $resource->id,
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
 
     public function create(Request $request)
     {
@@ -119,7 +128,6 @@ class ResourceController extends Controller
 
     public function search(Request $request)
     {
-
         $seach_term = $request['search_term'];
 
         $resources = Resource::where('title', 'like', '%' . $seach_term . '%')

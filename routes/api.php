@@ -37,6 +37,7 @@ Route::get('/subject/{subject_id}', 'SubjectController@get');
 
 Route::post('/resource', 'ResourceController@create');
 Route::post('/resource/comment', 'ResourceController@comment');
+Route::delete('/resource/{resource_id}/delete', 'ResourceController@delete');
 //Route::post('/resource/search', 'ResourceController@search');
 Route::post('/task', 'TaskController@add_to_tasks');
 Route::get('/task/all', 'TaskController@get_user_tasks');
