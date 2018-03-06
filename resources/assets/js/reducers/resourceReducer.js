@@ -24,8 +24,7 @@ export default function reducer(state={
                 },
                 allIds: [...state.allIds, resourceId],
                 myIds: [...state.myIds, resourceId],
-                fetching: false,
-                fetched: true}
+            }
         }
         case "FETCH_FEED_FULFILLED": {
 
@@ -47,8 +46,6 @@ export default function reducer(state={
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
                 feedIds: [...state.feedIds].concat(resourceIds.filter(id => !state.feedIds.includes(id))),
                 feedUrl: resourceData.next_page_url,
-                fetched: true,
-                fetching: false
             }
 
         }
@@ -70,8 +67,6 @@ export default function reducer(state={
                     ...fetchedResources
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
-                fetched: true,
-                fetching: false
             }
 
         }
@@ -216,14 +211,39 @@ export default function reducer(state={
                 fetchedOwn: true
             }
         }
+        case "DELETE_RESOURCE_FULFILLED":{
+
+            const resourceId = action.payload.data.data;
+
+            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId);
+
+            let newByIds = {};
+
+            for(const key of keys){
+                newByIds[parseInt(key)] = state.byId[parseInt(key)];
+            }
+
+            return {
+                ...state,
+                byId: newByIds,
+                allIds: state.allIds.filter(id => id !== resourceId),
+                myIds: state.myIds.filter(id => id !== resourceId),
+                fetchedOwn: true
+            }
+
+        }
         case "STORE::RESET_FULFILLED": {
 
             return {
                 byId: {},
                 allIds: [],
                 searchIds: [],
+                feedIds: [],
+                myIds: [],
                 fetching: false,
                 fetched: false,
+                fetchedOwn: false,
+                feedUrl: null,
                 error: null
             }
 
