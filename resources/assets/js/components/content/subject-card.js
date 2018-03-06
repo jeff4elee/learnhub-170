@@ -99,7 +99,7 @@ class SubjectCard extends Component {
 
     fireGa(){
 
-        if(this.props.analytics !== undefined) {
+        if(this.props.analytics === true) {
             ReactGA.event({
                 category: 'Click Through',
                 action: 'Clicked',

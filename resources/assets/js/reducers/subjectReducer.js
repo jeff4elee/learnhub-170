@@ -10,6 +10,7 @@ export default function reducer(state={
         case "FETCH_ALL_SUBJECTS_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
+        case "FETCH_FEED_FULFILLED":
         case "FETCH_ALL_SUBJECTS_FULFILLED": {
 
             const fetchedSubjects = {};

@@ -6,7 +6,7 @@ import ResourceList from './resource-list';
 import {fetchPopular} from '../../actions/subjectActions';
 import ReactGA from 'react-ga';
 
-ReactGA.pageview(window.location.pathname + window.location.search);
+// ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Container = styled.div`
     display: flex;
@@ -53,9 +53,9 @@ class SearchPage extends Component {
                     <SearchForm/>
                 </SearchBarContainer>
                 <SubtitleText> Search Results </SubtitleText>
-                <ResourceList analytics={true} resourceIds={this.props.resources.searchIds}/>
+                <ResourceList analytics={false} resourceIds={this.props.resources.searchIds}/>
                 <SubtitleText> Popular Resources </SubtitleText>
-                <ResourceList analytics={true} resourceIds={topResources}/>
+                <ResourceList analytics={false} resourceIds={topResources}/>
             </Container>
 
         );

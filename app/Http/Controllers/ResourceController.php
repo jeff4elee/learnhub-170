@@ -24,10 +24,12 @@ class ResourceController extends Controller
         foreach ($subs as $sub) {
             array_push($subjectIds, $sub->id);
         }
+
+        $subjects = Subject::whereIn('subject_id', $subjectIds)->get();
         $resources = Resource::whereIn('subject_id', $subjectIds)->latest()->take(10)->get();
 
         return Response::make([
-            'data' => ['resource' => $resources],
+            'data' => ['resources' => $resources, 'subjects' => $subjects],
             'success' => true,
             'message' => null
         ], 200);
