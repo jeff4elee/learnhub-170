@@ -4,6 +4,17 @@ import {fetchFeed} from "../../actions/resourceActions";
 import styled from 'styled-components';
 import ResourceList from '../layout/resource-list';
 
+const SubHeader = styled.h2`
+    font-size: 20px;
+    font-weight: bold;
+    color: #474747;
+    width: 90%;
+    text-align: left;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    margin-top: 6%;
+`;
+
 class Home extends Component {
     constructor(props){
         super(props);
@@ -22,7 +33,10 @@ class Home extends Component {
         let resourceIds = resources.feedIds;
         
         return (
+                <div>
+                    <SubHeader>Resource Feed</SubHeader>
                 <ResourceList resourceIds={resourceIds}/>
+                </div>
         )
     }
 }

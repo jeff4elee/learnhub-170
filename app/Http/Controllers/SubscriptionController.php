@@ -16,7 +16,7 @@ class SubscriptionController extends Controller
 
         $subscriptions = $user->subscriptions->pluck('subject_id')->toArray();
 
-        $subjects = Subject::whereIn('subject_id', $subscriptions)->get();
+        $subjects = Subject::whereIn('id', $subscriptions)->get();
         $resources = Resource::whereIn('subject_id', $subscriptions)->orderBy('created_at', 'desc')->paginate(15);
 
         $users = [];

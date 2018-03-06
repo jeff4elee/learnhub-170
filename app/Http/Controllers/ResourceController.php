@@ -55,8 +55,10 @@ class ResourceController extends Controller
             $resource['personal_rating'] = $rating->rating;
         }
 
+        $subject = $resource->subject()->first();
+
         return Response::make([
-            'data' => ['resource' => $resource],
+            'data' => ['resource' => $resource, 'subject' => $subject],
             'success' => true,
             'message' => null
         ], 200);

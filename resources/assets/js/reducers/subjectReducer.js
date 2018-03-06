@@ -10,7 +10,28 @@ export default function reducer(state={
         case "FETCH_ALL_SUBJECTS_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-        case "FETCH_FEED_FULFILLED":
+        case "FETCH_FEED_FULFILLED": {
+
+            const fetchedSubjects = {};
+            const subjectIds = [];
+
+            for (const subject of action.payload.data.data.subjects) {
+                fetchedSubjects[subject.id] = subject;
+                subjectIds.push(subject.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedSubjects
+                },
+                allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
+                fetched: true,
+                fetching: false
+            }
+
+        }
         case "FETCH_ALL_SUBJECTS_FULFILLED": {
 
             const fetchedSubjects = {};
@@ -34,6 +55,25 @@ export default function reducer(state={
         }
         case "FETCH_ALL_SUBJECTS_REJECTED": {
             return {...state, fetching: false, fetched: false}
+        }
+        case "FETCH_RESOURCE_FULFILLED": {
+
+            let subject = action.payload.data.data.subject;
+            const newIds = [...state.allIds];
+
+            if(!state.allIds.includes(subject.id)){
+                newIds.push(subject.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [subject.id]: subject
+                },
+                allIds: newIds,
+            }
+
         }
         case "FETCH_SUBJECT_FULFILLED": {
 

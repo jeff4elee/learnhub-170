@@ -9,6 +9,7 @@ use App\Subscription;
 use App\Tag;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
@@ -21,9 +22,10 @@ class SearchController extends Controller
             ->select('resource_id', DB::raw('sum(rating) as total'))
             ->orderBy('total', 'desc')->take(5)->get()->toArray();
         $resources = Resource::whereIn('id', $resourceIds)->get();
-        $subjectIds = Subscription::groupBy('subject_id')
-            ->select('subject_id', DB::raw('count(*) as total'))
-            ->orderBy('total', 'desc')->take(5)->get()->toArray();
+//        $subjectIds = Subscription::groupBy('subject_id')
+//            ->select('subject_id', DB::raw('count(*) as total'))
+//            ->orderBy('total', 'desc')->take(5)->get()->toArray();
+        $subjectIds = Auth::user()->subscriptions->pluck('subject_id')->toArray();
         $subjects = Subject::whereIn('id', $subjectIds)->get();
         $userIds = array();
 

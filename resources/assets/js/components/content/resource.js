@@ -101,6 +101,17 @@ const BootLink = styled(Link)`
     }
 `;
 
+const BreadCrumbs = styled.div`
+    margin: 2% 2%;
+    display: flex;
+    flex-direction: row;
+    font-size: 120%;
+`;
+
+const StyledCrumb = styled(Link)`
+    margin-left: 1.5%;
+`;
+
 class Resource extends Component {
     constructor(props) {
         super(props);
@@ -127,7 +138,7 @@ class Resource extends Component {
         });
     }
 
-    submitRating(){
+    submitRating() {
         const ratingData = {
             "resource_id": this.props.match.params.id,
             "rating": this.state.rating
@@ -179,11 +190,18 @@ class Resource extends Component {
     render() {
 
         const resource = this.props.resources.byId[this.props.match.params.id];
+        const subject = this.props.subjects.byId[parseInt(resource.subject_id)];
 
         return (
             <Container>
 
+                {subject !== undefined && <BreadCrumbs>
+                    <div>Go back to subject</div>
+                    <StyledCrumb to={"/subject/" + subject.id}>{subject.title}</StyledCrumb>
+                </BreadCrumbs>}
+
                 <ResourceContainer>
+
                     <h1><b>{resource.title}</b></h1>
                     <div style={{fontSize: "18px"}}>
                         <b>Links To: </b>
@@ -191,7 +209,7 @@ class Resource extends Component {
                     </div>
                     <ResourceBody>
                         <a href={resource.url} target="_blank"><Image src="http://via.placeholder.com/300x250"/></a>
-                        <div> <b> Description: </b>{resource.description} </div>
+                        <div><b> Description: </b>{resource.description} </div>
                         <BootButton onClick={() => this.addToTask()}> Save to Tasklist </BootButton>
                         <BootButton onClick={() => this.openModal("rate")}> Rate </BootButton>
                         <BootLink to={"/comments/" + resource.id}> Comment </BootLink>
@@ -211,17 +229,17 @@ class Resource extends Component {
 
 
                     {this.state.ratingModal &&
-                        <div>
-                    <RatingBar>
-                        <ReactStars
-                            count={5}
-                            onChange={this.changeRating}
-                            size={50}
-                            value={this.state.rating}
-                            color2={'#ffd700'}/>
-                    </RatingBar>
-                            <button onClick={() => this.submitRating()}>Submit</button>
-                        </div>}
+                    <div>
+                        <RatingBar>
+                            <ReactStars
+                                count={5}
+                                onChange={this.changeRating}
+                                size={50}
+                                value={this.state.rating}
+                                color2={'#ffd700'}/>
+                        </RatingBar>
+                        <button onClick={() => this.submitRating()}>Submit</button>
+                    </div>}
 
                     {this.state.reported && "Resource has been reported"}
 
@@ -237,7 +255,8 @@ function mapStateToProps(state) {
     return {
         resources: state.resources,
         comments: state.comments,
-        user: state.auth.user
+        user: state.auth.user,
+        subjects: state.subjects
     }
 }
 
