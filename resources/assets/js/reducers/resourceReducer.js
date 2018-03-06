@@ -228,6 +228,8 @@ export default function reducer(state={
                 byId: newByIds,
                 allIds: state.allIds.filter(id => id !== resourceId),
                 myIds: state.myIds.filter(id => id !== resourceId),
+                searchIds: state.searchIds.filter(id => id !== resourceId),
+                feedIds: state.feedIds.filter(id => id !== resourceId),
                 fetchedOwn: true
             }
 
