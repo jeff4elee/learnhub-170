@@ -126,7 +126,7 @@ class ResourceCard extends Component {
                         <HCardBody>
                             <HCardBodyTitle>{this.props.resource.title}</HCardBodyTitle>
                             <HCardBodyAuthor>By {username}</HCardBodyAuthor>
-                            {/*<HCardBodyTags>{tags}</HCardBodyTags>*/}
+                            <HCardBodyTags>{tags}</HCardBodyTags>
                         </HCardBody>
                         <HCardFooter>
                             <div> {ratingDisplay} </div>
