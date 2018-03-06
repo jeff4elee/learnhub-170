@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Footer from './footer';
 import Header from './header';
-import Home from "../content/home";
-// import Home from "../content/feed";
+// import Home from "../content/home";
+import Home from "../content/feed";
 import ResourceForm from "../form/resource-form";
-import SearchPage from "./search-page-A";
+import SearchPage from "./search-page";
 import Menu from "../menu";
-import TaskBoard from "../task/task-board";
+import TaskBoard from "../content/task-board";
 import LoginPage from "../auth/login-page";
 import RegistrationPage from "../auth/registration-page";
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
@@ -18,9 +18,6 @@ import { resumeSession } from "../../actions/userActions";
 import { resetStore } from "../../actions/exampleActions";
 import history from '../../history';
 import CommentPage from '../layout/comment-page';
-import SearchPageB from './search-page-B';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-115027181-1');
 
 const Container = styled.div`
     height:100%;
@@ -61,7 +58,6 @@ class Master extends Component {
                                 <Route exact path='/task-board' component={TaskBoard}/>
                                 <Route exact path='/resource-form' component={ResourceForm}/>
                                 <Route exact path='/search' component={SearchPage}/>
-                                <Route exact path='/search-b' component={SearchPageB}/>
                                 <Route exact path='/menu' component={Menu}/>
                                 <Route exact path='/subject/:id' component={SubjectBoard}/>
                                 <Route exact path='/resource/:id' component={Resource}/>

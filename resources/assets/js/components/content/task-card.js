@@ -11,8 +11,8 @@ const TaskContainer = styled.div`
     transition: 0.3s;
     width: 90%;
     flex: 1 1 1;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     cursor: pointer;
     
     &:hover {
@@ -115,7 +115,7 @@ class TaskCard extends Component {
                     </HCardBody>
                     <HCardFooter>
                         { this.props.task.completed ?
-                            <FaSquareCheckSquareO style={{cursor: "pointer"}} size={40} onClick={() => this.toggleTask()}/>
+                            <FaSquareCheckSquareO style={{cursor: "pointer", marginLeft: "6%"}} size={40} onClick={() => this.toggleTask()}/>
                             :
                             <FaSquareO style={{cursor: "pointer"}} size={40} onClick={() => this.toggleTask()}/>
                         }

@@ -9,7 +9,7 @@ const BootButton = styled.button`
     color: white;
     display: inline-flex;
     font-weight: bold;
-    padding: 5px 7px;
+    padding: 3px 5px;
     justify-content: center;
     border: none;
     border-radius: 2px;
@@ -99,7 +99,7 @@ class SubjectCard extends Component {
 
     fireGa(){
 
-        if(this.props.analytics !== undefined) {
+        if(this.props.analytics === true) {
             ReactGA.event({
                 category: 'Click Through',
                 action: 'Clicked',
@@ -117,7 +117,7 @@ class SubjectCard extends Component {
                 <HCard>
                     <HCardBody onClick={() => this.fireGa()}>
                         <HCardDescription to={`/subject/` + this.props.subject.id} style={{textDecoration: 'none'}}>
-                                <div style={{fontSize: "1.75em", color: "#239b88"}}>{this.props.subject.title}</div>
+                                <div style={{fontSize: "2em", color: "#239b88"}}>{this.props.subject.title}</div>
                                 {/*<HCardTitle>{this.props.subject.title}</HCardTitle>*/}
                                 <div style={{fontSize: "1em"}}>{this.props.subject.description}</div>
                         </HCardDescription>

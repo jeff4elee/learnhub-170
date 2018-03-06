@@ -24,8 +24,7 @@ export default function reducer(state={
                 },
                 allIds: [...state.allIds, resourceId],
                 myIds: [...state.myIds, resourceId],
-                fetching: false,
-                fetched: true}
+            }
         }
         case "FETCH_FEED_FULFILLED": {
 
@@ -47,8 +46,6 @@ export default function reducer(state={
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
                 feedIds: [...state.feedIds].concat(resourceIds.filter(id => !state.feedIds.includes(id))),
                 feedUrl: resourceData.next_page_url,
-                fetched: true,
-                fetching: false
             }
 
         }
@@ -70,8 +67,6 @@ export default function reducer(state={
                     ...fetchedResources
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
-                fetched: true,
-                fetching: false
             }
 
         }
@@ -243,8 +238,12 @@ export default function reducer(state={
                 byId: {},
                 allIds: [],
                 searchIds: [],
+                feedIds: [],
+                myIds: [],
                 fetching: false,
                 fetched: false,
+                fetchedOwn: false,
+                feedUrl: null,
                 error: null
             }
 

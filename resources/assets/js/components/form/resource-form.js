@@ -263,7 +263,7 @@ class ResourceForm extends Component {
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
                     { (this.state.error && !this.state.url || this.state.urlError) && <Error> Invalid URL </Error>}
 
-                    {/*<Input type="text" value={this.state.tags} onChange={this.handleTagChange} placeholder="Tags (comma separated)"/>*/}
+                    <Input type="text" value={this.state.tags} onChange={this.handleTagChange} placeholder="Tags (comma separated)"/>
 
                     <TextBox rows="7" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
                     { this.state.error && !this.state.description && <Error> Invalid Description</Error>}
