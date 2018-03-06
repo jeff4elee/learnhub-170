@@ -93,6 +93,7 @@ function dateDiffInDays(a, b) {
     var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
 
     var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
+
     var timeField = "minutes";
 
     if(diff >= 60){
@@ -135,7 +136,7 @@ class TaskCard extends Component {
 
         let now = new Date(new Date().toUTCString().substr(0, 25));
         const createdAt = new Date(resource.created_at);
-        const diff = dateDiffInDays(now, createdAt);
+        const diff = dateDiffInDays(createdAt, now);
 
         return (
             <TaskContainer>

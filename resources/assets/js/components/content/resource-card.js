@@ -148,7 +148,7 @@ class ResourceCard extends Component {
 
         let now = new Date(new Date().toUTCString().substr(0, 25));
         const createdAt = new Date(this.props.resource.created_at);
-        const diff = dateDiffInDays(now, createdAt);
+        const diff = dateDiffInDays(createdAt, now);
 
         return (
             <ResourceContainer onClick={() => this.fireGa()}>
