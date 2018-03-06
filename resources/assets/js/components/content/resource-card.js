@@ -85,6 +85,33 @@ const RatingSubtext = styled.h3`
     margin: 0;
 `;
 
+function dateDiffInDays(a, b) {
+
+    var _MS_PER_MINUTE = 1000 * 60;
+
+    var _MS_PER_HOUR = 1000 * 60 * 60;
+
+    var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    // Discard the time and time-zone information.
+    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getDate());
+    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
+
+    var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
+    var timeField = "minutes";
+
+    if(diff >= 60){
+        diff = Math.floor((utc2 - utc1)/_MS_PER_HOUR);
+        timeField = "hours";
+        if(diff >= 24){
+            diff = Math.floor((utc2 - utc1)/_MS_PER_DAY);
+            timeField = "days"
+        }
+    }
+
+    return diff.toString() + " " + timeField + " ago";
+}
+
 class ResourceCard extends Component {
     constructor(props) {
         super(props);
@@ -119,13 +146,17 @@ class ResourceCard extends Component {
             {this.props.resource.rating_count > 0 && ' / ' + 5}
         </div>;
 
+        let now = new Date(new Date().toUTCString().substr(0, 25));
+        const createdAt = new Date(this.props.resource.created_at);
+        const diff = dateDiffInDays(now, createdAt);
+
         return (
             <ResourceContainer onClick={() => this.fireGa()}>
                 <Link to={'/resource/' + this.props.resource.id} style={{textDecoration: 'none'}}>
                     <HCard>
                         <HCardBody>
                             <HCardBodyTitle>{this.props.resource.title}</HCardBodyTitle>
-                            <HCardBodyAuthor>By {username}</HCardBodyAuthor>
+                            <HCardBodyAuthor>By {username}, {diff}</HCardBodyAuthor>
                             <HCardBodyTags>{tags}</HCardBodyTags>
                         </HCardBody>
                         <HCardFooter>
