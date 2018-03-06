@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Response;
 class ResourceController extends Controller
 {
 
-    public function get_feed(){
+    public function get_feed()
+    {
         $user = Auth::user();
         $subs = $user->subscriptions()->get()->toArray();
 
         $subjectIds = array();
-        foreach($subs as $sub){
+        foreach ($subs as $sub) {
             array_push($subjectIds, $sub->id);
         }
         $resources = Resource::whereIn('subject_id', $subjectIds)->latest()->take(10)->get();
@@ -43,12 +44,13 @@ class ResourceController extends Controller
         ], 200);
     }
 
-    public function get_comments($resource_id){
+    public function get_comments($resource_id)
+    {
         $resource = Resource::where('id', '=', $resource_id)->first();
         $comments = Comment::where('resource_id', '=', $resource_id)->get();
         $users = array();
 
-        foreach($comments as $comment){
+        foreach ($comments as $comment) {
             array_push($users, $comment->user()->first());
         }
 
@@ -67,7 +69,7 @@ class ResourceController extends Controller
             ->where('resource_id', '=', $resource_id)
             ->first();
 
-        if($rating !== null){
+        if ($rating !== null) {
             $resource['personal_rating'] = $rating->rating;
         }
 
@@ -104,7 +106,7 @@ class ResourceController extends Controller
         $request['url_domain'] = parse_url($request['url'])['host'];
         $subject_name = $request['subject'];
 
-        if(!$subject_name){
+        if (!$subject_name) {
             return Response::make([
                 'data' => null,
                 'success' => false,
@@ -113,24 +115,18 @@ class ResourceController extends Controller
         }
 
         $subject = Subject::firstOrCreate(['title' => strtolower($subject_name)]);
-//        $subject = Subject::whereRaw('LOWER(title) = ?', [strtolower($subject_name)])->first();
-//
-//        if ($subject === null) {
-//            $subject = new Subject;
-//            $subject->title = $subject_name;
-//            $subject->description = "";
-//            $subject->save();
-//        }
 
         $request['subject_id'] = $subject->id;
 
-        $tags = array();
-        foreach ($request['tags'] as $tag_name){
-            array_push($tags, Tag::firstOrCreate(['tag' => strtolower($tag_name)]));
-        }
-
         $resource = Resource::create($request->all());
-        $resource->tags()->saveMany($tags);
+
+        if ($request['tags'] != null) {
+            $tags = array();
+            foreach ($request['tags'] as $tag_name) {
+                array_push($tags, Tag::firstOrCreate(['tag' => strtolower($tag_name)]));
+            }
+            $resource->tags()->saveMany($tags);
+        }
 
         return Response::make([
             'data' => $resource,
@@ -139,7 +135,8 @@ class ResourceController extends Controller
         ], 200);
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $seach_term = $request['search_term'];
 
@@ -153,7 +150,8 @@ class ResourceController extends Controller
         ], 200);
     }
 
-    public function comment(Request $request){
+    public function comment(Request $request)
+    {
 
         $request['user_id'] = Auth::id();
 

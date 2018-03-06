@@ -205,6 +205,21 @@ class ResourceForm extends Component {
             return;
         }
 
+        let valid_url = this.state.url;
+
+        if (!valid_url.match(/^[a-zA-Z]+:\/\//)) {
+            valid_url = 'https://' + valid_url;
+        }
+
+        if(!this.state.tags){
+            this.props.createResource({
+                ...this.state, url: valid_url, tags: null
+            }).then(() => {
+                this.openModal();
+            });
+            return;
+        }
+
         let parsedTags = this.state.tags;
 
         parsedTags = parsedTags.split(",");
@@ -214,12 +229,6 @@ class ResourceForm extends Component {
             if(isAlphaNumeric(parsedTags[i])) {
                 parsedTags[i] = parsedTags[i].trim();
             }
-        }
-
-        let valid_url = this.state.url;
-
-        if (!valid_url.match(/^[a-zA-Z]+:\/\//)) {
-            valid_url = 'https://' + valid_url;
         }
 
         this.props.createResource({
@@ -246,7 +255,7 @@ class ResourceForm extends Component {
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
                     { this.state.error && !this.state.url && <Error> Invalid URL - Required </Error>}
 
-                    <Input type="text" value={this.state.tags} onChange={this.handleTagChange} placeholder="Tags (comma separated)"/>
+                    {/*<Input type="text" value={this.state.tags} onChange={this.handleTagChange} placeholder="Tags (comma separated)"/>*/}
 
                     <TextBox rows="7" value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Description"/>
                     { this.state.error && !this.state.description && <Error> Invalid Description - Required</Error>}
