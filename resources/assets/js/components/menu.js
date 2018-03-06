@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {sendExampleAction, resetStore} from '../actions/exampleActions';
+import {fetchOwnedResources} from '../actions/resourceActions';
 import styled from 'styled-components';
 import {logoutUser} from "../actions/userActions";
 import history from '../history';
+import ResourceList from './layout/resource-list';
 
-const Container = styled.div`
+const Layout = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+`;
+
+const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,7 +47,13 @@ class Menu extends Component {
         this.handleLogout = this.handleLogout.bind(this);
     }
 
-    handleLogout(){
+    componentWillMount() {
+        if (!this.props.resources.fetchedOwn) {
+            this.props.fetchOwnedResources();
+        }
+    }
+
+    handleLogout() {
         this.props.logoutUser().then(() => {
             history.push("/");
         })
@@ -48,27 +61,36 @@ class Menu extends Component {
 
 
     render() {
+
+        const ownedResources = this.props.resources.myIds;
+
         return (
-            <Container>
-                <div style={{padding: '30% 0%'}}>
-                </div>
-                <BootButton onClick={() => {this.handleLogout()}}> Logout </BootButton>
-            </Container>
+            <Layout>
+                <ButtonContainer>
+                    <div style={{padding: '30% 0%'}}/>
+                    <BootButton onClick={() => {
+                        this.handleLogout()
+                    }}> Logout </BootButton>
+                </ButtonContainer>
+
+                <b> My Resources </b>
+                <ResourceList resourceIds={ownedResources}/>
+            </Layout>
+
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        example: state.example
+        resources: state.resources
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore()),
-        logoutUser: () => dispatch(logoutUser())
+        logoutUser: () => dispatch(logoutUser()),
+        fetchOwnedResources: () => dispatch(fetchOwnedResources())
     }
 }
 

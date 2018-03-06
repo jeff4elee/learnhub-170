@@ -6,6 +6,7 @@ use App\Comment;
 use App\Rating;
 use App\Resource;
 use App\Subject;
+use App\Tag;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,17 @@ class ResourceController extends Controller
 
         return Response::make([
             'data' => ['resource' => $resources],
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
+
+    public function get_owned()
+    {
+        $resources = Resource::where('user_id', '=', Auth::id())->get();
+
+        return Response::make([
+            'data' => ['resources' => $resources],
             'success' => true,
             'message' => null
         ], 200);
@@ -91,19 +103,34 @@ class ResourceController extends Controller
         $request['user_id'] = Auth::id();
         $request['url_domain'] = parse_url($request['url'])['host'];
         $subject_name = $request['subject'];
-        unset($request['subject']);
 
-        $subject = Subject::whereRaw('LOWER(title) = ?', [strtolower($subject_name)])->first();
-
-        if ($subject === null) {
-            $subject = new Subject;
-            $subject->title = $subject_name;
-            $subject->description = "";
-            $subject->save();
+        if(!$subject_name){
+            return Response::make([
+                'data' => null,
+                'success' => false,
+                'message' => null
+            ], 400);
         }
 
+        $subject = Subject::firstOrCreate(['title' => strtolower($subject_name)]);
+//        $subject = Subject::whereRaw('LOWER(title) = ?', [strtolower($subject_name)])->first();
+//
+//        if ($subject === null) {
+//            $subject = new Subject;
+//            $subject->title = $subject_name;
+//            $subject->description = "";
+//            $subject->save();
+//        }
+
         $request['subject_id'] = $subject->id;
+
+        $tags = array();
+        foreach ($request['tags'] as $tag_name){
+            array_push($tags, Tag::firstOrCreate(['tag' => strtolower($tag_name)]));
+        }
+
         $resource = Resource::create($request->all());
+        $resource->tags()->saveMany($tags);
 
         return Response::make([
             'data' => $resource,

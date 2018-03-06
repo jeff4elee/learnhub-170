@@ -24,6 +24,11 @@ class Resource extends Model
         return $this->hasMany('App\Rating');
     }
 
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'taggable');
+    }
+
     public function toArray()
     {
         $array = parent::toArray();
@@ -38,6 +43,7 @@ class Resource extends Model
         }
 
         $array['rating_count'] = $num_ratings;
+        $array['tags'] = $this->tags->pluck('tag')->toArray();
 
         return $array;
     }

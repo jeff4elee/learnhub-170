@@ -9,8 +9,8 @@ const ResourceContainer = styled.div`
     transition: 0.3s;
     width: 90%;
     flex: 1 1 1;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     cursor: pointer;
     
     &:hover {
@@ -28,7 +28,7 @@ const HCardBody = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 64%;
+    width: 70%;
     font-weight: bold;
     overflow-wrap: break-word;
 `;
@@ -44,9 +44,26 @@ const HCardBodyAuthor = styled.div`
     font-size: 110%;
 `;
 
+const HCardBodyTags = styled.div`
+    margin-top: 2px;
+    display: flex;
+    overflow: scroll;
+    list-style-type:none;
+`;
+
+const Tag = styled.div`
+    background-color: #239b88;
+    color: white;
+    opacity: .75;
+    margin-right: 2px;
+    padding: 0px 4px;
+    font-size: 80%;
+    white-space: nowrap;
+`;
+
 const HCardFooter = styled.div`
     color: #474747;
-    width: 36%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,17 +106,16 @@ class ResourceCard extends Component {
     render() {
 
         const userId = this.props.resource.user_id;
-        const user = this.props.users.byId[userId];
+        const username = this.props.users.byId[userId].name;
+        const tags = this.props.resource.tags.map(tag => <Tag key={tag}>{tag}</Tag>);
 
-        let username = '';
-
-        if (user !== undefined) {
-            username = user.name;
-        }
+        // let username = '';
+        // if (user !== undefined) {
+        //     username = user.name;
+        // }
 
         const ratingDisplay = <div>
             {this.props.resource.rating}
-            {/*{this.props.resource.rating_count > 0 && '/' + 5}*/}
             {this.props.resource.rating_count > 0 && ' / ' + 5}
         </div>;
 
@@ -110,6 +126,7 @@ class ResourceCard extends Component {
                         <HCardBody>
                             <HCardBodyTitle>{this.props.resource.title}</HCardBodyTitle>
                             <HCardBodyAuthor>By {username}</HCardBodyAuthor>
+                            <HCardBodyTags>{tags}</HCardBodyTags>
                         </HCardBody>
                         <HCardFooter>
                             <div> {ratingDisplay} </div>
