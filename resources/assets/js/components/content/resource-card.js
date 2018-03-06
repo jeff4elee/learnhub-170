@@ -79,7 +79,7 @@ class ResourceCard extends Component {
 
         if(this.props.analytics !== undefined) {
             ReactGA.event({
-                category: 'Resource',
+                category: 'Click Through',
                 action: 'Clicked',
             });
         }
