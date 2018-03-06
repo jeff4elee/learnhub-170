@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {deleteResource} from "../../actions/resourceActions";
 import ResourceCard from "../content/resource-card";
-import FaTrash from "react-icons/lib/fa/trash";
 import FaX from "react-icons/lib/fa/times-circle";
 
 const ResourcesContainer = styled.div`
@@ -43,7 +43,7 @@ class EditableResourceList extends Component {
             resourcesList = this.props.resourceIds.map(id =>
                 <EditableCardLayout key={id}>
                     <ResourceCard analytics={this.props.analytics} resource={resources[id]}/>
-                    <TrashBox><FaX size={28}/></TrashBox>
+                    <TrashBox><FaX size={28} onClick={() => this.props.deleteResource(id)}/></TrashBox>
                 </EditableCardLayout>
             );
         }
@@ -61,4 +61,10 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, null)(EditableResourceList);
+function mapDispatchToProps(dispatch){
+    return{
+        deleteResource: (resource_id) => dispatch(deleteResource(resource_id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditableResourceList);

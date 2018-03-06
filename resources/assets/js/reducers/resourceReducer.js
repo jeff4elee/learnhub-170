@@ -216,6 +216,27 @@ export default function reducer(state={
                 fetchedOwn: true
             }
         }
+        case "DELETE_RESOURCE_FULFILLED":{
+
+            const resourceId = action.payload.data.data;
+
+            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId);
+
+            let newByIds = {};
+
+            for(const key of keys){
+                newByIds[parseInt(key)] = state.byId[parseInt(key)];
+            }
+
+            return {
+                ...state,
+                byId: newByIds,
+                allIds: state.allIds.filter(id => id !== resourceId),
+                myIds: state.myIds.filter(id => id !== resourceId),
+                fetchedOwn: true
+            }
+
+        }
         case "STORE::RESET_FULFILLED": {
 
             return {

@@ -32,6 +32,13 @@ export function rateResource(ratingData) {
 
 }
 
+export function deleteResource(resource_id) {
+    return {
+        type: 'DELETE_RESOURCE',
+        payload: axios.delete("/api/resource/" + resource_id +"/delete")
+    }
+}
+
 export function commentOnResource(comment) {
 
     return {
