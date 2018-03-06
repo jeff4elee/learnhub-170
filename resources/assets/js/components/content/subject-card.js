@@ -101,7 +101,7 @@ class SubjectCard extends Component {
 
         if(this.props.analytics !== undefined) {
             ReactGA.event({
-                category: 'Subject',
+                category: 'Click Through',
                 action: 'Clicked',
             });
         }
