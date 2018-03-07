@@ -20,7 +20,7 @@ class ResourceList extends Component {
         
         let resourcesList = [];
         if(this.props.resourceIds) {
-            resourcesList = this.props.resourceIds.map(id => <ResourceCard key={id} resource={resources[id]}/>);
+            resourcesList = this.props.resourceIds.map(id => <ResourceCard analytics={this.props.analytics} key={id} resource={resources[id]}/>);
         }
         return (
             <ResourcesContainer>

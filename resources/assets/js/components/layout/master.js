@@ -18,6 +18,8 @@ import { resetStore } from "../../actions/exampleActions";
 import history from '../../history';
 import CommentPage from '../layout/comment-page';
 import SearchPageB from './search-page-B';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-115027181-1');
 
 const Container = styled.div`
     height:100%;

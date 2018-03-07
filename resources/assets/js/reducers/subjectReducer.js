@@ -128,6 +128,7 @@ export default function reducer(state={
             return {
                 byId: {},
                 allIds: [],
+                searchIds: [],
                 fetching: false,
                 fetched: false,
                 error: null

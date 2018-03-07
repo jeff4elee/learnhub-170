@@ -35,6 +35,7 @@ export default function reducer(state={
         case "FETCH_SUBJECT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
+        case "FETCH_POPULAR_FULFILLED":
         case "FETCH_COMMENTS_FULFILLED": {
 
             const fetchedUsers = {};

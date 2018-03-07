@@ -20,7 +20,7 @@ class SubjectList extends Component {
         
         let subjectsList = [];
         if(this.props.subjectIds) {
-            subjectsList = this.props.subjectIds.map(id => <SubjectCard key={id} subject={subjects[id]}/>);
+            subjectsList = this.props.subjectIds.map(id => <SubjectCard analytics={this.props.analytics} key={id} subject={subjects[id]}/>);
         }
         return (
             <SubjectsContainer>

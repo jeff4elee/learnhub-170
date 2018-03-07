@@ -20,7 +20,8 @@ const NotificationModal = styled(Modal)`
     align-content:center;
     flex-direction:column;
     background-color: #239b88;
-    border: 1px solid #ccc;
+    border: 1px solid transparent
+    border-radius: 5px;
     outline: none;
     text-align: center;
     color: white;
@@ -99,6 +100,14 @@ const BootLink = styled(Link)`
     &:hover {
         background-color: #166357;
     }
+`;
+
+const SubtitleText = styled.div`
+   font-size: 28px;
+   font-weight: bold;
+   margin-top: 5%;
+   color: #474747;
+   overflow-wrap: break-word;
 `;
 
 class Resource extends Component {
@@ -184,8 +193,10 @@ class Resource extends Component {
             <Container>
 
                 <ResourceContainer>
-                    <h1><b>{resource.title}</b></h1>
-                    <div style={{fontSize: "18px"}}>
+                    <SubtitleText>
+                        {resource.title}
+                    </SubtitleText>
+                    <div style={{fontSize: "100%"}}>
                         <b>Links To: </b>
                         <a href={resource.url} target="_blank"> {resource.url_domain} </a>
                     </div>

@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import SearchForm from '../form/search-form';
 import ResourceList from './resource-list';
 import {fetchPopular} from '../../actions/subjectActions';
+import ReactGA from 'react-ga';
+
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Container = styled.div`
     display: flex;
@@ -28,10 +31,11 @@ class SearchPage extends Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount(){
+
+    componentWillMount(){
         this.props.fetchPopular();
     }
-    render() {
+    render(){
 
         const byId = this.props.resources.byId;
 
@@ -48,9 +52,9 @@ class SearchPage extends Component {
                     <SearchForm/>
                 </SearchBarContainer>
                 <SubtitleText> Search Results </SubtitleText>
-                <ResourceList resourceIds={this.props.resources.searchIds}/>
+                <ResourceList analytics={true} resourceIds={this.props.resources.searchIds}/>
                 <SubtitleText> Popular Resources </SubtitleText>
-                <ResourceList resourceIds={topResources}/>
+                <ResourceList analytics={true} resourceIds={topResources}/>
             </Container>
 
         );

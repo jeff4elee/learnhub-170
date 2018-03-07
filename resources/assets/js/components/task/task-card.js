@@ -10,6 +10,10 @@ const TaskContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
+<<<<<<< HEAD
+=======
+    flex: 1 1 1;
+>>>>>>> b7ffee55275c1d30659d39f9b5f225ddc4b7fab2
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -26,11 +30,12 @@ const HCard = styled.div`
 `;
 
 const HCardBody = styled(Link)`
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     width: 70%;
     font-weight: bold;
+    overflow-wrap: break-word;
 `;
 
 const HCardBodyTitle = styled.div`

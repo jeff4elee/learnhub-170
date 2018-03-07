@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import SearchForm from '../form/search-form';
 import SubjectList from './subject-list';
 import {fetchPopular} from '../../actions/subjectActions';
+import ReactGA from 'react-ga';
+
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Container = styled.div`
     display: flex;
@@ -23,7 +26,7 @@ class SearchPage extends Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.props.fetchPopular();
     }
 
@@ -42,9 +45,9 @@ class SearchPage extends Component {
             <Container>
                 <SearchForm/>
                 <SubtitleText> Search Results </SubtitleText>
-                <SubjectList subjectIds={this.props.subjects.searchIds}/>
+                <SubjectList analytics={true} subjectIds={this.props.subjects.searchIds}/>
                 <SubtitleText> Popular Topics </SubtitleText>
-                <SubjectList subjectIds={topSubjects}/>
+                <SubjectList analytics={true} subjectIds={topSubjects}/>
             </Container>
 
         );

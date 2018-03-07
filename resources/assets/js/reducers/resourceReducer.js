@@ -193,7 +193,6 @@ export default function reducer(state={
                     ...fetchedResources
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
-                searchIds: resourceIds,
                 fetched: true,
                 fetching: false
             }

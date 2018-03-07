@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
 import {toggleSubscription} from "../../actions/subjectActions";
+import * as ReactGA from "react-ga";
 
 const BootButton = styled.button`
     color: white;
@@ -52,6 +53,7 @@ const HCardBody = styled.div`
     display: flex;
     flex-direction: column;
     width: 58%;
+    overflow-wrap: break-word;
 `;
 
 const HCardDescription = styled(Link)`
@@ -87,10 +89,22 @@ class SubjectCard extends Component {
     constructor(props) {
         super(props);
         this.toggleSubscription = this.toggleSubscription.bind(this);
+        this.fireGa = this.fireGa.bind(this);
     }
 
     toggleSubscription(subjectId) {
         this.props.toggleSubscription(subjectId)
+    }
+
+    fireGa(){
+
+        if(this.props.analytics !== undefined) {
+            ReactGA.event({
+                category: 'Subject',
+                action: 'Clicked',
+            });
+        }
+
     }
 
     render() {
@@ -100,7 +114,7 @@ class SubjectCard extends Component {
         return (
             <SubjectContainer>
                 <HCard>
-                    <HCardBody>
+                    <HCardBody onClick={() => this.fireGa()}>
                         <HCardDescription to={`/subject/` + this.props.subject.id} style={{textDecoration: 'none'}}>
                                 <div style={{fontSize: "1.75em", color: "#239b88"}}>{this.props.subject.title}</div>
                                 {/*<HCardTitle>{this.props.subject.title}</HCardTitle>*/}

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom'
+import * as ReactGA from "react-ga";
 
 const ResourceContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
@@ -29,6 +30,8 @@ const HCardBody = styled.div`
     flex-direction: column;
     width: 64%;
     font-weight: bold;
+
+    overflow-wrap: break-word;
 `;
 
 const HCardBodyTitle = styled.div`
@@ -75,6 +78,19 @@ const RatingSubtext = styled.h3`
 class ResourceCard extends Component {
     constructor(props) {
         super(props);
+
+        this.fireGa = this.fireGa.bind(this);
+    }
+
+    fireGa(){
+
+        if(this.props.analytics !== undefined) {
+            ReactGA.event({
+                category: 'Resource',
+                action: 'Clicked',
+            });
+        }
+
     }
 
     render() {
@@ -95,7 +111,7 @@ class ResourceCard extends Component {
         </div>;
 
         return (
-            <ResourceContainer>
+            <ResourceContainer onClick={() => this.fireGa()}>
                 <Link to={'/resource/' + this.props.resource.id} style={{textDecoration: 'none'}}>
                     <HCard>
                         <HCardBody>

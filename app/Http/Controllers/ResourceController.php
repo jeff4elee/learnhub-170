@@ -14,6 +14,23 @@ use Illuminate\Support\Facades\Response;
 class ResourceController extends Controller
 {
 
+    public function get_feed(){
+        $user = Auth::user();
+        $subs = $user->subscriptions()->get()->toArray();
+
+        $subjectIds = array();
+        foreach($subs as $sub){
+            array_push($subjectIds, $sub->id);
+        }
+        $resources = Resource::whereIn('subject_id', $subjectIds)->latest()->take(10)->get();
+
+        return Response::make([
+            'data' => ['resource' => $resources],
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
+
     public function get_comments($resource_id){
         $resource = Resource::where('id', '=', $resource_id)->first();
         $comments = Comment::where('resource_id', '=', $resource_id)->get();
