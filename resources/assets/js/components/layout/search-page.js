@@ -32,8 +32,7 @@ const SearchOptions = styled.div`
 `;
 
 const Option = styled.div`
-    // margin: 0% 5%;
-    padding: 0% 2.5%;
+    margin: 0% 2.5%;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
@@ -49,6 +48,11 @@ const StyledBreak = styled.hr`
     margin-bottom: 3%;
     padding: 0;
     width: 99%;
+`;
+
+const EmptyDisplay = styled.div`
+    text-align: center;
+    margin: 5%;
 `;
 
 class SearchPage extends Component {
@@ -99,19 +103,35 @@ class SearchPage extends Component {
                 <SearchForm/>
                 {/*<SubtitleText> Search Results By </SubtitleText>*/}
                 <SearchOptions>
-                    <b style={{color:"#474747"}}>Search results by: </b>
-                    <Option style={this.state.topicSearch === true ? {color: "#239b88", borderBottom: "1px solid #aaa"} : {color: "#636B6F"}}
+                    <b style={{color: "#474747"}}>Search results by: </b>
+                    <Option style={this.state.topicSearch === true ? {
+                        color: "#239b88",
+                        borderBottom: "1px solid #aaa"
+                    } : {color: "#636B6F"}}
                             onClick={() => this.toggleToTopicSearch()}>Topic</Option>
 
-                    <Option style={this.state.resourceSearch === true ? {color: "#239b88", borderBottom: "1px solid #aaa"} : {color: "#636B6F"}}
+                    <Option style={this.state.resourceSearch === true ? {
+                        color: "#239b88",
+                        borderBottom: "1px solid #aaa"
+                    } : {color: "#636B6F"}}
                             onClick={() => this.toggleToResourceSearch()}>Resource</Option>
                 </SearchOptions>
+
                 {this.state.topicSearch === true &&
                 <SubjectList analytics={false} subjectIds={this.props.subjects.searchIds}/>
                 }
+                {this.state.topicSearch === true && this.props.subjects.emptySearch &&
+                <EmptyDisplay>No matching subjects...</EmptyDisplay>
+                }
+
                 {this.state.resourceSearch === true &&
                 <ResourceList analytics={false} resourceIds={this.props.resources.searchIds}/>
                 }
+
+                {this.state.resourceSearch === true && this.props.resources.emptySearch &&
+                <EmptyDisplay>No matching resources...</EmptyDisplay>
+                }
+
                 <StyledBreak/>
                 <SubtitleText> My Topic Subscriptions </SubtitleText>
                 <SubjectList analytics={false} subjectIds={subscribedSubjects}/>

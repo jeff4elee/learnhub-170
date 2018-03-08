@@ -63,7 +63,7 @@ class TaskBoard extends Component {
                     </Title>
                 </TitleContainer>
                 <TaskContainer>
-                    {taskList === undefined ? "Your task list is empty! Find a resource to add." : taskList}
+                    {taskList.length === 0 ? "Your task list is empty! Find a resource to add." : taskList}
                 </TaskContainer>
             </div>
         )
