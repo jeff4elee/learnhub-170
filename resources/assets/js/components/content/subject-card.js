@@ -85,7 +85,6 @@ const RightImage = styled.img`
     width: 100%;
 `;
 
-
 class SubjectCard extends Component {
     constructor(props) {
         super(props);

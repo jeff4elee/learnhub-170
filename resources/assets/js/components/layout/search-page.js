@@ -20,6 +20,8 @@ const SubtitleText = styled.div`
     font-size: 20px;
     font-weight: bold;
     margin-left: 2.5%;
+    margin-top: 2.5%;
+    color: #474747;
 `;
 
 const SearchOptions = styled.div`
@@ -30,7 +32,8 @@ const SearchOptions = styled.div`
 `;
 
 const Option = styled.div`
-    margin: 0% 5%;
+    // margin: 0% 5%;
+    padding: 0% 2.5%;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
@@ -94,17 +97,13 @@ class SearchPage extends Component {
 
             <Container>
                 <SearchForm/>
-                <SubtitleText> Search Results By </SubtitleText>
+                {/*<SubtitleText> Search Results By </SubtitleText>*/}
                 <SearchOptions>
-                    <Option style={this.state.topicSearch === true ? {
-                        color: "#239b88", borderBottom: "1px solid #aaa"
-                    } : {color: "black"}}
+                    <b style={{color:"#474747"}}>Search results by: </b>
+                    <Option style={this.state.topicSearch === true ? {color: "#239b88", borderBottom: "1px solid #aaa"} : {color: "#636B6F"}}
                             onClick={() => this.toggleToTopicSearch()}>Topic</Option>
 
-                    <Option style={this.state.resourceSearch === true ? {
-                        color: "#239b88",
-                        borderBottom: "1px solid #aaa"
-                    } : {color: "black"}}
+                    <Option style={this.state.resourceSearch === true ? {color: "#239b88", borderBottom: "1px solid #aaa"} : {color: "#636B6F"}}
                             onClick={() => this.toggleToResourceSearch()}>Resource</Option>
                 </SearchOptions>
                 {this.state.topicSearch === true &&

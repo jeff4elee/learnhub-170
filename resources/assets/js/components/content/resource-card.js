@@ -30,18 +30,25 @@ const HCardBody = styled.div`
     flex-direction: column;
     width: 70%;
     font-weight: bold;
+
     overflow-wrap: break-word;
 `;
 
 const HCardBodyTitle = styled.div`
     color: #239b88;
-    font-size: 130%;
+    font-size: 140%;
+`;
+
+const HCardBodyDescription = styled.div`
+    color: #474747;
+    font-size: 18px;
+    width: 100%;
 `;
 
 const HCardBodyAuthor = styled.div`
     color: #474747;
     opacity: .75;
-    font-size: 110%;
+    font-size: 100%;
 `;
 
 const HCardBodyTags = styled.div`

@@ -12,15 +12,17 @@ const Container = styled.div`
     border-radius: 5px;
 `;
 
-const Input = styled.input`
+const StyledInput = styled.input`
     width: 90%;
-    margin: 1em 0em;
+    margin: 5% 0 2.5% 0;
     padding: 0.25em;
     display: inline-flex
 
     border-color: transparent;
     border: none;
-    border-bottom: 2px solid #474747;
+    border-bottom: 2px solid #636B6F;
+
+
     background-color: transparent;
 
     &:focus {
@@ -31,17 +33,39 @@ const Input = styled.input`
 
 `;
 
+const Input = styled.input`
+    width: 90%;
+    margin: 2.5% 0;
+    padding: 0.25em;
+    display: inline-flex;
+
+
+    background-color: white;
+    border: none;
+    // border: 2px solid transparent;
+    border-radius: 5px;
+
+    box-shadow: inset 0 7px 9px -9px rgba(0,0,0,0.4);
+
+    &:focus {
+        border: 3px solid #239b88;
+        outline: none;
+        color: #239b88;
+    }
+
+`;
+
 const TextArea = Input.withComponent('textarea');
 
 const TextBox = TextArea.extend`
-    border: 2px solid transparent;
+    // border: 2px solid transparent;
     border-radius: 5px;
     background-color: #fcfcfc;
 
     // box-shadow: inset 0 4px 8px -1px rgba(0,0,0,0.1);
 
     &:focus {
-        border: 2px solid #239b88;
+        border: 3px solid #239b88;
         border-radius: 5px;
         outline: none;
         color: #239b88;
@@ -250,14 +274,12 @@ class ResourceForm extends Component {
 
         return (
             <Container>
-                {/*<div>*/}
-
                 <FormContainer onSubmit={this.handleSubmit}>
 
-                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Topic"/>
-                    { this.state.error && (!this.state.subject || this.state.subject.length > 16) && <Error> Invalid - Input is empty or greater than 16 characters </Error>}
+                    <StyledInput type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Subject"/>
+                    { this.state.error && (!this.state.subject || this.state.subject.length > 20) && <Error> Invalid - Input is empty or greater than 20 characters </Error>}
 
-                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Title"/>
+                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Resource Title"/>
                     { this.state.error && !this.state.title && <Error> Invalid Title</Error>}
 
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
@@ -281,9 +303,7 @@ class ResourceForm extends Component {
                     Resource Successfully Created!
 
                 </NotificationModal>
-
             </Container>
-            // {/*</div>*/}
         );
     }
 }
