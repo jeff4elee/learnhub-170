@@ -119,7 +119,7 @@ class SubjectCard extends Component {
                         <HCardDescription to={`/subject/` + this.props.subject.id} style={{textDecoration: 'none'}}>
                                 <div style={{fontSize: "2em", color: "#239b88"}}>{this.props.subject.title}</div>
                                 {/*<HCardTitle>{this.props.subject.title}</HCardTitle>*/}
-                                <div style={{fontSize: "1em"}}>{this.props.subject.description}</div>
+                                <div style={{fontSize: "1em", color: "#666"}}>{ numSubscribers } { numSubscribers !== 1 ? "Subscribers" : "Subscriber" }</div>
                         </HCardDescription>
                         {this.props.subject.subscribed ?
                             <UnsubscribeButton onClick={() => this.toggleSubscription(this.props.subject.id)}>Unsubscribe</UnsubscribeButton>
@@ -128,7 +128,7 @@ class SubjectCard extends Component {
                         }
                     </HCardBody>
                     <HCardFooter>
-                        <div style={{textAlign: "center"}}>{ numSubscribers } { numSubscribers !== 1 ? "Subscribers" : "Subscriber" }</div>
+                        {/*<div style={{textAlign: "center"}}>{ numSubscribers } { numSubscribers !== 1 ? "Subscribers" : "Subscriber" }</div>*/}
                         {/*<RightImage src="http://via.placeholder.com/200x150"/>*/}
                     </HCardFooter>
                 </HCard>

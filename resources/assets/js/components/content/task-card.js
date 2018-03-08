@@ -80,7 +80,7 @@ const Checkbox = styled.button`
     
 `;
 
-function dateDiffInDays(a, b) {
+function dateDiffInDays(utc1, utc2) {
 
     var _MS_PER_MINUTE = 1000 * 60;
 
@@ -88,20 +88,24 @@ function dateDiffInDays(a, b) {
 
     var _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-    // Discard the time and time-zone information.
-    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getDate());
-    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
+    var diff = Math.floor((utc2 - utc1) / _MS_PER_MINUTE);
+    var timeField = "min";
 
-    var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
+    if (diff >= 60) {
+        diff = Math.floor((utc2 - utc1) / _MS_PER_HOUR);
+        if (diff === 1) {
+            timeField = "hour";
+        } else {
+            timeField = "hours";
 
-    var timeField = "minutes";
-
-    if(diff >= 60){
-        diff = Math.floor((utc2 - utc1)/_MS_PER_HOUR);
-        timeField = "hours";
-        if(diff >= 24){
-            diff = Math.floor((utc2 - utc1)/_MS_PER_DAY);
-            timeField = "days"
+        }
+        if (diff >= 24) {
+            diff = Math.floor((utc2 - utc1) / _MS_PER_DAY);
+            if (diff === 1) {
+                timeField = "day";
+            } else {
+                timeField = "days";
+            }
         }
     }
 
