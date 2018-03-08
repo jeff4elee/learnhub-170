@@ -111,7 +111,6 @@ class SearchForm extends Component {
             <FormContainer>
                 <Form onSubmit={this.handleSubmit}>
                         <Search type="text" placeholder="Search" value={this.state.searchValue} onChange={this.handleChange}/>
-                    {/*<input type="submit" value="Submit"/>*/}
                     <SearchButton type="submit">
 
                             <FaSearch size={20}/>

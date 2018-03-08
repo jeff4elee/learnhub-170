@@ -18,9 +18,15 @@ class ResourceController extends Controller
     public function get_owned()
     {
         $resources = Resource::where('user_id', '=', Auth::id())->get();
+        $subjects = array();
+
+        foreach ($resources as $resource) {
+            array_push($subjects, $resource->subject()->first());
+        }
 
         return Response::make([
-            'data' => ['resources' => $resources],
+            'data' => ['resources' => $resources,
+                'subjects' => $subjects],
             'success' => true,
             'message' => null
         ], 200);
@@ -84,9 +90,13 @@ class ResourceController extends Controller
 
     public function delete($resource_id){
         $resource = Resource::where('id', $resource_id)->where('user_id', Auth::id())->first();
+
+        $subject = $resource->subject()->first();
+
         $resource->delete();
         return Response::make([
-            'data' => $resource->id,
+            'data' => ['resource' => $resource,
+            'subject' => $subject],
             'success' => true,
             'message' => null
         ], 200);

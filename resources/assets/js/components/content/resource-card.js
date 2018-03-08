@@ -30,18 +30,25 @@ const HCardBody = styled.div`
     flex-direction: column;
     width: 70%;
     font-weight: bold;
+
     overflow-wrap: break-word;
 `;
 
 const HCardBodyTitle = styled.div`
     color: #239b88;
-    font-size: 130%;
+    font-size: 140%;
+`;
+
+const HCardBodyDescription = styled.div`
+    color: #474747;
+    font-size: 18px;
+    width: 100%;
 `;
 
 const HCardBodyAuthor = styled.div`
     color: #474747;
     opacity: .75;
-    font-size: 110%;
+    font-size: 100%;
 `;
 
 const HCardBodyTags = styled.div`
@@ -85,7 +92,7 @@ const RatingSubtext = styled.h3`
     margin: 0;
 `;
 
-function dateDiffInDays(a, b) {
+function dateDiffInDays(utc1, utc2) {
 
     var _MS_PER_MINUTE = 1000 * 60;
 
@@ -93,19 +100,24 @@ function dateDiffInDays(a, b) {
 
     var _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-    // Discard the time and time-zone information.
-    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getDate());
-    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
+    var diff = Math.floor((utc2 - utc1) / _MS_PER_MINUTE);
+    var timeField = "min";
 
-    var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
-    var timeField = "minutes";
+    if (diff >= 60) {
+        diff = Math.floor((utc2 - utc1) / _MS_PER_HOUR);
+        if (diff === 1) {
+            timeField = "hour";
+        } else {
+            timeField = "hours";
 
-    if(diff >= 60){
-        diff = Math.floor((utc2 - utc1)/_MS_PER_HOUR);
-        timeField = "hours";
-        if(diff >= 24){
-            diff = Math.floor((utc2 - utc1)/_MS_PER_DAY);
-            timeField = "days"
+        }
+        if (diff >= 24) {
+            diff = Math.floor((utc2 - utc1) / _MS_PER_DAY);
+            if (diff === 1) {
+                timeField = "day";
+            } else {
+                timeField = "days";
+            }
         }
     }
 
@@ -119,9 +131,9 @@ class ResourceCard extends Component {
         this.fireGa = this.fireGa.bind(this);
     }
 
-    fireGa(){
+    fireGa() {
 
-        if(this.props.analytics === true) {
+        if (this.props.analytics === true) {
             ReactGA.event({
                 category: 'Click Through',
                 action: 'Clicked',
@@ -161,10 +173,10 @@ class ResourceCard extends Component {
                         </HCardBody>
                         <HCardFooter>
                             <div> {ratingDisplay} </div>
-                            <div> 
+                            <div>
                                 <RatingSubtext>
                                     {this.props.resource.rating_count}
-                                    {this.props.resource.rating_count === 1 ? ' Rating' : ' Ratings'} 
+                                    {this.props.resource.rating_count === 1 ? ' Rating' : ' Ratings'}
                                 </RatingSubtext>
                             </div>
                         </HCardFooter>

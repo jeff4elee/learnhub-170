@@ -1,4 +1,4 @@
-export default function reducer(state={
+export default function reducer(state = {
     byId: {},
     allIds: [],
     searchIds: [],
@@ -75,7 +75,7 @@ export default function reducer(state={
             let resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
-            if(!state.allIds.includes(resource.id)){
+            if (!state.allIds.includes(resource.id)) {
                 newIds.push(resource.id);
             }
 
@@ -102,7 +102,7 @@ export default function reducer(state={
 
             const newIds = [...state.allIds];
 
-            if(!state.allIds.includes(resource.id)){
+            if (!state.allIds.includes(resource.id)) {
                 newIds.push(resource.id);
             }
 
@@ -110,7 +110,7 @@ export default function reducer(state={
                 ...state,
                 byId: {
                     ...state.byId,
-                    [resource.id] : {...resource, "comments": commentIds}
+                    [resource.id]: {...resource, "comments": commentIds}
                 },
                 allIds: newIds,
             }
@@ -136,7 +136,7 @@ export default function reducer(state={
             const resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
-            if(!state.allIds.includes(resource.id)){
+            if (!state.allIds.includes(resource.id)) {
                 newIds.push(resource.id);
             }
 
@@ -213,13 +213,13 @@ export default function reducer(state={
         }
         case "DELETE_RESOURCE_FULFILLED":{
 
-            const resourceId = action.payload.data.data;
+            const resourceId = action.payload.data.data.resource.id;
 
             let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId);
 
             let newByIds = {};
 
-            for(const key of keys){
+            for (const key of keys) {
                 newByIds[parseInt(key)] = state.byId[parseInt(key)];
             }
 

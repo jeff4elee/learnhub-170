@@ -10,9 +10,15 @@ const TaskContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
+
     flex: 1 1 1;
+
+    //margin-top: 10px;
+    //margin-bottom: 10px;
+
     margin-top: 8px;
     margin-bottom: 8px;
+    
     cursor: pointer;
     
     &:hover {
@@ -37,7 +43,7 @@ const HCardBody = styled(Link)`
 
 const HCardBodyTitle = styled.div`
     color: #239b88;
-    font-size: 130%;
+    font-size: 140%;
 `;
 
 const HCardInfoContainer = styled.div`
@@ -61,7 +67,7 @@ const HCardBodyDescription = styled.div`
 const HCardBodyAuthor = styled.div`
     color: #474747;
     opacity: .75;
-    font-size: 110%;
+    font-size: 100%;
 `;
 
 const HCardFooter = styled.div`
@@ -71,7 +77,6 @@ const HCardFooter = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    // border-left: thin solid #b2b5ba;
     font-size: 20px;
     font-weight: bold;
 `;
@@ -80,7 +85,7 @@ const Checkbox = styled.button`
     
 `;
 
-function dateDiffInDays(a, b) {
+function dateDiffInDays(utc1, utc2) {
 
     var _MS_PER_MINUTE = 1000 * 60;
 
@@ -88,20 +93,24 @@ function dateDiffInDays(a, b) {
 
     var _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-    // Discard the time and time-zone information.
-    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getDate());
-    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
+    var diff = Math.floor((utc2 - utc1) / _MS_PER_MINUTE);
+    var timeField = "min";
 
-    var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
+    if (diff >= 60) {
+        diff = Math.floor((utc2 - utc1) / _MS_PER_HOUR);
+        if (diff === 1) {
+            timeField = "hour";
+        } else {
+            timeField = "hours";
 
-    var timeField = "minutes";
-
-    if(diff >= 60){
-        diff = Math.floor((utc2 - utc1)/_MS_PER_HOUR);
-        timeField = "hours";
-        if(diff >= 24){
-            diff = Math.floor((utc2 - utc1)/_MS_PER_DAY);
-            timeField = "days"
+        }
+        if (diff >= 24) {
+            diff = Math.floor((utc2 - utc1) / _MS_PER_DAY);
+            if (diff === 1) {
+                timeField = "day";
+            } else {
+                timeField = "days";
+            }
         }
     }
 

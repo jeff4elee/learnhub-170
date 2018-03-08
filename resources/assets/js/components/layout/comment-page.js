@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CommentForm from '../form/comment-form';
 import CommentList from '../comment/comment-list';
 import {fetchResourceComments} from '../../actions/resourceActions';
+import {Link} from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -13,9 +14,15 @@ const Container = styled.div`
 `;
 
 const CommentPageTitle = styled.div`
-    color: #239b88;
-    font-size: 28px;
+    color: #474747;
+    font-size: 150%;
     margin-bottom: 5%;
+    font-weight: bold;
+`;
+
+const BreadCrumb = styled(Link)`
+    color: #239b88;
+    font-weight: bold;
 `;
 
 class CommentPage extends Component {
@@ -34,7 +41,7 @@ class CommentPage extends Component {
         return (
 
             <Container>
-                <CommentPageTitle>Commenting on <b>{resource.title}</b></CommentPageTitle>
+                <CommentPageTitle>Commenting on <BreadCrumb to={"/resource/" + resource.id}>{resource.title}</BreadCrumb></CommentPageTitle>
                 {resource && <CommentList commentIds={resource.comments}/>}
                 <CommentForm resourceId={resource.id}/>
             </Container>

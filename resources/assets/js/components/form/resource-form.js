@@ -12,15 +12,17 @@ const Container = styled.div`
     border-radius: 5px;
 `;
 
-const Input = styled.input`
+const StyledInput = styled.input`
     width: 90%;
-    margin: 1em 0em;
+    margin: 5% 0 2.5% 0;
     padding: 0.25em;
     display: inline-flex
 
     border-color: transparent;
     border: none;
-    border-bottom: 2px solid #474747;
+    border-bottom: 2px solid #636B6F;
+
+
     background-color: transparent;
 
     &:focus {
@@ -31,17 +33,39 @@ const Input = styled.input`
 
 `;
 
+const Input = styled.input`
+    width: 90%;
+    margin: 2.5% 0;
+    padding: 0.25em;
+    display: inline-flex;
+
+
+    background-color: white;
+    border: none;
+    // border: 2px solid transparent;
+    border-radius: 5px;
+
+    box-shadow: inset 0 7px 9px -9px rgba(0,0,0,0.4);
+
+    &:focus {
+        border: 3px solid #239b88;
+        outline: none;
+        color: #239b88;
+    }
+
+`;
+
 const TextArea = Input.withComponent('textarea');
 
 const TextBox = TextArea.extend`
-    border: 2px solid transparent;
+    // border: 2px solid transparent;
     border-radius: 5px;
     background-color: #fcfcfc;
 
     // box-shadow: inset 0 4px 8px -1px rgba(0,0,0,0.1);
 
     &:focus {
-        border: 2px solid #239b88;
+        border: 3px solid #239b88;
         border-radius: 5px;
         outline: none;
         color: #239b88;
@@ -201,12 +225,12 @@ class ResourceForm extends Component {
         event.preventDefault();
 
         if(!this.state.subject || !this.state.title || !this.state.url || !this.state.description
-            || this.state.subject.length > 20){
+            || this.state.subject.length > 16){
             this.setState({error: true});
             return;
         }
 
-        let valid_url = this.state.url;
+        let valid_url = this.state.url.toLowerCase();
 
         const pattern = /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/;
 
@@ -250,14 +274,12 @@ class ResourceForm extends Component {
 
         return (
             <Container>
-                {/*<div>*/}
-
                 <FormContainer onSubmit={this.handleSubmit}>
 
-                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Topic"/>
+                    <StyledInput type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Subject"/>
                     { this.state.error && (!this.state.subject || this.state.subject.length > 20) && <Error> Invalid - Input is empty or greater than 20 characters </Error>}
 
-                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Title"/>
+                    <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Resource Title"/>
                     { this.state.error && !this.state.title && <Error> Invalid Title</Error>}
 
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
@@ -281,9 +303,7 @@ class ResourceForm extends Component {
                     Resource Successfully Created!
 
                 </NotificationModal>
-
             </Container>
-            // {/*</div>*/}
         );
     }
 }
