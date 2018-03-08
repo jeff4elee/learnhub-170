@@ -205,7 +205,7 @@ class Resource extends Component {
         this.setState({rating: newRating});
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchResource(this.props.match.params.id).then(() => {
             this.setState({rating: this.props.resources.byId[this.props.match.params.id].personal_rating});
         });

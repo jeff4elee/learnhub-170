@@ -4,6 +4,7 @@ export default function reducer(state={
     searchIds: [],
     fetching: false,
     fetched: false,
+    emptySearch: false,
     error: null
 }, action) {
     switch (action.type) {
@@ -129,6 +130,7 @@ export default function reducer(state={
 
             for (const subject of action.payload.data.data.subjects) {
                 fetchedSubjects[subject.id] = subject;
+                fetchedSubjects[subject.id]["resources"] = [];
                 subjectIds.push(subject.id);
             }
 
@@ -140,6 +142,7 @@ export default function reducer(state={
                 },
                 allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
                 searchIds: subjectIds,
+                emptySearch: subjectIds.length === 0,
                 fetched: true,
                 fetching: false
             }

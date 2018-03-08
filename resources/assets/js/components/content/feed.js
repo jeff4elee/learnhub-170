@@ -33,14 +33,10 @@ class Home extends Component {
         let resourceIds = resources.feedIds;
         let display = <div> There's nothing here </div>;
 
-        if (resourceIds.length > 0) {
-            display = <ResourceList resourceIds={resourceIds}/>;
-        }
-
         return (
             <div>
                 <SubHeader>Resource Feed</SubHeader>
-                {display}
+                {resourceIds.length === 0 ? display : <ResourceList resourceIds={resourceIds}/>}
             </div>
         )
     }

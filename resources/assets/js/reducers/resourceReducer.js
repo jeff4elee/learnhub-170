@@ -4,6 +4,7 @@ export default function reducer(state = {
     searchIds: [],
     feedIds: [],
     myIds: [],
+    emptySearch: false,
     fetching: false,
     fetched: false,
     fetchedOwn: false,
@@ -155,7 +156,6 @@ export default function reducer(state = {
             const fetchedResources = {};
             const resourceIds = [];
 
-
             for (const resource of action.payload.data.data.resources) {
                 fetchedResources[resource.id] = resource;
                 resourceIds.push(resource.id);
@@ -169,6 +169,7 @@ export default function reducer(state = {
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
                 searchIds: resourceIds,
+                emptySearch: resourceIds.length === 0
             }
 
         }
