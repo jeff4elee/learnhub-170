@@ -64422,18 +64422,21 @@ function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_router_dom__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 80%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    flex-direction:column;\n    background-color: #239b88;\n    border: 1px solid transparent\n    border-radius: 5px;\n    outline: none;\n    text-align: center;\n    color: white;\n    font-weight: bold;\n    font-size: 20px;\n'], ['\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 80%;\n    height: 20%;\n    display: flex;\n    justify-content:center;\n    align-content:center;\n    flex-direction:column;\n    background-color: #239b88;\n    border: 1px solid transparent\n    border-radius: 5px;\n    outline: none;\n    text-align: center;\n    color: white;\n    font-weight: bold;\n    font-size: 20px;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    justify-content: center;\n'], ['\n    display: flex;\n    justify-content: center;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n\n'], ['\n\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    width: 90%;\n    margin: auto;\n'], ['\n    width: 90%;\n    margin: auto;\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    flex-direction: column;\n    display: flex;\n    padding-left: 20px;\n    padding-right: 20px;\n    justify-content: center;\n'], ['\n    flex-direction: column;\n    display: flex;\n    padding-left: 20px;\n    padding-right: 20px;\n    justify-content: center;\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    margin-top: .5em;\n    margin-bottom: .5em;\n'], ['\n    margin-top: .5em;\n    margin-bottom: .5em;\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: .5em 0 .5em 0;\n\n    &:hover {\n        background-color: #166357;\n    }\n'], ['\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: .5em 0 .5em 0;\n\n    &:hover {\n        background-color: #166357;\n    }\n']),
-    _templateObject8 = _taggedTemplateLiteral(['\n    text-align: center;\n    text-decoration: none;\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: .5em 0 .5em 0;\n\n    &:hover {\n        background-color: #166357;\n    }\n'], ['\n    text-align: center;\n    text-decoration: none;\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: .5em 0 .5em 0;\n\n    &:hover {\n        background-color: #166357;\n    }\n']),
-    _templateObject9 = _taggedTemplateLiteral(['\n   font-size: 200%;\n   font-weight: bold;\n   color: #474747;\n   overflow-wrap: break-word;\n'], ['\n   font-size: 200%;\n   font-weight: bold;\n   color: #474747;\n   overflow-wrap: break-word;\n']),
-    _templateObject10 = _taggedTemplateLiteral(['\n    font-size: 100%;\n    color: #636B6F;\n'], ['\n    font-size: 100%;\n    color: #636B6F;\n']),
-    _templateObject11 = _taggedTemplateLiteral(['\n    margin: 0;\n    margin-top: 2%;\n    margin-left: 5%;\n    display: flex;\n    flex-direction: row;\n    font-size: 100%;\n'], ['\n    margin: 0;\n    margin-top: 2%;\n    margin-left: 5%;\n    display: flex;\n    flex-direction: row;\n    font-size: 100%;\n']),
-    _templateObject12 = _taggedTemplateLiteral(['\n    margin-left: 1.5%;\n    color: #239b88;\n'], ['\n    margin-left: 1.5%;\n    color: #239b88;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 80%;\n    height: 15%;\n    display: flex;\n    flex-direction:column;\n    justify-content:center;\n    align-content:center;\n\n    // background-color: #239b88;\n    background-color: red;\n\n    border: 2px solid transparent;\n    border-radius: 5px;\n\n    outline: none;\n    text-align: center;\n\n    color: white;\n    font-weight: bold;\n    font-size: 20px;\n\n'], ['\n    position: absolute;\n    float: left;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    width: 80%;\n    height: 15%;\n    display: flex;\n    flex-direction:column;\n    justify-content:center;\n    align-content:center;\n\n    // background-color: #239b88;\n    background-color: red;\n\n    border: 2px solid transparent;\n    border-radius: 5px;\n\n    outline: none;\n    text-align: center;\n\n    color: white;\n    font-weight: bold;\n    font-size: 20px;\n\n']),
+    _templateObject2 = _taggedTemplateLiteral([''], ['']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    display: flex;\n    justify-content: center;\n'], ['\n    display: flex;\n    justify-content: center;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    border-radius: 5px;\n'], ['\n    border-radius: 5px;\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    width: 90%;\n    margin: auto;\n'], ['\n    width: 90%;\n    margin: auto;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    flex-direction: column;\n    display: flex;\n    padding-left: 20px;\n    padding-right: 20px;\n    justify-content: center;\n'], ['\n    flex-direction: column;\n    display: flex;\n    padding-left: 20px;\n    padding-right: 20px;\n    justify-content: center;\n']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    margin-top: .5em;\n    margin-bottom: .5em;\n'], ['\n    margin-top: .5em;\n    margin-bottom: .5em;\n']),
+    _templateObject8 = _taggedTemplateLiteral(['\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-size: 120%;\n    font-weight: bold;\n    // padding: 5px 7px;\n    padding: 10px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: 2.5% 0 2.5% 0;\n\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.4);\n\n    &:hover {\n        background-color: #166357;\n    }\n'], ['\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-size: 120%;\n    font-weight: bold;\n    // padding: 5px 7px;\n    padding: 10px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: 2.5% 0 2.5% 0;\n\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.4);\n\n    &:hover {\n        background-color: #166357;\n    }\n']),
+    _templateObject9 = _taggedTemplateLiteral(['\n    text-align: center;\n    text-decoration: none;\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-size: 120%;\n\n    font-weight: bold;\n    padding: 10px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: 2.5% 0 2.5% 0;\n\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.5);\n\n    &:hover {\n        text-decoration: none;\n        background-color: #166357;\n    }\n\n    &:active {\n        text-decoration: none;\n        color: white;\n        background-color: #166357;\n    }\n'], ['\n    text-align: center;\n    text-decoration: none;\n\n    background-color: #239b88;\n    color: white;\n    width: 100%;\n    display: inline-flex;\n    font-size: 120%;\n\n    font-weight: bold;\n    padding: 10px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    margin: 2.5% 0 2.5% 0;\n\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.5);\n\n    &:hover {\n        text-decoration: none;\n        background-color: #166357;\n    }\n\n    &:active {\n        text-decoration: none;\n        color: white;\n        background-color: #166357;\n    }\n']),
+    _templateObject10 = _taggedTemplateLiteral(['\n   font-size: 200%;\n   font-weight: bold;\n   color: #474747;\n   overflow-wrap: break-word;\n'], ['\n   font-size: 200%;\n   font-weight: bold;\n   color: #474747;\n   overflow-wrap: break-word;\n']),
+    _templateObject11 = _taggedTemplateLiteral(['\n    font-size: 110%;\n    color: #636B6F;\n    margin-bottom: 5%;\n'], ['\n    font-size: 110%;\n    color: #636B6F;\n    margin-bottom: 5%;\n']),
+    _templateObject12 = _taggedTemplateLiteral(['\n    margin: 0;\n    margin-top: 2.5%;\n    margin-left: 5%;\n    display: flex;\n    flex-direction: row;\n    font-size: 100%;\n'], ['\n    margin: 0;\n    margin-top: 2.5%;\n    margin-left: 5%;\n    display: flex;\n    flex-direction: row;\n    font-size: 100%;\n']),
+    _templateObject13 = _taggedTemplateLiteral(['\n    margin-left: 1.5%;\n    // color: #239b88;\n    color: #636B6F;\n    font-weight: bold;\n'], ['\n    margin-left: 1.5%;\n    // color: #239b88;\n    color: #636B6F;\n    font-weight: bold;\n']),
+    _templateObject14 = _taggedTemplateLiteral(['\n    margin-left: 1.5%;\n    color: #239b88;\n    font-weight: bold;\n'], ['\n    margin-left: 1.5%;\n    color: #239b88;\n    font-weight: bold;\n']),
+    _templateObject15 = _taggedTemplateLiteral(['\n    margin: 10% 0;\n'], ['\n    margin: 10% 0;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -64454,27 +64457,33 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var NotificationModal = Object(__WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_3_react_modal___default.a)(_templateObject);
 
-var RatingBar = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject2);
+var Container = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject2);
 
-var Container = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject3);
+var RatingBar = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject3);
 
-var ResourceContainer = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject4);
+var RoundedDiv = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject4);
 
-var ResourceBody = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject5);
+var ResourceContainer = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject5);
 
-var Image = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].img(_templateObject6);
+var ResourceBody = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject6);
 
-var BootButton = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].button(_templateObject7);
+var Image = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].img(_templateObject7);
 
-var BootLink = Object(__WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["a" /* Link */])(_templateObject8);
+var BootButton = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].button(_templateObject8);
 
-var TitleText = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject9);
+var BootLink = Object(__WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["a" /* Link */])(_templateObject9);
 
-var SubtitleText = TitleText.extend(_templateObject10);
+var TitleText = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject10);
 
-var BreadCrumbs = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject11);
+var SubtitleText = TitleText.extend(_templateObject11);
 
-var StyledCrumb = Object(__WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["a" /* Link */])(_templateObject12);
+var BreadCrumbs = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject12);
+
+var StyledCrumb = Object(__WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_7_react_router_dom__["a" /* Link */])(_templateObject13);
+
+var StyledCrumbDiv = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject14);
+
+var Spacing = __WEBPACK_IMPORTED_MODULE_2_styled_components__["a" /* default */].div(_templateObject15);
 
 var Resource = function (_Component) {
     _inherits(Resource, _Component);
@@ -64584,14 +64593,20 @@ var Resource = function (_Component) {
                     BreadCrumbs,
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        null,
-                        'Return to subject'
+                        StyledCrumb,
+                        { to: "/", style: { marginLeft: "0" } },
+                        'Home >'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         StyledCrumb,
                         { to: "/subject/" + subject.id },
-                        subject.title
+                        subject.title,
+                        ' >'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        StyledCrumbDiv,
+                        null,
+                        resource.title
                     )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -64618,11 +64633,6 @@ var Resource = function (_Component) {
                         ResourceBody,
                         null,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'a',
-                            { href: resource.url, target: '_blank' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Image, { src: 'http://via.placeholder.com/300x250' })
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             null,
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -64633,6 +64643,7 @@ var Resource = function (_Component) {
                             resource.description,
                             ' '
                         ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Spacing, null),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             BootButton,
                             { onClick: function onClick() {

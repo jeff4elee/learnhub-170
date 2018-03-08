@@ -14,28 +14,36 @@ const NotificationModal = styled(Modal)`
     top: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    height: 20%;
+    height: 15%;
     display: flex;
+    flex-direction:column;
     justify-content:center;
     align-content:center;
-    flex-direction:column;
-    background-color: #239b88;
-    border: 1px solid transparent
+
+    // background-color: #239b88;
+    background-color: red;
+
+    border: 2px solid transparent;
     border-radius: 5px;
+
     outline: none;
     text-align: center;
+
     color: white;
     font-weight: bold;
     font-size: 20px;
+
 `;
+
+const Container = styled.div``;
 
 const RatingBar = styled.div`
     display: flex;
     justify-content: center;
 `;
 
-const Container = styled.div`
-
+const RoundedDiv = styled.div`
+    border-radius: 5px;
 `;
 
 const ResourceContainer = styled.div`
@@ -62,8 +70,10 @@ const BootButton = styled.button`
     color: white;
     width: 100%;
     display: inline-flex;
+    font-size: 120%;
     font-weight: bold;
-    padding: 5px 7px;
+    // padding: 5px 7px;
+    padding: 10px 7px;
 
     justify-content: center;
     border: none;
@@ -71,7 +81,9 @@ const BootButton = styled.button`
     outline: none;
     letter-spacing: 1px;
 
-    margin: .5em 0 .5em 0;
+    margin: 2.5% 0 2.5% 0;
+
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.4);
 
     &:hover {
         background-color: #166357;
@@ -86,8 +98,10 @@ const BootLink = styled(Link)`
     color: white;
     width: 100%;
     display: inline-flex;
+    font-size: 120%;
+
     font-weight: bold;
-    padding: 5px 7px;
+    padding: 10px 7px;
 
     justify-content: center;
     border: none;
@@ -95,9 +109,18 @@ const BootLink = styled(Link)`
     outline: none;
     letter-spacing: 1px;
 
-    margin: .5em 0 .5em 0;
+    margin: 2.5% 0 2.5% 0;
+
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.5);
 
     &:hover {
+        text-decoration: none;
+        background-color: #166357;
+    }
+
+    &:active {
+        text-decoration: none;
+        color: white;
         background-color: #166357;
     }
 `;
@@ -110,13 +133,14 @@ const TitleText = styled.div`
 `;
 
 const SubtitleText = TitleText.extend`
-    font-size: 100%;
+    font-size: 110%;
     color: #636B6F;
+    margin-bottom: 5%;
 `;
 
 const BreadCrumbs = styled.div`
     margin: 0;
-    margin-top: 2%;
+    margin-top: 2.5%;
     margin-left: 5%;
     display: flex;
     flex-direction: row;
@@ -125,7 +149,19 @@ const BreadCrumbs = styled.div`
 
 const StyledCrumb = styled(Link)`
     margin-left: 1.5%;
+    // color: #239b88;
+    color: #636B6F;
+    font-weight: bold;
+`;
+
+const StyledCrumbDiv = styled.div`
+    margin-left: 1.5%;
     color: #239b88;
+    font-weight: bold;
+`;
+
+const Spacing = styled.div`
+    margin: 10% 0;
 `;
 
 class Resource extends Component {
@@ -212,8 +248,9 @@ class Resource extends Component {
             <Container>
 
                 {subject !== undefined && <BreadCrumbs>
-                    <div>Return to subject</div>
-                    <StyledCrumb to={"/subject/" + subject.id}>{subject.title}</StyledCrumb>
+                    <StyledCrumb to={"/"} style={{marginLeft: "0"}}>Home ></StyledCrumb>
+                    <StyledCrumb to={"/subject/" + subject.id}>{subject.title} ></StyledCrumb>
+                    <StyledCrumbDiv>{resource.title}</StyledCrumbDiv>
                 </BreadCrumbs>}
 
                 <ResourceContainer>
@@ -223,8 +260,9 @@ class Resource extends Component {
                             Links To: <a href={resource.url} target="_blank"> {resource.url_domain} </a>
                         </SubtitleText>
                     <ResourceBody>
-                        <a href={resource.url} target="_blank"><Image src="http://via.placeholder.com/300x250"/></a>
+                        {/*<a href={resource.url} target="_blank"><Image src="http://via.placeholder.com/300x250"/></a>*/}
                         <div><b> Description: </b>{resource.description} </div>
+                        <Spacing></Spacing>
                         <BootButton onClick={() => this.addToTask()}> Save to Tasklist </BootButton>
                         <BootButton onClick={() => this.openModal("rate")}> Rate </BootButton>
                         <BootLink to={"/comments/" + resource.id}> Comment </BootLink>
@@ -232,7 +270,7 @@ class Resource extends Component {
                     </ResourceBody>
                 </ResourceContainer>
 
-                < NotificationModal
+                <NotificationModal
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
