@@ -1,15 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {sendExampleAction, resetStore} from '../actions/exampleActions';
+import {fetchOwnedResources} from '../actions/resourceActions';
 import styled from 'styled-components';
 import {logoutUser} from "../actions/userActions";
 import history from '../history';
+import EditableResourceList from './layout/editable-resource-list';
 
-const Container = styled.div`
+const Layout = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 4%;
+    margin-top: 0;
+`;
+
+const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 5%;
+    margin: 2%;
     justify-content: center;
 `;
 
@@ -19,7 +27,7 @@ const BootButton = styled.button`
     display: inline-flex;
     font-weight: bold;
     font-size: 120%;
-    padding: 4% 10%;
+    padding: 2% 5%;
     margin-left: 5%;
 
     justify-content: center;
@@ -40,7 +48,13 @@ class Menu extends Component {
         this.handleLogout = this.handleLogout.bind(this);
     }
 
-    handleLogout(){
+    componentWillMount() {
+        if (!this.props.resources.fetchedOwn) {
+            this.props.fetchOwnedResources();
+        }
+    }
+
+    handleLogout() {
         this.props.logoutUser().then(() => {
             history.push("/");
         })
@@ -48,27 +62,38 @@ class Menu extends Component {
 
 
     render() {
+
+        const ownedResources = this.props.resources.myIds;
+
         return (
-            <Container>
-                <div style={{padding: '30% 0%'}}>
-                </div>
-                <BootButton onClick={() => {this.handleLogout()}}> Logout </BootButton>
-            </Container>
+            <Layout>
+                <h3 style={{color: "#474747"}}><b> My Resources </b></h3>
+                <EditableResourceList resourceIds={ownedResources}/>
+
+                <br/>
+
+                <ButtonContainer>
+                    <BootButton onClick={() => {
+                        this.handleLogout()
+                    }}> Logout </BootButton>
+                </ButtonContainer>
+
+            </Layout>
+
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        example: state.example
+        resources: state.resources
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        sendExampleAction: () => dispatch(sendExampleAction()),
-        resetStore: () => dispatch(resetStore()),
-        logoutUser: () => dispatch(logoutUser())
+        logoutUser: () => dispatch(logoutUser()),
+        fetchOwnedResources: () => dispatch(fetchOwnedResources())
     }
 }
 

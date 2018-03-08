@@ -14,6 +14,13 @@ export function fetchResource(resource_id) {
     }
 }
 
+export function fetchOwnedResources() {
+    return {
+        type: 'FETCH_OWNED_RESOURCES',
+        payload: axios.get("/api/self/resources")
+    }
+}
+
 export function rateResource(ratingData) {
 
     const resourceId = ratingData.resource_id;
@@ -23,6 +30,13 @@ export function rateResource(ratingData) {
         payload: axios.post("/api/resource/" + resourceId + "/rate", ratingData)
     }
 
+}
+
+export function deleteResource(resource_id) {
+    return {
+        type: 'DELETE_RESOURCE',
+        payload: axios.delete("/api/resource/" + resource_id +"/delete")
+    }
 }
 
 export function commentOnResource(comment) {
@@ -41,4 +55,11 @@ export function fetchResourceComments(resource_id) {
         payload: axios.get("/api/resource/" + resource_id + "/comments")
     }
 
+}
+
+export function fetchFeed(){
+    return {
+        type: 'FETCH_FEED',
+        payload: axios.get("/api/feed")
+    }
 }

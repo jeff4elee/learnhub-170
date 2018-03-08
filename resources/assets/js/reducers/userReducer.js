@@ -9,7 +9,7 @@ export default function reducer(state={
         case "FETCH_SUBJECT_PENDING": {
             return {...state, fetching: true, fetched: false}
         }
-
+        case "FETCH_FEED_FULFILLED":
         case "FETCH_SUBJECT_FULFILLED": {
 
             const fetchedUsers = {};
@@ -35,6 +35,7 @@ export default function reducer(state={
         case "FETCH_SUBJECT_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
+        case "SEARCH_FULFILLED":
         case "FETCH_POPULAR_FULFILLED":
         case "FETCH_COMMENTS_FULFILLED": {
 

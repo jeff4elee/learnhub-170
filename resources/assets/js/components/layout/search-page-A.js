@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import SearchForm from '../form/search-form';
-import SubjectList from './subject-list';
+import ResourceList from './resource-list';
 import {fetchPopular} from '../../actions/subjectActions';
 import ReactGA from 'react-ga';
 
@@ -15,10 +15,16 @@ const Container = styled.div`
     justify-content: center;
 `;
 
+const SearchBarContainer = styled.div`
+    margin-top: 5%;
+`; 
+
 const SubtitleText = styled.div`
    font-size: 20px;
    font-weight: bold;
    margin-left: 2.5%;
+   margin-top: 5%;
+   color: #474747;
 `;
 
 class SearchPage extends Component {
@@ -26,37 +32,40 @@ class SearchPage extends Component {
         super(props);
     }
 
+
     componentWillMount(){
         this.props.fetchPopular();
     }
+    render(){
 
-    render() {
-
-        const byId = this.props.subjects.byId;
+        const byId = this.props.resources.byId;
 
         function sort(arr) {
-            return arr.concat().sort(function(p1, p2) { return byId[p2].subscribers - byId[p1].subscribers; });
+            return arr.concat().sort(function(p1, p2) { return byId[p2].rating - byId[p1].rating; });
         }
 
-        const topSubjects = sort(this.props.subjects.allIds).slice(0, 5);
+        const topResources = sort(this.props.resources.allIds).slice(0, 5);
 
         return (
 
             <Container>
-                <SearchForm/>
+                <SearchBarContainer>
+                    <SearchForm/>
+                </SearchBarContainer>
                 <SubtitleText> Search Results </SubtitleText>
-                <SubjectList analytics={false} subjectIds={this.props.subjects.searchIds}/>
-                <SubtitleText> Popular Topics </SubtitleText>
-                <SubjectList analytics={false} subjectIds={topSubjects}/>
+                <ResourceList analytics={false} resourceIds={this.props.resources.searchIds}/>
+                <SubtitleText> Popular Resources </SubtitleText>
+                <ResourceList analytics={false} resourceIds={topResources}/>
             </Container>
 
         );
     }
 }
 
+
 function mapStateToProps(state) {
     return {
-        subjects: state.subjects
+        resources: state.resources
     }
 }
 

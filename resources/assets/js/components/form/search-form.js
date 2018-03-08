@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {search} from "../../actions/subjectActions";
 import styled from 'styled-components';
 import FaSearch from 'react-icons/lib/fa/search';
+import {isAlphaNumeric} from '../utils';
 
 const Input = styled.input`
 
@@ -81,6 +82,7 @@ const Search = styled.input`
     }
 `;
 
+
 class SearchForm extends Component {
     constructor(props) {
         super(props);
@@ -95,9 +97,11 @@ class SearchForm extends Component {
     }
 
     handleSubmit(event) {
-        if(this.state.searchValue.length !== 0) {
+
+        if(this.state.searchValue.length !== 0 && isAlphaNumeric(this.state.searchValue)) {
             this.props.search(this.state.searchValue);
         }
+
         event.preventDefault();
     }
 
@@ -107,7 +111,6 @@ class SearchForm extends Component {
             <FormContainer>
                 <Form onSubmit={this.handleSubmit}>
                         <Search type="text" placeholder="Search" value={this.state.searchValue} onChange={this.handleChange}/>
-                    {/*<input type="submit" value="Submit"/>*/}
                     <SearchButton type="submit">
 
                             <FaSearch size={20}/>

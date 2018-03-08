@@ -102,12 +102,30 @@ const BootLink = styled(Link)`
     }
 `;
 
-const SubtitleText = styled.div`
-   font-size: 28px;
+const TitleText = styled.div`
+   font-size: 200%;
    font-weight: bold;
-   margin-top: 5%;
    color: #474747;
    overflow-wrap: break-word;
+`;
+
+const SubtitleText = TitleText.extend`
+    font-size: 100%;
+    color: #636B6F;
+`;
+
+const BreadCrumbs = styled.div`
+    margin: 0;
+    margin-top: 2%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    font-size: 100%;
+`;
+
+const StyledCrumb = styled(Link)`
+    margin-left: 1.5%;
+    color: #239b88;
 `;
 
 class Resource extends Component {
@@ -136,7 +154,7 @@ class Resource extends Component {
         });
     }
 
-    submitRating(){
+    submitRating() {
         const ratingData = {
             "resource_id": this.props.match.params.id,
             "rating": this.state.rating
@@ -188,21 +206,25 @@ class Resource extends Component {
     render() {
 
         const resource = this.props.resources.byId[this.props.match.params.id];
+        const subject = this.props.subjects.byId[parseInt(resource.subject_id)];
 
         return (
             <Container>
 
+                {subject !== undefined && <BreadCrumbs>
+                    <div>Return to subject</div>
+                    <StyledCrumb to={"/subject/" + subject.id}>{subject.title}</StyledCrumb>
+                </BreadCrumbs>}
+
                 <ResourceContainer>
-                    <SubtitleText>
-                        {resource.title}
-                    </SubtitleText>
-                    <div style={{fontSize: "100%"}}>
-                        <b>Links To: </b>
-                        <a href={resource.url} target="_blank"> {resource.url_domain} </a>
-                    </div>
+
+                    <TitleText>{resource.title}</TitleText>
+                        <SubtitleText>
+                            Links To: <a href={resource.url} target="_blank"> {resource.url_domain} </a>
+                        </SubtitleText>
                     <ResourceBody>
                         <a href={resource.url} target="_blank"><Image src="http://via.placeholder.com/300x250"/></a>
-                        <div> <b> Description: </b>{resource.description} </div>
+                        <div><b> Description: </b>{resource.description} </div>
                         <BootButton onClick={() => this.addToTask()}> Save to Tasklist </BootButton>
                         <BootButton onClick={() => this.openModal("rate")}> Rate </BootButton>
                         <BootLink to={"/comments/" + resource.id}> Comment </BootLink>
@@ -222,17 +244,17 @@ class Resource extends Component {
 
 
                     {this.state.ratingModal &&
-                        <div>
-                    <RatingBar>
-                        <ReactStars
-                            count={5}
-                            onChange={this.changeRating}
-                            size={50}
-                            value={this.state.rating}
-                            color2={'#ffd700'}/>
-                    </RatingBar>
-                            <button onClick={() => this.submitRating()}>Submit</button>
-                        </div>}
+                    <div>
+                        <RatingBar>
+                            <ReactStars
+                                count={5}
+                                onChange={this.changeRating}
+                                size={50}
+                                value={this.state.rating}
+                                color2={'#ffd700'}/>
+                        </RatingBar>
+                        <button onClick={() => this.submitRating()}>Submit</button>
+                    </div>}
 
                     {this.state.reported && "Resource has been reported"}
 
@@ -248,7 +270,8 @@ function mapStateToProps(state) {
     return {
         resources: state.resources,
         comments: state.comments,
-        user: state.auth.user
+        user: state.auth.user,
+        subjects: state.subjects
     }
 }
 

@@ -9,6 +9,9 @@ import {PersistGate} from 'redux-persist/es/integration/react'
 import Master from './components/layout/master'
 import {Router} from 'react-router-dom';
 import configureStore from './store'
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-115027181-1');
 
 const {persistor, store} = configureStore();
 

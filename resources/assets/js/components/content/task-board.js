@@ -17,7 +17,7 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     color: #474747;
 `;
@@ -51,6 +51,7 @@ class TaskBoard extends Component {
             });
 
             taskList = taskIds.map(id => <TaskCard key={id} task={tasks.byId[id]}/>);
+
         }
 
 
@@ -62,7 +63,7 @@ class TaskBoard extends Component {
                     </Title>
                 </TitleContainer>
                 <TaskContainer>
-                    {taskList}
+                    {taskList === undefined ? "Your task list is empty! Find a resource to add." : taskList}
                 </TaskContainer>
             </div>
         )

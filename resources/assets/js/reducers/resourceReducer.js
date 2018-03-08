@@ -2,14 +2,15 @@ export default function reducer(state={
     byId: {},
     allIds: [],
     searchIds: [],
+    feedIds: [],
+    myIds: [],
     fetching: false,
     fetched: false,
+    fetchedOwn: false,
+    feedUrl: null,
     error: null
 }, action) {
     switch (action.type) {
-        case "CREATE_RESOURCE_PENDING": {
-            return {...state, fetching: true, fetched: false}
-        }
         case "CREATE_RESOURCE_FULFILLED": {
 
             let resource = action.payload.data.data;
@@ -22,14 +23,31 @@ export default function reducer(state={
                     [resourceId]: resource
                 },
                 allIds: [...state.allIds, resourceId],
-                fetching: false,
-                fetched: true}
+                myIds: [...state.myIds, resourceId],
+            }
         }
-        case "CREATE_RESOURCE_REJECTED": {
-            return {...state, fetching: false, fetched: false}
-        }
-        case "FETCH_SUBJECT_PENDING": {
-            return {...state, fetching: true, fetched: false}
+        case "FETCH_FEED_FULFILLED": {
+
+            const resourceData = action.payload.data.data.resources;
+            const fetchedResources = {};
+            const resourceIds = [];
+
+            for (const resource of resourceData.data) {
+                fetchedResources[resource.id] = resource;
+                resourceIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedResources
+                },
+                allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
+                feedIds: [...state.feedIds].concat(resourceIds.filter(id => !state.feedIds.includes(id))),
+                feedUrl: resourceData.next_page_url,
+            }
+
         }
         case "FETCH_ALL_TASKS_FULFILLED":
         case "FETCH_SUBJECT_FULFILLED": {
@@ -49,16 +67,8 @@ export default function reducer(state={
                     ...fetchedResources
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
-                fetched: true,
-                fetching: false
             }
 
-        }
-        case "FETCH_SUBJECT_REJECTED": {
-            return {...state, fetching: false, fetched: false}
-        }
-        case "FETCH_RESOURCE_PENDING": {
-            return {...state, fetching: true, fetched: false}
         }
         case "FETCH_RESOURCE_FULFILLED": {
 
@@ -76,13 +86,8 @@ export default function reducer(state={
                     [resource.id]: resource
                 },
                 allIds: newIds,
-                fetched: true,
-                fetching: false
             }
 
-        }
-        case "FETCH_RESOURCE_REJECTED": {
-            return {...state, fetching: false, fetched: false}
         }
         case "FETCH_COMMENTS_FULFILLED": {
 
@@ -108,8 +113,6 @@ export default function reducer(state={
                     [resource.id] : {...resource, "comments": commentIds}
                 },
                 allIds: newIds,
-                fetched: true,
-                fetching: false
             }
 
         }
@@ -125,8 +128,6 @@ export default function reducer(state={
                     ...state.byId,
                     [resource.id]: {...resource, comments: [...state.byId[resource.id].comments, commentId]}
                 },
-                fetching: false,
-                fetched: true
             }
 
         }
@@ -146,8 +147,6 @@ export default function reducer(state={
                     [resource.id]: resource
                 },
                 allIds: newIds,
-                fetched: true,
-                fetching: false
             }
 
         }
@@ -170,16 +169,12 @@ export default function reducer(state={
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
                 searchIds: resourceIds,
-                fetched: true,
-                fetching: false
             }
 
         }
         case "FETCH_POPULAR_FULFILLED": {
-
             const fetchedResources = {};
             const resourceIds = [];
-
 
             for (const resource of action.payload.data.data.resources) {
                 fetchedResources[resource.id] = resource;
@@ -193,8 +188,49 @@ export default function reducer(state={
                     ...fetchedResources
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
-                fetched: true,
-                fetching: false
+            }
+
+        }
+        case "FETCH_OWNED_RESOURCES_FULFILLED": {
+            const fetchedResources = {};
+            const resourceIds = [];
+
+            for (const resource of action.payload.data.data.resources) {
+                fetchedResources[resource.id] = resource;
+                resourceIds.push(resource.id);
+            }
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    ...fetchedResources
+                },
+                allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
+                myIds: resourceIds,
+                fetchedOwn: true
+            }
+        }
+        case "DELETE_RESOURCE_FULFILLED":{
+
+            const resourceId = action.payload.data.data;
+
+            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId);
+
+            let newByIds = {};
+
+            for(const key of keys){
+                newByIds[parseInt(key)] = state.byId[parseInt(key)];
+            }
+
+            return {
+                ...state,
+                byId: newByIds,
+                allIds: state.allIds.filter(id => id !== resourceId),
+                myIds: state.myIds.filter(id => id !== resourceId),
+                searchIds: state.searchIds.filter(id => id !== resourceId),
+                feedIds: state.feedIds.filter(id => id !== resourceId),
+                fetchedOwn: true
             }
 
         }
@@ -204,8 +240,12 @@ export default function reducer(state={
                 byId: {},
                 allIds: [],
                 searchIds: [],
+                feedIds: [],
+                myIds: [],
                 fetching: false,
                 fetched: false,
+                fetchedOwn: false,
+                feedUrl: null,
                 error: null
             }
 

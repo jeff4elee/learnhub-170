@@ -10,12 +10,15 @@ const TaskContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-<<<<<<< HEAD
-=======
+
     flex: 1 1 1;
->>>>>>> b7ffee55275c1d30659d39f9b5f225ddc4b7fab2
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+    //margin-top: 10px;
+    //margin-bottom: 10px;
+
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
     cursor: pointer;
     
     &:hover {
@@ -40,7 +43,7 @@ const HCardBody = styled(Link)`
 
 const HCardBodyTitle = styled.div`
     color: #239b88;
-    font-size: 130%;
+    font-size: 140%;
 `;
 
 const HCardInfoContainer = styled.div`
@@ -64,7 +67,7 @@ const HCardBodyDescription = styled.div`
 const HCardBodyAuthor = styled.div`
     color: #474747;
     opacity: .75;
-    font-size: 110%;
+    font-size: 100%;
 `;
 
 const HCardFooter = styled.div`
@@ -74,7 +77,6 @@ const HCardFooter = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    // border-left: thin solid #b2b5ba;
     font-size: 20px;
     font-weight: bold;
 `;
@@ -82,6 +84,34 @@ const HCardFooter = styled.div`
 const Checkbox = styled.button`
     
 `;
+
+function dateDiffInDays(a, b) {
+
+    var _MS_PER_MINUTE = 1000 * 60;
+
+    var _MS_PER_HOUR = 1000 * 60 * 60;
+
+    var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    // Discard the time and time-zone information.
+    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getDate());
+    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(),  b.getDay(), b.getHours(), a.getMinutes(), b.getDate());
+
+    var diff = Math.floor((utc2 - utc1)/_MS_PER_MINUTE);
+
+    var timeField = "minutes";
+
+    if(diff >= 60){
+        diff = Math.floor((utc2 - utc1)/_MS_PER_HOUR);
+        timeField = "hours";
+        if(diff >= 24){
+            diff = Math.floor((utc2 - utc1)/_MS_PER_DAY);
+            timeField = "days"
+        }
+    }
+
+    return diff.toString() + " " + timeField + " ago";
+}
 
 class TaskCard extends Component {
     constructor(props) {
@@ -109,17 +139,21 @@ class TaskCard extends Component {
             {resource.rating_count > 0 && '/' + 5}
         </div>;
 
+        let now = new Date(new Date().toUTCString().substr(0, 25));
+        const createdAt = new Date(resource.created_at);
+        const diff = dateDiffInDays(createdAt, now);
+
         return (
             <TaskContainer>
                 <HCard>
                     <HCardBody to={'/resource/' + resource.id} style={{textDecoration: 'none'}}>
                         <HCardBodyTitle>{resource.title}</HCardBodyTitle>
                         <HCardBodyDescription>{resource.description}</HCardBodyDescription>
-                        <HCardBodyAuthor>By {username}</HCardBodyAuthor>
+                        <HCardBodyAuthor>By {username}, {diff} </HCardBodyAuthor>
                     </HCardBody>
                     <HCardFooter>
                         { this.props.task.completed ?
-                            <FaSquareCheckSquareO style={{cursor: "pointer"}} size={40} onClick={() => this.toggleTask()}/>
+                            <FaSquareCheckSquareO style={{cursor: "pointer", marginLeft: "6%"}} size={40} onClick={() => this.toggleTask()}/>
                             :
                             <FaSquareO style={{cursor: "pointer"}} size={40} onClick={() => this.toggleTask()}/>
                         }

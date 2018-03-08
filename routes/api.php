@@ -27,6 +27,8 @@ Route::post('/subject', 'SubjectController@create');
 Route::get('/subject/all', 'SubjectController@all');
 Route::get('/search/popular/', 'SearchController@popular');
 Route::get('/search/{search_term}', 'SearchController@broad_search');
+Route::get('/feed', 'SubscriptionController@feed');
+Route::get('/self/resources', 'ResourceController@get_owned');
 
 //routes match above route, must be declared later
 Route::get('/subject/{subject_id}/resources', 'SubjectController@get_resources');
@@ -35,6 +37,7 @@ Route::get('/subject/{subject_id}', 'SubjectController@get');
 
 Route::post('/resource', 'ResourceController@create');
 Route::post('/resource/comment', 'ResourceController@comment');
+Route::delete('/resource/{resource_id}/delete', 'ResourceController@delete');
 //Route::post('/resource/search', 'ResourceController@search');
 Route::post('/task', 'TaskController@add_to_tasks');
 Route::get('/task/all', 'TaskController@get_user_tasks');
