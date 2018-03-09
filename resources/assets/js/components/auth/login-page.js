@@ -66,8 +66,9 @@ const Error = styled.div`
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
-    width: 40%;
+    width: 80%;
     display: inline-flex;
+    font-size: 110%;
     font-weight: bold;
     padding: 5px 7px;
 
@@ -81,6 +82,25 @@ const BootButton = styled.button`
         background-color: #166357;
     }
 
+`;
+
+const ImageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: auto;
+    letter-spacing: -2px;
+    // color: #474747;
+    color: #239b88;
+
+    margin-top: 10%;
+    margin-bottom: 12%;
+`;
+
+const Image = styled.img`
+    max-height: 85%;
 `;
 
 class LoginPage extends Component {
@@ -149,7 +169,16 @@ class LoginPage extends Component {
 
                     <Form onSubmit={this.handleSubmit}>
 
+
                         {loginError}
+
+                        {/*<div style={{justifyContent:"center"}}>*/}
+                        <ImageContainer>
+                            {/*<img style={{maxHeight:"10%", width:"auto"}} src="images/RH_Logo.png"/>*/}
+                            <Image src="images/RH_Logo_Crop.png"/>
+                        <div><h1 style={{textAlign:"center", margin: "0", fontWeight: "bold", marginTop: "2%"}}>Resource<span style={{color: "#474747"}}>Hub</span></h1></div>
+                        </ImageContainer>
+                        {/*</div>*/}
 
                         Email
                         <Input type="text" value={this.state.email} onChange={this.handleEmailChange}/>
@@ -159,7 +188,6 @@ class LoginPage extends Component {
 
                         <input type="checkbox" onChange={this.handleCheckboxChange}/> Remember Me
 
-                        {/*<Input type="submit" value="Login"/>*/}
                         <CenteredContainer>
                             <BootButton>Login</BootButton>
                         </CenteredContainer>
