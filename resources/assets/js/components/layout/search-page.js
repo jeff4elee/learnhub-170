@@ -134,7 +134,10 @@ class SearchPage extends Component {
 
                 <StyledBreak/>
                 <SubtitleText> My Topic Subscriptions </SubtitleText>
-                <SubjectList analytics={false} subjectIds={subscribedSubjects}/>
+
+                {subscribedSubjects.length === 0 ? <EmptyDisplay> You aren't subscribed to any topics </EmptyDisplay>
+                    : <SubjectList analytics={false} subjectIds={subscribedSubjects}/>
+                }
             </Container>
 
         );
