@@ -57229,10 +57229,10 @@ var Master = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { style: { fontFamily: 'Helvetica' } },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], { hasBack: this.props.user !== null }),
                 this.props.user !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     Container,
                     null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__header__["a" /* default */], { hasBack: this.props.user !== null }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         Body,
                         null,
@@ -61944,8 +61944,9 @@ var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: white;\n'], ['\n    color: white;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 15%;\n'], ['\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 15%;\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 36px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n    width: 60%;\n'], ['\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-family: Helvetica;\n    font-size: 36px;    \n    color: #239b88;\n    letter-spacing: -3px;\n    font-weight: 600;\n    margin: 0;\n    padding: 0;\n    width: 60%;\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    display: flex;\n    width: 20%;\n'], ['\n    display: flex;\n    width: 20%;\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    margin-left: 2.2%;\n'], ['\n    margin-left: 2.2%;\n']);
+    _templateObject6 = _taggedTemplateLiteral(['\n    display: flex;\n    justify-content: center;\n    align-items: center;\n\n'], ['\n    display: flex;\n    justify-content: center;\n    align-items: center;\n\n']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    display: flex;\n    width: 20%;\n'], ['\n    display: flex;\n    width: 20%;\n']),
+    _templateObject8 = _taggedTemplateLiteral(['\n    margin-left: 2.2%;\n'], ['\n    margin-left: 2.2%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -61971,9 +61972,11 @@ var HeaderLeft = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default 
 
 var HeaderCenter = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject5);
 
-var HeaderRight = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject6);
+var ImageContainer = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div(_templateObject6);
 
-var BackButton = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left___default.a)(_templateObject7);
+var HeaderRight = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h1(_templateObject7);
+
+var BackButton = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_2_react_icons_lib_fa_arrow_left___default.a)(_templateObject8);
 
 var Header = function (_React$Component) {
     _inherits(Header, _React$Component);
@@ -61998,9 +62001,9 @@ var Header = function (_React$Component) {
                         } })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    HeaderCenter,
+                    ImageContainer,
                     null,
-                    'ResourceHub'
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { style: { maxHeight: "85%", width: "auto" }, src: 'images/RH_Logo_Crop.png' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     HeaderLeft,
@@ -63885,7 +63888,9 @@ var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    align-i
     _templateObject6 = _taggedTemplateLiteral(['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex;\n'], ['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex;\n']),
     _templateObject7 = _taggedTemplateLiteral(['\n    width: 100%;\n    margin: auto;\n    flex-direction: column;\n'], ['\n    width: 100%;\n    margin: auto;\n    flex-direction: column;\n']),
     _templateObject8 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n    text-align: center;\n    margin-bottom: 5%;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n    text-align: center;\n    margin-bottom: 5%;\n']),
-    _templateObject9 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 40%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n']);
+    _templateObject9 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 80%;\n    display: inline-flex;\n    font-size: 110%;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 80%;\n    display: inline-flex;\n    font-size: 110%;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n\n']),
+    _templateObject10 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    height: 120px;\n    width: auto;\n    letter-spacing: -2px;\n    // color: #474747;\n    color: #239b88;\n\n    margin-top: 10%;\n    margin-bottom: 12%;\n'], ['\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    height: 120px;\n    width: auto;\n    letter-spacing: -2px;\n    // color: #474747;\n    color: #239b88;\n\n    margin-top: 10%;\n    margin-bottom: 12%;\n']),
+    _templateObject11 = _taggedTemplateLiteral(['\n    max-height: 85%;\n'], ['\n    max-height: 85%;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -63920,6 +63925,10 @@ var Form = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].fo
 var Error = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].div(_templateObject8);
 
 var BootButton = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].button(_templateObject9);
+
+var ImageContainer = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].div(_templateObject10);
+
+var Image = __WEBPACK_IMPORTED_MODULE_3_styled_components__["a" /* default */].img(_templateObject11);
 
 var LoginPage = function (_Component) {
     _inherits(LoginPage, _Component);
@@ -64007,6 +64016,25 @@ var LoginPage = function (_Component) {
                         Form,
                         { onSubmit: this.handleSubmit },
                         loginError,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            ImageContainer,
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Image, { src: 'images/RH_Logo_Crop.png' }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'h1',
+                                    { style: { textAlign: "center", margin: "0", fontWeight: "bold", marginTop: "2%" } },
+                                    'Resource',
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'span',
+                                        { style: { color: "#474747" } },
+                                        'Hub'
+                                    )
+                                )
+                            )
+                        ),
                         'Email',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Input, { type: 'text', value: this.state.email, onChange: this.handleEmailChange }),
                         'Password',
@@ -64102,7 +64130,8 @@ var _templateObject = _taggedTemplateLiteral(['\n    display: flex;\n    align-i
     _templateObject4 = _taggedTemplateLiteral(['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n'], ['\n    width: 100%;\n    border: none;\n    border-radius: 3px;\n    margin-bottom: 1em;\n    padding: 0.25em;\n    display: inline-flex\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    width: 100%;\n    margin: auto;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n'], ['\n    width: 100%;\n    margin: auto;\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n'], ['\n    color: red;\n    font-style: italic;\n    font-size: 12px;\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 70%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 70%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 5px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n']);
+    _templateObject7 = _taggedTemplateLiteral(['\n    background-color: #239b88;\n    color: white;\n    width: 80%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 10px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n'], ['\n    background-color: #239b88;\n    color: white;\n    width: 80%;\n    display: inline-flex;\n    font-weight: bold;\n    padding: 10px 7px;\n\n    justify-content: center;\n    border: none;\n    border-radius: 2px;\n    outline: none;\n    letter-spacing: 1px;\n\n    &:hover {\n        background-color: #166357;\n    }\n']),
+    _templateObject8 = _taggedTemplateLiteral(['\n    font-size: 20px;\n    font-weight: bold;\n    margin-top: 2.5%;\n    margin-bottom: 5%;\n    color: #474747;\n'], ['\n    font-size: 20px;\n    font-weight: bold;\n    margin-top: 2.5%;\n    margin-bottom: 5%;\n    color: #474747;\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -64132,6 +64161,8 @@ var Form = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].fo
 var Error = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].div(_templateObject6);
 
 var BootButton = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].button(_templateObject7);
+
+var SubtitleText = __WEBPACK_IMPORTED_MODULE_4_styled_components__["a" /* default */].div(_templateObject8);
 
 var RegistrationPage = function (_Component) {
     _inherits(RegistrationPage, _Component);
@@ -64243,6 +64274,11 @@ var RegistrationPage = function (_Component) {
                     FormContainer,
                     { flexDirection: 'row' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        SubtitleText,
+                        null,
+                        'Register Your Account'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         Form,
                         { onSubmit: this.handleSubmit },
                         'Name ',
@@ -64271,7 +64307,7 @@ var RegistrationPage = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* Link */],
                     { to: '/' },
-                    ' Login Here '
+                    ' Return to Login '
                 )
             );
         }
@@ -68926,7 +68962,7 @@ function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_taskActions__ = __webpack_require__(36);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 90%;\n\n    flex: 1 1 1;\n\n    //margin-top: 10px;\n    //margin-bottom: 10px;\n\n    margin-top: 8px;\n    margin-bottom: 8px;\n    \n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 90%;\n\n    flex: 1 1 1;\n\n    //margin-top: 10px;\n    //margin-bottom: 10px;\n\n    margin-top: 8px;\n    margin-bottom: 8px;\n    \n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 90%;\n    flex: 1 1 1;\n\n    margin-top: 8px;\n    margin-bottom: 8px;\n    \n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n'], ['\n    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);\n    transition: 0.3s;\n    width: 90%;\n    flex: 1 1 1;\n\n    margin-top: 8px;\n    margin-bottom: 8px;\n    \n    cursor: pointer;\n    \n    &:hover {\n        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    display: flex;\n    flex-direction: row;\n    height: 100%;\n'], ['\n    display: flex;\n    flex-direction: row;\n    height: 100%;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 70%;\n    font-weight: bold;\n    overflow-wrap: break-word;\n'], ['\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    width: 70%;\n    font-weight: bold;\n    overflow-wrap: break-word;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    color: #239b88;\n    font-size: 140%;\n'], ['\n    color: #239b88;\n    font-size: 140%;\n']),

@@ -44,6 +44,13 @@ const HeaderCenter = styled.h1`
     width: 60%;
 `;
 
+const ImageContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+`;
+
 const HeaderRight = styled.h1`
     display: flex;
     width: 20%;
@@ -66,9 +73,13 @@ export default class Header extends React.Component {
                         this.props.hasBack && <BackButton size={30} onClick={() => history.goBack()}/>
                     }
                 </HeaderLeft>
-                <HeaderCenter>
-                    ResourceHub
-                </HeaderCenter>
+
+                <ImageContainer>
+                    <img style={{maxHeight:"85%", width:"auto"}} src="images/RH_Logo_Crop.png"/>
+                </ImageContainer>
+
+                    {/*<img style={{maxHeight:"85%", width:"auto"}} src="images/RH_Logo.png"/>*/}
+                
                 <HeaderLeft style={{visibility: "hidden"}}>
                     {
                         this.props.hasBack && <BackButton size={30} onClick={() => history.goBack()}/>

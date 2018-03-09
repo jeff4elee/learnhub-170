@@ -57,10 +57,10 @@ const Error = styled.div`
 const BootButton = styled.button`
     background-color: #239b88;
     color: white;
-    width: 70%;
+    width: 80%;
     display: inline-flex;
     font-weight: bold;
-    padding: 5px 7px;
+    padding: 10px 7px;
 
     justify-content: center;
     border: none;
@@ -71,6 +71,14 @@ const BootButton = styled.button`
     &:hover {
         background-color: #166357;
     }
+`;
+
+const SubtitleText = styled.div`
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
+    color: #474747;
 `;
 
 
@@ -153,6 +161,7 @@ class RegistrationPage extends Component {
             <RegistrationLayout>
 
                 <FormContainer flexDirection="row">
+                    <SubtitleText>Register Your Account</SubtitleText>
 
                     <Form onSubmit={this.handleSubmit}>
 
@@ -180,7 +189,7 @@ class RegistrationPage extends Component {
 
                 </FormContainer>
 
-                <Link to="/"> Login Here </Link>
+                <Link to="/"> Return to Login </Link>
 
             </RegistrationLayout>
 

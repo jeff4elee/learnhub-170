@@ -49,9 +49,10 @@ class Master extends Component {
 
         return (
             <div style={{ fontFamily: 'Helvetica' }}>
-                <Header hasBack={this.props.user !== null}/>
+                {/*<Header hasBack={this.props.user !== null}/>*/}
                 {this.props.user !== null ?
                     <Container>
+                <Header hasBack={this.props.user !== null}/>
                         <Body>
                             <Switch>
                                 <Route exact path='/' component={Home}/>
