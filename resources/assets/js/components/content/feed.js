@@ -15,6 +15,12 @@ const SubHeader = styled.h2`
     margin-top: 6%;
 `;
 
+
+const EmptyDisplay = styled.div`
+    text-align: center;
+    margin: 5%;
+`;
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +37,7 @@ class Home extends Component {
         const resources = this.props.resources;
 
         let resourceIds = resources.feedIds;
-        let display = <div> There's nothing here </div>;
+        let display = <EmptyDisplay> There's nothing here </EmptyDisplay>;
 
         return (
             <div>

@@ -276,7 +276,7 @@ class ResourceForm extends Component {
             <Container>
                 <FormContainer onSubmit={this.handleSubmit}>
 
-                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Subject"/>
+                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Topic"/>
                     { this.state.error && (!this.state.subject || this.state.subject.length > 20) && <Error> Invalid - Input is empty or greater than 20 characters </Error>}
 
                     <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Resource Title"/>
