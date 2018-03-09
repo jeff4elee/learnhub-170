@@ -66,13 +66,17 @@ export default function reducer(state = {
             let resource = action.payload.data.data.resource;
 
             const newIds = [...state.allIds];
-            const newSubjectResources = [...state.byId[subject.id].resources];
+            let newSubjectResources = [];
+
+            if(subject.id in state.byId) {
+                newSubjectResources = [...state.byId[subject.id].resources];
+            }
 
             if (!state.allIds.includes(subject.id)) {
                 newIds.push(subject.id);
             }
 
-            if (!state.byId[subject.id].resources.includes(resource.id)) {
+            if (!newSubjectResources.includes(resource.id)) {
                 newSubjectResources.push(resource.id);
             }
 
