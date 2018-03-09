@@ -1,9 +1,10 @@
-export default function reducer(state={
+export default function reducer(state = {
     byId: {},
     allIds: [],
     searchIds: [],
     feedIds: [],
     myIds: [],
+    emptySearch: false,
     fetching: false,
     fetched: false,
     fetchedOwn: false,
@@ -13,7 +14,7 @@ export default function reducer(state={
     switch (action.type) {
         case "CREATE_RESOURCE_FULFILLED": {
 
-            let resource = action.payload.data.data;
+            let resource = action.payload.data.data.resource;
             let resourceId = resource.id;
 
             return {
@@ -75,7 +76,7 @@ export default function reducer(state={
             let resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
-            if(!state.allIds.includes(resource.id)){
+            if (!state.allIds.includes(resource.id)) {
                 newIds.push(resource.id);
             }
 
@@ -102,7 +103,7 @@ export default function reducer(state={
 
             const newIds = [...state.allIds];
 
-            if(!state.allIds.includes(resource.id)){
+            if (!state.allIds.includes(resource.id)) {
                 newIds.push(resource.id);
             }
 
@@ -110,7 +111,7 @@ export default function reducer(state={
                 ...state,
                 byId: {
                     ...state.byId,
-                    [resource.id] : {...resource, "comments": commentIds}
+                    [resource.id]: {...resource, "comments": commentIds}
                 },
                 allIds: newIds,
             }
@@ -136,7 +137,7 @@ export default function reducer(state={
             const resource = action.payload.data.data.resource;
             const newIds = [...state.allIds];
 
-            if(!state.allIds.includes(resource.id)){
+            if (!state.allIds.includes(resource.id)) {
                 newIds.push(resource.id);
             }
 
@@ -155,7 +156,6 @@ export default function reducer(state={
             const fetchedResources = {};
             const resourceIds = [];
 
-
             for (const resource of action.payload.data.data.resources) {
                 fetchedResources[resource.id] = resource;
                 resourceIds.push(resource.id);
@@ -169,6 +169,7 @@ export default function reducer(state={
                 },
                 allIds: [...state.allIds].concat(resourceIds.filter(id => !state.allIds.includes(id))),
                 searchIds: resourceIds,
+                emptySearch: resourceIds.length === 0
             }
 
         }
@@ -213,20 +214,20 @@ export default function reducer(state={
         }
         case "DELETE_RESOURCE_FULFILLED":{
 
-            const resourceId = action.payload.data.data;
+            const resourceId = action.payload.data.data.resource.id;
 
-            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId);
+            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId).map(key => parseInt(key));
 
             let newByIds = {};
 
-            for(const key of keys){
-                newByIds[parseInt(key)] = state.byId[parseInt(key)];
+            for (const key of keys) {
+                newByIds[key] = state.byId[key];
             }
 
             return {
                 ...state,
                 byId: newByIds,
-                allIds: state.allIds.filter(id => id !== resourceId),
+                allIds: keys,
                 myIds: state.myIds.filter(id => id !== resourceId),
                 searchIds: state.searchIds.filter(id => id !== resourceId),
                 feedIds: state.feedIds.filter(id => id !== resourceId),

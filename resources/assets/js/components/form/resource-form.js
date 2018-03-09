@@ -225,12 +225,12 @@ class ResourceForm extends Component {
         event.preventDefault();
 
         if(!this.state.subject || !this.state.title || !this.state.url || !this.state.description
-            || this.state.subject.length > 20){
+            || this.state.subject.length > 16){
             this.setState({error: true});
             return;
         }
 
-        let valid_url = this.state.url;
+        let valid_url = this.state.url.toLowerCase();
 
         const pattern = /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/;
 
@@ -276,7 +276,7 @@ class ResourceForm extends Component {
             <Container>
                 <FormContainer onSubmit={this.handleSubmit}>
 
-                    <StyledInput type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Subject"/>
+                    <Input type="text" value={this.state.subject} onChange={this.handleSubjectChange} placeholder="Topic"/>
                     { this.state.error && (!this.state.subject || this.state.subject.length > 20) && <Error> Invalid - Input is empty or greater than 20 characters </Error>}
 
                     <Input type="text" value={this.state.title} onChange={this.handleTitleChange} placeholder="Resource Title"/>

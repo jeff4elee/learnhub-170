@@ -98,7 +98,7 @@ class SearchForm extends Component {
 
     handleSubmit(event) {
 
-        if(this.state.searchValue.length !== 0 && isAlphaNumeric(this.state.searchValue)) {
+        if(this.state.searchValue.length !== 0 && /\S/.test(this.state.searchValue) && isAlphaNumeric(this.state.searchValue)) {
             this.props.search(this.state.searchValue);
         }
 

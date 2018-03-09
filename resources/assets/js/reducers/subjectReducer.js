@@ -1,9 +1,10 @@
-export default function reducer(state={
+export default function reducer(state = {
     byId: {},
     allIds: [],
     searchIds: [],
     fetching: false,
     fetched: false,
+    emptySearch: false,
     error: null
 }, action) {
     switch (action.type) {
@@ -17,6 +18,7 @@ export default function reducer(state={
 
             for (const subject of action.payload.data.data.subjects) {
                 fetchedSubjects[subject.id] = subject;
+                fetchedSubjects[subject.id]["resources"] = [];
                 subjectIds.push(subject.id);
             }
 
@@ -39,6 +41,7 @@ export default function reducer(state={
 
             for (const subject of action.payload.data.data.subjects) {
                 fetchedSubjects[subject.id] = subject;
+                fetchedSubjects[subject.id]["resources"] = [];
                 subjectIds.push(subject.id);
             }
 
@@ -56,20 +59,32 @@ export default function reducer(state={
         case "FETCH_ALL_SUBJECTS_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
+        case "CREATE_RESOURCE_FULFILLED":
         case "FETCH_RESOURCE_FULFILLED": {
 
             let subject = action.payload.data.data.subject;
-            const newIds = [...state.allIds];
+            let resource = action.payload.data.data.resource;
 
-            if(!state.allIds.includes(subject.id)){
+            const newIds = [...state.allIds];
+            let newSubjectResources = [];
+
+            if(subject.id in state.byId) {
+                newSubjectResources = [...state.byId[subject.id].resources];
+            }
+
+            if (!state.allIds.includes(subject.id)) {
                 newIds.push(subject.id);
+            }
+
+            if (!newSubjectResources.includes(resource.id)) {
+                newSubjectResources.push(resource.id);
             }
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    [subject.id]: subject
+                    [subject.id]: {...subject, "resources": newSubjectResources}
                 },
                 allIds: newIds,
             }
@@ -113,11 +128,12 @@ export default function reducer(state={
                 ...state,
                 byId: {
                     ...state.byId,
-                    [subject.id]: subject
+                    [subject.id]: {...state.byId[subject.id], subscribed: subject.subscribed}
                 },
                 fetched: true,
                 fetching: false
             }
+
         }
         case "SEARCH_FULFILLED": {
 
@@ -126,6 +142,7 @@ export default function reducer(state={
 
             for (const subject of action.payload.data.data.subjects) {
                 fetchedSubjects[subject.id] = subject;
+                fetchedSubjects[subject.id]["resources"] = [];
                 subjectIds.push(subject.id);
             }
 
@@ -137,11 +154,13 @@ export default function reducer(state={
                 },
                 allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
                 searchIds: subjectIds,
+                emptySearch: subjectIds.length === 0,
                 fetched: true,
                 fetching: false
             }
 
         }
+        case "FETCH_OWNED_RESOURCES_FULFILLED":
         case "FETCH_POPULAR_FULFILLED": {
 
             const fetchedSubjects = {};
@@ -149,6 +168,7 @@ export default function reducer(state={
 
             for (const subject of action.payload.data.data.subjects) {
                 fetchedSubjects[subject.id] = subject;
+                fetchedSubjects[subject.id]["resources"] = [];
                 subjectIds.push(subject.id);
             }
 
@@ -161,6 +181,23 @@ export default function reducer(state={
                 allIds: [...state.allIds].concat(subjectIds.filter(id => !state.allIds.includes(id))),
                 fetched: true,
                 fetching: false
+            }
+
+        }
+        case "DELETE_RESOURCE_FULFILLED": {
+
+            const resourceId = action.payload.data.data.resource.id;
+            const subjectId = action.payload.data.data.subject.id;
+
+            return {
+                ...state,
+                byId: {
+                    ...state.byId,
+                    [subjectId]: {
+                        ...state.byId[subjectId],
+                        resources: state.byId[subjectId].resources.filter(key => key !== resourceId)
+                    }
+                },
             }
 
         }

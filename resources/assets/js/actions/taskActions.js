@@ -20,3 +20,10 @@ export function toggleTask(taskId){
         payload: axios.get("/api/task/" + taskId + "/toggle")
     }
 }
+
+export function deleteTask(task_id) {
+    return {
+        type: 'DELETE_TASK',
+        payload: axios.delete("/api/task/" + task_id +"/delete")
+    }
+}

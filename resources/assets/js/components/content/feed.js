@@ -15,33 +15,40 @@ const SubHeader = styled.h2`
     margin-top: 6%;
 `;
 
+
+const EmptyDisplay = styled.div`
+    text-align: center;
+    margin: 5%;
+`;
+
 class Home extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
-    componentWillMount(){
-        if(this.props.resources.feedUrl === null){
-        this.props.fetchFeed();
+    componentWillMount() {
+        if (this.props.resources.feedUrl === null) {
+            this.props.fetchFeed();
         }
     }
 
-    render(){
+    render() {
 
         const resources = this.props.resources;
 
         let resourceIds = resources.feedIds;
-        
+        let display = <EmptyDisplay> There's nothing here </EmptyDisplay>;
+
         return (
-                <div>
-                    <SubHeader>Resource Feed</SubHeader>
-                <ResourceList resourceIds={resourceIds}/>
-                </div>
+            <div>
+                <SubHeader>Resource Feed</SubHeader>
+                {resourceIds.length === 0 ? display : <ResourceList resourceIds={resourceIds}/>}
+            </div>
         )
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         resources: state.resources
     }
