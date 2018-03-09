@@ -52,4 +52,16 @@ class TaskController extends Controller
         ], 200);
     }
 
+    public function delete($task_id){
+        $task = Task::where('id', $task_id)->where('user_id', Auth::id())->first();
+
+        $task->delete();
+
+        return Response::make([
+            'data' => ['task' => $task],
+            'success' => true,
+            'message' => null
+        ], 200);
+    }
+
 }

@@ -1,4 +1,4 @@
-export default function reducer(state={
+export default function reducer(state = {
     byId: {},
     allIds: [],
     searchIds: [],
@@ -59,20 +59,28 @@ export default function reducer(state={
         case "FETCH_ALL_SUBJECTS_REJECTED": {
             return {...state, fetching: false, fetched: false}
         }
+        case "CREATE_RESOURCE_FULFILLED":
         case "FETCH_RESOURCE_FULFILLED": {
 
             let subject = action.payload.data.data.subject;
-            const newIds = [...state.allIds];
+            let resource = action.payload.data.data.resource;
 
-            if(!state.allIds.includes(subject.id)){
+            const newIds = [...state.allIds];
+            const newSubjectResources = [...state.byId[subject.id].resources];
+
+            if (!state.allIds.includes(subject.id)) {
                 newIds.push(subject.id);
+            }
+
+            if (!state.byId[subject.id].resources.includes(resource.id)) {
+                newSubjectResources.push(resource.id);
             }
 
             return {
                 ...state,
                 byId: {
                     ...state.byId,
-                    [subject.id]: subject
+                    [subject.id]: {...subject, "resources": newSubjectResources}
                 },
                 allIds: newIds,
             }

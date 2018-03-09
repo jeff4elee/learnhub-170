@@ -3,11 +3,13 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import TaskCard from "./task-card";
 import {fetchAllTasks} from "../../actions/taskActions";
+import EditableTaskList from "../layout/editable-task-list";
 
 const TaskContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 4%;
+    margin-top: 0;
 `;
 
 const TitleContainer = styled.div`
@@ -50,7 +52,8 @@ class TaskBoard extends Component {
                 return 0;
             });
 
-            taskList = taskIds.map(id => <TaskCard key={id} task={tasks.byId[id]}/>);
+            taskList = <EditableTaskList taskIds={taskIds}/>
+            // taskList = taskIds.map(id => <TaskCard key={id} task={tasks.byId[id]}/>);
 
         }
 

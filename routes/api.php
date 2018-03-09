@@ -42,6 +42,7 @@ Route::delete('/resource/{resource_id}/delete', 'ResourceController@delete');
 Route::post('/task', 'TaskController@add_to_tasks');
 Route::get('/task/all', 'TaskController@get_user_tasks');
 Route::get('/task/{task_id}/toggle', 'TaskController@toggle_task');
+Route::delete('/task/{task_id}/delete', 'TaskController@delete');
 Route::get('/resource/all', 'ResourceController@all');
 Route::get('/resource/{resource_id}', 'ResourceController@get');
 Route::get('/resource/{resource_id}/comments', 'ResourceController@get_comments');

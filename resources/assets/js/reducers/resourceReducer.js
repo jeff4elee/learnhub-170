@@ -14,7 +14,7 @@ export default function reducer(state = {
     switch (action.type) {
         case "CREATE_RESOURCE_FULFILLED": {
 
-            let resource = action.payload.data.data;
+            let resource = action.payload.data.data.resource;
             let resourceId = resource.id;
 
             return {
@@ -216,18 +216,18 @@ export default function reducer(state = {
 
             const resourceId = action.payload.data.data.resource.id;
 
-            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId);
+            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== resourceId).map(key => parseInt(key));
 
             let newByIds = {};
 
             for (const key of keys) {
-                newByIds[parseInt(key)] = state.byId[parseInt(key)];
+                newByIds[key] = state.byId[key];
             }
 
             return {
                 ...state,
                 byId: newByIds,
-                allIds: state.allIds.filter(id => id !== resourceId),
+                allIds: keys,
                 myIds: state.myIds.filter(id => id !== resourceId),
                 searchIds: state.searchIds.filter(id => id !== resourceId),
                 feedIds: state.feedIds.filter(id => id !== resourceId),

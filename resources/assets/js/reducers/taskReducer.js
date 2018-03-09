@@ -82,7 +82,7 @@ export default function reducer(state = {
         }
         case "DELETE_RESOURCE_FULFILLED":{
 
-            const resourceId = action.payload.data.data;
+            const resourceId = action.payload.data.data.resource.id;
 
             let keys = Object.keys(state.byId).filter(key => state.byId[key].resource_id !== resourceId);
 
@@ -96,6 +96,25 @@ export default function reducer(state = {
                 ...state,
                 byId: newByIds,
                 allIds: state.allIds.filter(id => state.byId[id].resource_id !== resourceId),
+            }
+
+        }
+        case "DELETE_TASK_FULFILLED":{
+
+            const taskId = action.payload.data.data.task.id;
+
+            let keys = Object.keys(state.byId).filter(key => parseInt(key) !== taskId).map(key => parseInt(key));
+
+            let newByIds = {};
+
+            for (const key of keys) {
+                newByIds[key] = state.byId[key];
+            }
+
+            return {
+                ...state,
+                byId: newByIds,
+                allIds: keys,
             }
 
         }

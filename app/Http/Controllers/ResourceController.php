@@ -132,7 +132,7 @@ class ResourceController extends Controller
         }
 
         return Response::make([
-            'data' => $resource,
+            'data' => ['resource' => $resource, 'subject' => $subject],
             'success' => true,
             'message' => null
         ], 200);
