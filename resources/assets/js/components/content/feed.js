@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchFeed} from "../../actions/resourceActions";
+import {fetchPopular} from "../../actions/subjectActions";
 import styled from 'styled-components';
 import ResourceList from '../layout/resource-list';
+import SubjectList from '../layout/subject-list';
 
 const SubHeader = styled.h2`
     font-size: 20px;
@@ -38,7 +40,7 @@ class Home extends Component {
         const resources = this.props.resources;
 
         let resourceIds = resources.feedIds;
-        let display = <EmptyDisplay> There's nothing here </EmptyDisplay>;
+        let display = <EmptyDisplay> You're not subscribed to any topics! </EmptyDisplay>;
 
         const byId = this.props.subjects.byId;
 
@@ -62,13 +64,15 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        resources: state.resources
+        resources: state.resources,
+        subjects: state.subjects
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         fetchFeed: () => dispatch(fetchFeed()),
+        fetchPopular: () => dispatch(fetchPopular())
     }
 }
 

@@ -24,6 +24,11 @@ const Title = styled.h2`
     color: #474747;
 `;
 
+const EmptyDisplay = styled.div`
+    text-align: center;
+    margin: 5%;
+`;
+
 class TaskBoard extends Component {
     constructor(props) {
         super(props);
@@ -38,9 +43,9 @@ class TaskBoard extends Component {
         const tasks = this.props.tasks;
         const taskIds = tasks.allIds;
 
-        let taskList = [];
+        let taskList = <EmptyDisplay> Your task list is empty; find a resource to add. </EmptyDisplay>;
 
-        if (taskIds) {
+        if (taskIds.length > 0) {
 
             //display subscribed tasks first
             taskIds.sort(function (a, b) {
@@ -57,7 +62,6 @@ class TaskBoard extends Component {
 
         }
 
-
         return (
             <div>
                 <TitleContainer>
@@ -66,7 +70,7 @@ class TaskBoard extends Component {
                     </Title>
                 </TitleContainer>
                 <TaskContainer>
-                    {taskList.length === 0 ? "Your task list is empty! Find a resource to add." : taskList}
+                    {taskList}
                 </TaskContainer>
             </div>
         )
