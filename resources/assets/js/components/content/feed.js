@@ -29,6 +29,7 @@ class Home extends Component {
     componentWillMount() {
         if (this.props.resources.feedUrl === null) {
             this.props.fetchFeed();
+            this.props.fetchPopular();
         }
     }
 
@@ -39,13 +40,24 @@ class Home extends Component {
         let resourceIds = resources.feedIds;
         let display = <EmptyDisplay> There's nothing here </EmptyDisplay>;
 
+        const byId = this.props.subjects.byId;
+
+        function sort(arr) {
+            return arr.concat().sort(function(p1, p2) { return byId[p2].subscribers - byId[p1].subscribers; });
+        }
+
+        const topSubjects = sort(this.props.subjects.allIds).slice(0, 5);
+
         return (
             <div>
                 <SubHeader>Resource Feed</SubHeader>
                 {resourceIds.length === 0 ? display : <ResourceList resourceIds={resourceIds}/>}
+                <SubHeader>Suggested Topics</SubHeader>
+                <SubjectList analytics={false} subjectIds={topSubjects}/>
             </div>
         )
     }
+
 }
 
 function mapStateToProps(state) {
