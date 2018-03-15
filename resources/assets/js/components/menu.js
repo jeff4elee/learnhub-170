@@ -6,6 +6,7 @@ import {logoutUser} from "../actions/userActions";
 import history from '../history';
 import EditableResourceList from './layout/editable-resource-list';
 
+
 const Layout = styled.div`
     display: flex;
     flex-direction: column;
@@ -60,7 +61,6 @@ class Menu extends Component {
         })
     }
 
-
     render() {
 
         const ownedResources = this.props.resources.myIds;
@@ -77,8 +77,8 @@ class Menu extends Component {
                         this.handleLogout()
                     }}> Logout </BootButton>
                 </ButtonContainer>
-
             </Layout>
+
 
         );
     }

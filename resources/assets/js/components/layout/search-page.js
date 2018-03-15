@@ -132,7 +132,7 @@ class SearchPage extends Component {
                 <EmptyDisplay>No matching resources...</EmptyDisplay>
                 }
 
-                <StyledBreak/>
+                {/*<StyledBreak/>*/}
                 <SubtitleText> My Topic Subscriptions </SubtitleText>
 
                 {subscribedSubjects.length === 0 ? <EmptyDisplay> You aren't subscribed to any topics </EmptyDisplay>
