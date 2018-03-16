@@ -83,6 +83,14 @@ const FormContainer = styled.form`
     justify-content: center;
 `;
 
+const Error = styled.div`
+    color: red;
+    font-style: italic;
+    font-size: 12px;
+    align-self: left;
+    margin-left: 5%;
+`;
+
 class CommentForm extends Component {
     constructor(props) {
         super(props);
@@ -119,7 +127,7 @@ class CommentForm extends Component {
 
                 <FormContainer onSubmit={this.handleSubmit}>
                     <Input type="text" value={this.state.comment} onChange={this.handleCommentChange} placeholder="Comment"/>
-                    {this.state.error ? "Invalid comment" : ""}
+                    {this.state.error ? <Error> Can't post an empty comment </Error> : ""}
                     <BootButton> Post </BootButton>
                 </FormContainer>
 

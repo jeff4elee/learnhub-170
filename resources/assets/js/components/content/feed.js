@@ -40,7 +40,7 @@ class Home extends Component {
         const resources = this.props.resources;
 
         let resourceIds = resources.feedIds;
-        let display = <EmptyDisplay> You're not subscribed to any topics! </EmptyDisplay>;
+        let display = <EmptyDisplay> You're not subscribed to any non-empty topics! </EmptyDisplay>;
 
         const byId = this.props.subjects.byId;
 

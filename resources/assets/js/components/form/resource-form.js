@@ -227,6 +227,24 @@ class ResourceForm extends Component {
         if(!this.state.subject || !this.state.title || !this.state.url || !this.state.description
             || this.state.subject.length > 16){
             this.setState({error: true});
+
+            if(this.state.url.length > 0){
+                let valid_url = this.state.url.toLowerCase();
+
+                const pattern = /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/;
+
+                if (!valid_url.match(/^[a-zA-Z]+:\/\//)) {
+                    valid_url = 'https://' + valid_url;
+                }
+
+                if (!pattern.test(valid_url)) {
+                    this.setState({urlError: true});
+                    return;
+                } else {
+                    this.setState({urlError: false});
+                }
+            }
+
             return;
         }
 
@@ -239,8 +257,10 @@ class ResourceForm extends Component {
         }
 
         if (!pattern.test(valid_url)) {
-            this.setState({urlError: true});
+            this.setState({error: true, urlError: true});
             return;
+        } else {
+            this.setState({urlError: false});
         }
 
         if(!this.state.tags){
@@ -283,7 +303,7 @@ class ResourceForm extends Component {
                     { this.state.error && !this.state.title && <Error> Invalid Title</Error>}
 
                     <Input type="text" value={this.state.url} onChange={this.handleUrlChange} placeholder="Resource URL"/>
-                    { (this.state.error && !this.state.url || this.state.urlError) && <Error> Invalid URL </Error>}
+                    { (this.state.error && (!this.state.url || this.state.urlError)) && <Error> Invalid URL </Error>}
 
                     <Input type="text" value={this.state.tags} onChange={this.handleTagChange} placeholder="Tags (comma separated)"/>
 

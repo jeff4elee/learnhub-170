@@ -158,7 +158,7 @@ class ResourceCard extends Component {
             {this.props.resource.rating_count > 0 && ' / ' + 5}
         </div>;
 
-        let now = new Date(new Date().toUTCString().substr(0, 25));
+        let now = new Date(new Date().toISOString().replace(/\..+/, ''));
         const createdAt = new Date(this.props.resource.created_at);
         const diff = dateDiffInDays(createdAt, now);
 
