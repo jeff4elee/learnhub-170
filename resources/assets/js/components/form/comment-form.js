@@ -87,7 +87,8 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comment: ''
+            comment: '',
+            error: false
         };
 
         this.handleCommentChange = this.handleCommentChange.bind(this);
@@ -97,14 +98,19 @@ class CommentForm extends Component {
 
     handleCommentChange(event){
         event.preventDefault();
-        this.setState({...this.state, comment: event.target.value});
+        this.setState({comment: event.target.value});
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.commentOnResource({
-            ...this.state, resource_id: this.props.resourceId
-        });
+
+        if(/\S/.test(this.state.comment)) {
+            this.props.commentOnResource({
+                ...this.state, resource_id: this.props.resourceId
+            });
+        } else {
+            this.setState({error: true});
+        }
     }
 
     render() {
@@ -113,6 +119,7 @@ class CommentForm extends Component {
 
                 <FormContainer onSubmit={this.handleSubmit}>
                     <Input type="text" value={this.state.comment} onChange={this.handleCommentChange} placeholder="Comment"/>
+                    {this.state.error ? "Invalid comment" : ""}
                     <BootButton> Post </BootButton>
                 </FormContainer>
 
