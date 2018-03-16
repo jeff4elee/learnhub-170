@@ -10,11 +10,7 @@ const TaskContainer = styled.div`
     box-shadow: 0 4px 8px -2px rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 90%;
-
     flex: 1 1 1;
-
-    //margin-top: 10px;
-    //margin-bottom: 10px;
 
     margin-top: 8px;
     margin-bottom: 8px;
@@ -143,7 +139,8 @@ class TaskCard extends Component {
             {resource.rating_count > 0 && '/' + 5}
         </div>;
 
-        let now = new Date(new Date().toUTCString().substr(0, 25));
+        let now = new Date(new Date().toISOString().replace(/\..+/, ''));
+
         const createdAt = new Date(resource.created_at);
         const diff = dateDiffInDays(createdAt, now);
 

@@ -20,8 +20,13 @@ class ResourceController extends Controller
         $resources = Resource::where('user_id', '=', Auth::id())->get();
         $subjects = array();
 
-        foreach ($resources as $resource) {
-            array_push($subjects, $resource->subject()->first());
+        // Remove the duplicates from original array
+        foreach($resources as $resource){
+            $subject = $resource->subject()->first();
+            if (!isset($found[$subject->id])){
+                array_push($subjects, $subject);
+                $found[$subject->id] = true;
+            }
         }
 
         return Response::make([

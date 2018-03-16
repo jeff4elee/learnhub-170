@@ -14,14 +14,14 @@ const NotificationModal = styled(Modal)`
     top: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    height: 15%;
+    height: 19%;
     display: flex;
     flex-direction:column;
     justify-content:center;
     align-content:center;
 
-    // background-color: #239b88;
-    background-color: red;
+    background-color: #239b88;
+    // background-color: red;
 
     border: 2px solid transparent;
     border-radius: 5px;
@@ -164,6 +164,7 @@ const Spacing = styled.div`
     margin: 10% 0;
 `;
 
+
 class Resource extends Component {
     constructor(props) {
         super(props);
@@ -291,7 +292,8 @@ class Resource extends Component {
                                 value={this.state.rating}
                                 color2={'#ffd700'}/>
                         </RatingBar>
-                        <button onClick={() => this.submitRating()}>Submit</button>
+                        <button style={{borderColor: "transparent", backgroundColor: "#239b88"}} onClick={() => this.submitRating()}>Submit</button>
+                        <div style={{marginBottom:"2.5%"}}/>
                     </div>}
 
                     {this.state.reported && "Resource has been reported"}
